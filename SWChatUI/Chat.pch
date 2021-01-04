@@ -1,0 +1,91 @@
+//
+//  Chat.pch
+//  SWChatUI
+//
+//  Created by 帅到不行 on 2020/11/16.
+//  Copyright © 2020 sw. All rights reserved.
+//
+
+#ifndef Chat_pch
+#define Chat_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//通知
+#define ATDIDRECEIVENEWMESSAGE_NOTIFICATION @"didReceiveNewMessages"
+ 
+//只有当一次移动距离超过下面宏定义的距离后，才加载附近地点，单位米
+#define MOVE_DISTANCE_RESPONCE_THREASHOLD 50
+
+#define DEFAULT_SEARCH_AREA_SPAN_METER 1000
+
+#define MAP_VIEW_SPAN_METER_PER_POINT 1.2
+
+#define TABLE_VIEW_HEIGHT_MIN_FACTOR 0.416
+#define TABLE_VIEW_HEIGHT_MAX_FACTOR 0.7
+
+#define SNAPSHOT_SPAN_WIDTH 263
+#define SNAPSHOT_SPAN_HEIGHT 150
+
+#define LOCATION_UNKNOWE_ADDRESS @"[未知位置]"
+#define LOCATION_UNKNOWE_NAME @"[未知位置]"
+#define LOCATION_EMPTY_ADDRESS @"[位置]"
+#define LOCATION_EMPTY_NAME @"[位置]"
+#define FORM_USERNAME @"1111"
+//默认密码
+#define KIMLOGINPASSWORD @"123456"
+
+
+#define allPOISearchTypes   @"汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施"
+
+#define LOCATION_AUTHORIZATION_DENIED_TEXT @"  无法获取你的位置信息。\n请到手机系统的[设置]->[隐私]->[定位服务]中打开定位服务,并允许微信使用定位服务。"
+
+
+//聊天表情包
+#define IMEmtionPath [NSString stringWithFormat:@"%@/userImage/%@/emoticon",ATDocumentPath,FORM_USERNAME]
+
+#define IMGifImagePath [NSString stringWithFormat:@"%@/userImage/%@/gifImage/",ATDocumentPath,FORM_USERNAME]
+
+ 
+//聊天数据缓存
+#define IMCACEL @"IMCACEL"
+
+#import <SWKit.h>
+#import <MJExtension/MJExtension.h>
+#import <YYKit.h>
+#import <UIKit/UIKit.h>
+#import <SDWebImage/SDWebImage.h>
+#import <SDImageCache.h>
+#import "ATFMDBTool.h"
+#import <HyphenateLite/HyphenateLite.h>//环信SDK
+#import "SWHXTool.h" //环信二次封装管理工具
+#import <SVProgressHUD.h>
+
+//单聊界面
+#import "SWChatSingViewController.h"
+//消息界面
+#import "SWChatMessageViewController.h"
+//im用户数据模型
+#import "SWFriendInfoModel.h"
+//模拟IM连接管理工具(发送消息，接受消息，等等逻辑在这边处理)
+#import "SWChatManage.h"
+//消息模型
+#import "SWMessageModel.h"
+//用户模型
+#import "SWFriendInfoModel.h"
+ 
+//cell 显示模型
+#import "SWChatTouchModel.h"
+//cell  功能管理工具
+#import "SWChatCellManager.h"
+//获取当前账号的所有置顶会话
+#import "SWPlaceTopTool.h"
+
+//工具
+#import "GMenuControllerHeader.h"
+#import "GMenuViewContainer.h"
+#import "GMenuController.h"
+
+#import "SWLabel.h"
+
+#endif /* Chat_pch */

@@ -1,0 +1,972 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		046ABE7625675BBF00359625 /* SWChatRedBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE7525675BBF00359625 /* SWChatRedBagCell.m */; };
+		046ABE792567B6B800359625 /* SWLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE782567B6B800359625 /* SWLabel.m */; };
+		046ABE7E2568A48500359625 /* SWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE7C2568A48500359625 /* SWLoginViewController.m */; };
+		046ABE7F2568A48500359625 /* SWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046ABE7D2568A48500359625 /* SWLoginViewController.xib */; };
+		046ABE822568A69A00359625 /* SWHXTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE812568A69A00359625 /* SWHXTool.m */; };
+		046ABE852568AB4600359625 /* SWChatTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE842568AB4600359625 /* SWChatTabbarViewController.m */; };
+		046ABE882568ADC300359625 /* SWChatMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE872568ADC300359625 /* SWChatMessageViewController.m */; };
+		046ABE8B2568B29A00359625 /* SWMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE8A2568B29A00359625 /* SWMessageCell.m */; };
+		046ABE8E2568B47800359625 /* SWNmberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE8D2568B47800359625 /* SWNmberButton.m */; };
+		046ABE912568BD6500359625 /* SWFriendSortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE902568BD6500359625 /* SWFriendSortManager.m */; };
+		046ABE942568C0EA00359625 /* SWChatAdressBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE932568C0EA00359625 /* SWChatAdressBookController.m */; };
+		046ABE972568C41600359625 /* SWFriendListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE962568C41600359625 /* SWFriendListCell.m */; };
+		046ABEA02568D55900359625 /* SWChatSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABE9F2568D55900359625 /* SWChatSettingViewController.m */; };
+		046ABEA32568DD9800359625 /* SWChatSingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABEA22568DD9800359625 /* SWChatSingViewController.m */; };
+		046ABEA6256B609100359625 /* SWChatSystemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABEA5256B609100359625 /* SWChatSystemCell.m */; };
+		046ABEAA256B60BC00359625 /* FMLinkLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABEA9256B60BC00359625 /* FMLinkLabel.m */; };
+		046ABEAD256B872D00359625 /* SWPlaceTopTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 046ABEAC256B872D00359625 /* SWPlaceTopTool.m */; };
+		048867C2255E754A0003F275 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 048867C1255E754A0003F275 /* AppDelegate.m */; };
+		048867C8255E754A0003F275 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048867C7255E754A0003F275 /* ViewController.m */; };
+		048867CB255E754A0003F275 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048867C9255E754A0003F275 /* Main.storyboard */; };
+		048867CD255E754B0003F275 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048867CC255E754B0003F275 /* Assets.xcassets */; };
+		048867D0255E754B0003F275 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048867CE255E754B0003F275 /* LaunchScreen.storyboard */; };
+		048867D3255E754B0003F275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 048867D2255E754B0003F275 /* main.m */; };
+		048867DF255E75F70003F275 /* SWChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048867DE255E75F70003F275 /* SWChatViewController.m */; };
+		048867E2255E76EE0003F275 /* SWTouchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048867E1255E76EE0003F275 /* SWTouchBarView.m */; };
+		04886809255E79D60003F275 /* SWTouchTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886808255E79D60003F275 /* SWTouchTextView.m */; };
+		0488680C255E7B180003F275 /* SWFuncView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488680B255E7B180003F275 /* SWFuncView.m */; };
+		04886823255E84240003F275 /* MOKORecordToastContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488680E255E84240003F275 /* MOKORecordToastContentView.m */; };
+		04886824255E84240003F275 /* ic_record_ripple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04886812255E84240003F275 /* ic_record_ripple@3x.png */; };
+		04886825255E84240003F275 /* MOKORecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886813255E84240003F275 /* MOKORecordView.m */; };
+		04886826255E84240003F275 /* MOKORecordShowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886814255E84240003F275 /* MOKORecordShowManager.m */; };
+		04886827255E84240003F275 /* ic_record_ripple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04886815255E84240003F275 /* ic_record_ripple@2x.png */; };
+		04886828255E84240003F275 /* MOKORecorderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886816255E84240003F275 /* MOKORecorderTool.m */; };
+		04886829255E84240003F275 /* ic_record_too_short@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04886817255E84240003F275 /* ic_record_too_short@2x.png */; };
+		0488682A255E84240003F275 /* ic_record_too_short@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04886819255E84240003F275 /* ic_record_too_short@3x.png */; };
+		0488682B255E84240003F275 /* MOKORecordPowerAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488681A255E84240003F275 /* MOKORecordPowerAnimationView.m */; };
+		0488682C255E84240003F275 /* MOKORecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488681B255E84240003F275 /* MOKORecordButton.m */; };
+		0488682D255E84240003F275 /* ic_release_to_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0488681C255E84240003F275 /* ic_release_to_cancel@3x.png */; };
+		0488682E255E84240003F275 /* ic_record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0488681D255E84240003F275 /* ic_record@2x.png */; };
+		0488682F255E84240003F275 /* ic_record@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04886821255E84240003F275 /* ic_record@3x.png */; };
+		04886830255E84240003F275 /* ic_release_to_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04886822255E84240003F275 /* ic_release_to_cancel@2x.png */; };
+		048868382562106A0003F275 /* expression.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04886837256210690003F275 /* expression.plist */; };
+		0488683A256212800003F275 /* SWAVAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886839256212800003F275 /* SWAVAudioPlayer.m */; };
+		0488683D256218E90003F275 /* SWExpressionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488683C256218E90003F275 /* SWExpressionView.m */; };
+		0488684125621B390003F275 /* SWExpressionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488684025621B390003F275 /* SWExpressionScrollView.m */; };
+		0488684425621B4A0003F275 /* SWExpressionCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488684325621B4A0003F275 /* SWExpressionCustomView.m */; };
+		0488684725621C480003F275 /* SWExpressionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488684625621C480003F275 /* SWExpressionCollectionCell.m */; };
+		0488684A25621EA90003F275 /* SWChatManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488684925621EA90003F275 /* SWChatManage.m */; };
+		0488684D256222B20003F275 /* SWExpressionBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488684C256222B20003F275 /* SWExpressionBtn.m */; };
+		0488685125624E580003F275 /* SWFriendInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488685025624E580003F275 /* SWFriendInfoModel.m */; };
+		04886857256253610003F275 /* SWMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886856256253610003F275 /* SWMessageModel.m */; };
+		0488685A256256DE0003F275 /* SWChatTouchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886859256256DE0003F275 /* SWChatTouchModel.m */; };
+		0488685D256264940003F275 /* SWTouchBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488685C256264940003F275 /* SWTouchBaseCell.m */; };
+		04886860256264F60003F275 /* SWChatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488685F256264F60003F275 /* SWChatButton.m */; };
+		04886863256266780003F275 /* SWChatCellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886862256266780003F275 /* SWChatCellManager.m */; };
+		04886866256268B80003F275 /* SWChatTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886865256268B80003F275 /* SWChatTextCell.m */; };
+		0488687425637EB90003F275 /* GAdjustButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488686B25637EB90003F275 /* GAdjustButton.m */; };
+		0488687525637EB90003F275 /* GMenuDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488686C25637EB90003F275 /* GMenuDefaultView.m */; };
+		0488687625637EB90003F275 /* GMenuEffectsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488686D25637EB90003F275 /* GMenuEffectsWindow.m */; };
+		0488687725637EB90003F275 /* GMenuViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488686E25637EB90003F275 /* GMenuViewContainer.m */; };
+		0488687825637EB90003F275 /* GMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488687325637EB90003F275 /* GMenuController.m */; };
+		0488687C25639EFF0003F275 /* SWChatImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488687B25639EFF0003F275 /* SWChatImageCell.m */; };
+		048869E22563D1490003F275 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 048869D72563D1490003F275 /* FMDatabaseQueue.m */; };
+		048869E32563D1490003F275 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 048869DA2563D1490003F275 /* FMDatabaseAdditions.m */; };
+		048869E42563D1490003F275 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 048869DB2563D1490003F275 /* FMDatabase.m */; };
+		048869E52563D1490003F275 /* ATFMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 048869DC2563D1490003F275 /* ATFMDBTool.m */; };
+		048869E62563D1490003F275 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 048869E02563D1490003F275 /* FMDatabasePool.m */; };
+		048869E72563D1490003F275 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 048869E12563D1490003F275 /* FMResultSet.m */; };
+		04886A022564EFD40003F275 /* SWChatWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886A012564EFD40003F275 /* SWChatWebViewController.m */; };
+		04886A052564F1980003F275 /* SWReadTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04886A042564F1980003F275 /* SWReadTextView.m */; };
+		0489E0822564FCAC0084EF76 /* SWChatLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489E0812564FCAC0084EF76 /* SWChatLocationViewController.m */; };
+		0489E088256518170084EF76 /* SWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489E087256518170084EF76 /* SWSearchBar.m */; };
+		0489E08E25651F2E0084EF76 /* SWLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489E08D25651F2E0084EF76 /* SWLocationTableViewCell.m */; };
+		0489E0922566053E0084EF76 /* SWSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489E0912566053E0084EF76 /* SWSearchViewController.m */; };
+		0489E09B25660BE00084EF76 /* SWLocationSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489E09A25660BE00084EF76 /* SWLocationSearchResultController.m */; };
+		04F3466A25662CB70048FE87 /* SWChatLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F3466925662CB70048FE87 /* SWChatLocationCell.m */; };
+		6452DC69259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6452DC68259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m */; };
+		DF0F768EBBE3D550ACB814C4 /* Pods_SWChatUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15072FE021C9E8D73F243182 /* Pods_SWChatUI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		046ABE7425675BBF00359625 /* SWChatRedBagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatRedBagCell.h; sourceTree = "<group>"; };
+		046ABE7525675BBF00359625 /* SWChatRedBagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatRedBagCell.m; sourceTree = "<group>"; };
+		046ABE772567B6B800359625 /* SWLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWLabel.h; sourceTree = "<group>"; };
+		046ABE782567B6B800359625 /* SWLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWLabel.m; sourceTree = "<group>"; };
+		046ABE7B2568A48500359625 /* SWLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWLoginViewController.h; sourceTree = "<group>"; };
+		046ABE7C2568A48500359625 /* SWLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWLoginViewController.m; sourceTree = "<group>"; };
+		046ABE7D2568A48500359625 /* SWLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SWLoginViewController.xib; sourceTree = "<group>"; };
+		046ABE802568A69A00359625 /* SWHXTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWHXTool.h; sourceTree = "<group>"; };
+		046ABE812568A69A00359625 /* SWHXTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWHXTool.m; sourceTree = "<group>"; };
+		046ABE832568AB4600359625 /* SWChatTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatTabbarViewController.h; sourceTree = "<group>"; };
+		046ABE842568AB4600359625 /* SWChatTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatTabbarViewController.m; sourceTree = "<group>"; };
+		046ABE862568ADC300359625 /* SWChatMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatMessageViewController.h; sourceTree = "<group>"; };
+		046ABE872568ADC300359625 /* SWChatMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatMessageViewController.m; sourceTree = "<group>"; };
+		046ABE892568B29A00359625 /* SWMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWMessageCell.h; sourceTree = "<group>"; };
+		046ABE8A2568B29A00359625 /* SWMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWMessageCell.m; sourceTree = "<group>"; };
+		046ABE8C2568B47800359625 /* SWNmberButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWNmberButton.h; sourceTree = "<group>"; };
+		046ABE8D2568B47800359625 /* SWNmberButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWNmberButton.m; sourceTree = "<group>"; };
+		046ABE8F2568BD6500359625 /* SWFriendSortManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFriendSortManager.h; sourceTree = "<group>"; };
+		046ABE902568BD6500359625 /* SWFriendSortManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFriendSortManager.m; sourceTree = "<group>"; };
+		046ABE922568C0EA00359625 /* SWChatAdressBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatAdressBookController.h; sourceTree = "<group>"; };
+		046ABE932568C0EA00359625 /* SWChatAdressBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatAdressBookController.m; sourceTree = "<group>"; };
+		046ABE952568C41600359625 /* SWFriendListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFriendListCell.h; sourceTree = "<group>"; };
+		046ABE962568C41600359625 /* SWFriendListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFriendListCell.m; sourceTree = "<group>"; };
+		046ABE9E2568D55900359625 /* SWChatSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatSettingViewController.h; sourceTree = "<group>"; };
+		046ABE9F2568D55900359625 /* SWChatSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatSettingViewController.m; sourceTree = "<group>"; };
+		046ABEA12568DD9800359625 /* SWChatSingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatSingViewController.h; sourceTree = "<group>"; };
+		046ABEA22568DD9800359625 /* SWChatSingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatSingViewController.m; sourceTree = "<group>"; };
+		046ABEA4256B609100359625 /* SWChatSystemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatSystemCell.h; sourceTree = "<group>"; };
+		046ABEA5256B609100359625 /* SWChatSystemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatSystemCell.m; sourceTree = "<group>"; };
+		046ABEA8256B60BC00359625 /* FMLinkLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLinkLabel.h; sourceTree = "<group>"; };
+		046ABEA9256B60BC00359625 /* FMLinkLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLinkLabel.m; sourceTree = "<group>"; };
+		046ABEAB256B872D00359625 /* SWPlaceTopTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWPlaceTopTool.h; sourceTree = "<group>"; };
+		046ABEAC256B872D00359625 /* SWPlaceTopTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWPlaceTopTool.m; sourceTree = "<group>"; };
+		048867BD255E754A0003F275 /* SWChatUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWChatUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		048867C0255E754A0003F275 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		048867C1255E754A0003F275 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		048867C6255E754A0003F275 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		048867C7255E754A0003F275 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		048867CA255E754A0003F275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		048867CC255E754B0003F275 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		048867CF255E754B0003F275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		048867D1255E754B0003F275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		048867D2255E754B0003F275 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		048867DD255E75F70003F275 /* SWChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatViewController.h; sourceTree = "<group>"; };
+		048867DE255E75F70003F275 /* SWChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatViewController.m; sourceTree = "<group>"; };
+		048867E0255E76EE0003F275 /* SWTouchBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWTouchBarView.h; sourceTree = "<group>"; };
+		048867E1255E76EE0003F275 /* SWTouchBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWTouchBarView.m; sourceTree = "<group>"; };
+		04886807255E79D60003F275 /* SWTouchTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWTouchTextView.h; sourceTree = "<group>"; };
+		04886808255E79D60003F275 /* SWTouchTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWTouchTextView.m; sourceTree = "<group>"; };
+		0488680A255E7B180003F275 /* SWFuncView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFuncView.h; sourceTree = "<group>"; };
+		0488680B255E7B180003F275 /* SWFuncView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFuncView.m; sourceTree = "<group>"; };
+		0488680E255E84240003F275 /* MOKORecordToastContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKORecordToastContentView.m; sourceTree = "<group>"; };
+		0488680F255E84240003F275 /* MOKORecordHeaderDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKORecordHeaderDefine.h; sourceTree = "<group>"; };
+		04886810255E84240003F275 /* MOKORecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKORecordButton.h; sourceTree = "<group>"; };
+		04886811255E84240003F275 /* MOKORecordPowerAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKORecordPowerAnimationView.h; sourceTree = "<group>"; };
+		04886812255E84240003F275 /* ic_record_ripple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_record_ripple@3x.png"; sourceTree = "<group>"; };
+		04886813255E84240003F275 /* MOKORecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKORecordView.m; sourceTree = "<group>"; };
+		04886814255E84240003F275 /* MOKORecordShowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKORecordShowManager.m; sourceTree = "<group>"; };
+		04886815255E84240003F275 /* ic_record_ripple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_record_ripple@2x.png"; sourceTree = "<group>"; };
+		04886816255E84240003F275 /* MOKORecorderTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKORecorderTool.m; sourceTree = "<group>"; };
+		04886817255E84240003F275 /* ic_record_too_short@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_record_too_short@2x.png"; sourceTree = "<group>"; };
+		04886818255E84240003F275 /* MOKORecordToastContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKORecordToastContentView.h; sourceTree = "<group>"; };
+		04886819255E84240003F275 /* ic_record_too_short@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_record_too_short@3x.png"; sourceTree = "<group>"; };
+		0488681A255E84240003F275 /* MOKORecordPowerAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKORecordPowerAnimationView.m; sourceTree = "<group>"; };
+		0488681B255E84240003F275 /* MOKORecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKORecordButton.m; sourceTree = "<group>"; };
+		0488681C255E84240003F275 /* ic_release_to_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_release_to_cancel@3x.png"; sourceTree = "<group>"; };
+		0488681D255E84240003F275 /* ic_record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_record@2x.png"; sourceTree = "<group>"; };
+		0488681E255E84240003F275 /* MOKORecordShowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKORecordShowManager.h; sourceTree = "<group>"; };
+		0488681F255E84240003F275 /* MOKORecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKORecordView.h; sourceTree = "<group>"; };
+		04886820255E84240003F275 /* MOKORecorderTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKORecorderTool.h; sourceTree = "<group>"; };
+		04886821255E84240003F275 /* ic_record@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_record@3x.png"; sourceTree = "<group>"; };
+		04886822255E84240003F275 /* ic_release_to_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_release_to_cancel@2x.png"; sourceTree = "<group>"; };
+		04886832255E84400003F275 /* SWAVAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWAVAudioPlayer.h; sourceTree = "<group>"; };
+		04886837256210690003F275 /* expression.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = expression.plist; sourceTree = "<group>"; };
+		04886839256212800003F275 /* SWAVAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWAVAudioPlayer.m; sourceTree = "<group>"; };
+		0488683B256218E90003F275 /* SWExpressionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWExpressionView.h; sourceTree = "<group>"; };
+		0488683C256218E90003F275 /* SWExpressionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWExpressionView.m; sourceTree = "<group>"; };
+		0488683F25621B390003F275 /* SWExpressionScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWExpressionScrollView.h; sourceTree = "<group>"; };
+		0488684025621B390003F275 /* SWExpressionScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWExpressionScrollView.m; sourceTree = "<group>"; };
+		0488684225621B4A0003F275 /* SWExpressionCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWExpressionCustomView.h; sourceTree = "<group>"; };
+		0488684325621B4A0003F275 /* SWExpressionCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWExpressionCustomView.m; sourceTree = "<group>"; };
+		0488684525621C480003F275 /* SWExpressionCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWExpressionCollectionCell.h; sourceTree = "<group>"; };
+		0488684625621C480003F275 /* SWExpressionCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWExpressionCollectionCell.m; sourceTree = "<group>"; };
+		0488684825621EA90003F275 /* SWChatManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatManage.h; sourceTree = "<group>"; };
+		0488684925621EA90003F275 /* SWChatManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatManage.m; sourceTree = "<group>"; };
+		0488684B256222B20003F275 /* SWExpressionBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWExpressionBtn.h; sourceTree = "<group>"; };
+		0488684C256222B20003F275 /* SWExpressionBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWExpressionBtn.m; sourceTree = "<group>"; };
+		0488684F25624E580003F275 /* SWFriendInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFriendInfoModel.h; sourceTree = "<group>"; };
+		0488685025624E580003F275 /* SWFriendInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFriendInfoModel.m; sourceTree = "<group>"; };
+		0488685425624F6A0003F275 /* Chat.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chat.pch; sourceTree = "<group>"; };
+		04886855256253610003F275 /* SWMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWMessageModel.h; sourceTree = "<group>"; };
+		04886856256253610003F275 /* SWMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWMessageModel.m; sourceTree = "<group>"; };
+		04886858256256DE0003F275 /* SWChatTouchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatTouchModel.h; sourceTree = "<group>"; };
+		04886859256256DE0003F275 /* SWChatTouchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatTouchModel.m; sourceTree = "<group>"; };
+		0488685B256264940003F275 /* SWTouchBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWTouchBaseCell.h; sourceTree = "<group>"; };
+		0488685C256264940003F275 /* SWTouchBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWTouchBaseCell.m; sourceTree = "<group>"; };
+		0488685E256264F60003F275 /* SWChatButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatButton.h; sourceTree = "<group>"; };
+		0488685F256264F60003F275 /* SWChatButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatButton.m; sourceTree = "<group>"; };
+		04886861256266780003F275 /* SWChatCellManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatCellManager.h; sourceTree = "<group>"; };
+		04886862256266780003F275 /* SWChatCellManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatCellManager.m; sourceTree = "<group>"; };
+		04886864256268B80003F275 /* SWChatTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatTextCell.h; sourceTree = "<group>"; };
+		04886865256268B80003F275 /* SWChatTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatTextCell.m; sourceTree = "<group>"; };
+		0488686925637EB90003F275 /* GMenuViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMenuViewContainer.h; sourceTree = "<group>"; };
+		0488686A25637EB90003F275 /* GMenuEffectsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMenuEffectsWindow.h; sourceTree = "<group>"; };
+		0488686B25637EB90003F275 /* GAdjustButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAdjustButton.m; sourceTree = "<group>"; };
+		0488686C25637EB90003F275 /* GMenuDefaultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMenuDefaultView.m; sourceTree = "<group>"; };
+		0488686D25637EB90003F275 /* GMenuEffectsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMenuEffectsWindow.m; sourceTree = "<group>"; };
+		0488686E25637EB90003F275 /* GMenuViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMenuViewContainer.m; sourceTree = "<group>"; };
+		0488686F25637EB90003F275 /* GAdjustButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAdjustButton.h; sourceTree = "<group>"; };
+		0488687025637EB90003F275 /* GMenuDefaultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMenuDefaultView.h; sourceTree = "<group>"; };
+		0488687125637EB90003F275 /* GMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMenuController.h; sourceTree = "<group>"; };
+		0488687225637EB90003F275 /* GMenuControllerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMenuControllerHeader.h; sourceTree = "<group>"; };
+		0488687325637EB90003F275 /* GMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMenuController.m; sourceTree = "<group>"; };
+		0488687A25639EFF0003F275 /* SWChatImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatImageCell.h; sourceTree = "<group>"; };
+		0488687B25639EFF0003F275 /* SWChatImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatImageCell.m; sourceTree = "<group>"; };
+		048869D52563D1490003F275 /* ATFMDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATFMDBTool.h; sourceTree = "<group>"; };
+		048869D62563D1490003F275 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		048869D72563D1490003F275 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		048869D82563D1490003F275 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		048869D92563D1490003F275 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		048869DA2563D1490003F275 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		048869DB2563D1490003F275 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		048869DC2563D1490003F275 /* ATFMDBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATFMDBTool.m; sourceTree = "<group>"; };
+		048869DD2563D1490003F275 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		048869DE2563D1490003F275 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		048869DF2563D1490003F275 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		048869E02563D1490003F275 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		048869E12563D1490003F275 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		04886A002564EFD40003F275 /* SWChatWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatWebViewController.h; sourceTree = "<group>"; };
+		04886A012564EFD40003F275 /* SWChatWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatWebViewController.m; sourceTree = "<group>"; };
+		04886A032564F1980003F275 /* SWReadTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWReadTextView.h; sourceTree = "<group>"; };
+		04886A042564F1980003F275 /* SWReadTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWReadTextView.m; sourceTree = "<group>"; };
+		0489E0802564FCAC0084EF76 /* SWChatLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatLocationViewController.h; sourceTree = "<group>"; };
+		0489E0812564FCAC0084EF76 /* SWChatLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatLocationViewController.m; sourceTree = "<group>"; };
+		0489E086256518170084EF76 /* SWSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWSearchBar.h; sourceTree = "<group>"; };
+		0489E087256518170084EF76 /* SWSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWSearchBar.m; sourceTree = "<group>"; };
+		0489E08C25651F2E0084EF76 /* SWLocationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWLocationTableViewCell.h; sourceTree = "<group>"; };
+		0489E08D25651F2E0084EF76 /* SWLocationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWLocationTableViewCell.m; sourceTree = "<group>"; };
+		0489E0902566053E0084EF76 /* SWSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWSearchViewController.h; sourceTree = "<group>"; };
+		0489E0912566053E0084EF76 /* SWSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWSearchViewController.m; sourceTree = "<group>"; };
+		0489E0932566073D0084EF76 /* SWSearchResultDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWSearchResultDelegate.h; sourceTree = "<group>"; };
+		0489E09625660A6A0084EF76 /* SWSearchControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWSearchControllerDelegate.h; sourceTree = "<group>"; };
+		0489E09925660BE00084EF76 /* SWLocationSearchResultController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWLocationSearchResultController.h; sourceTree = "<group>"; };
+		0489E09A25660BE00084EF76 /* SWLocationSearchResultController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWLocationSearchResultController.m; sourceTree = "<group>"; };
+		04F3466825662CB70048FE87 /* SWChatLocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatLocationCell.h; sourceTree = "<group>"; };
+		04F3466925662CB70048FE87 /* SWChatLocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatLocationCell.m; sourceTree = "<group>"; };
+		0FA546FF0967186321EB151D /* Pods-SWChatUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWChatUI.debug.xcconfig"; path = "Target Support Files/Pods-SWChatUI/Pods-SWChatUI.debug.xcconfig"; sourceTree = "<group>"; };
+		15072FE021C9E8D73F243182 /* Pods_SWChatUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWChatUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6452DC67259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYAnimatedImageView+ImageShow.h"; sourceTree = "<group>"; };
+		6452DC68259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYAnimatedImageView+ImageShow.m"; sourceTree = "<group>"; };
+		6996BDAA302CC8CCB772843F /* Pods-SWChatUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWChatUI.release.xcconfig"; path = "Target Support Files/Pods-SWChatUI/Pods-SWChatUI.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		048867BA255E754A0003F275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF0F768EBBE3D550ACB814C4 /* Pods_SWChatUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		046ABE7A2568A47700359625 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				046ABE7B2568A48500359625 /* SWLoginViewController.h */,
+				046ABE7C2568A48500359625 /* SWLoginViewController.m */,
+				046ABE7D2568A48500359625 /* SWLoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		046ABEA7256B60BC00359625 /* FMLabel */ = {
+			isa = PBXGroup;
+			children = (
+				046ABEA8256B60BC00359625 /* FMLinkLabel.h */,
+				046ABEA9256B60BC00359625 /* FMLinkLabel.m */,
+			);
+			path = FMLabel;
+			sourceTree = "<group>";
+		};
+		048867B4255E754A0003F275 = {
+			isa = PBXGroup;
+			children = (
+				048867BF255E754A0003F275 /* SWChatUI */,
+				048867BE255E754A0003F275 /* Products */,
+				D947BF4B25E4DD78902CEADD /* Pods */,
+				46AC810A5FE497D9F50A8C40 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		048867BE255E754A0003F275 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				048867BD255E754A0003F275 /* SWChatUI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		048867BF255E754A0003F275 /* SWChatUI */ = {
+			isa = PBXGroup;
+			children = (
+				048867D9255E75EB0003F275 /* Demo */,
+				048867C0255E754A0003F275 /* AppDelegate.h */,
+				048867C1255E754A0003F275 /* AppDelegate.m */,
+				048867C6255E754A0003F275 /* ViewController.h */,
+				048867C7255E754A0003F275 /* ViewController.m */,
+				046ABE832568AB4600359625 /* SWChatTabbarViewController.h */,
+				046ABE842568AB4600359625 /* SWChatTabbarViewController.m */,
+				048867C9255E754A0003F275 /* Main.storyboard */,
+				048867CC255E754B0003F275 /* Assets.xcassets */,
+				048867CE255E754B0003F275 /* LaunchScreen.storyboard */,
+				048867D1255E754B0003F275 /* Info.plist */,
+				04886837256210690003F275 /* expression.plist */,
+				048867D2255E754B0003F275 /* main.m */,
+				0488685425624F6A0003F275 /* Chat.pch */,
+			);
+			path = SWChatUI;
+			sourceTree = "<group>";
+		};
+		048867D9255E75EB0003F275 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				046ABE7A2568A47700359625 /* Login */,
+				0488684E25624E3C0003F275 /* Model */,
+				048867DA255E75EB0003F275 /* ChatController */,
+				048867DB255E75EB0003F275 /* Manager */,
+				048867DC255E75EB0003F275 /* View */,
+			);
+			path = Demo;
+			sourceTree = SOURCE_ROOT;
+		};
+		048867DA255E75EB0003F275 /* ChatController */ = {
+			isa = PBXGroup;
+			children = (
+				048867DD255E75F70003F275 /* SWChatViewController.h */,
+				048867DE255E75F70003F275 /* SWChatViewController.m */,
+				04886A002564EFD40003F275 /* SWChatWebViewController.h */,
+				04886A012564EFD40003F275 /* SWChatWebViewController.m */,
+				0489E0802564FCAC0084EF76 /* SWChatLocationViewController.h */,
+				0489E0812564FCAC0084EF76 /* SWChatLocationViewController.m */,
+				046ABE862568ADC300359625 /* SWChatMessageViewController.h */,
+				046ABE872568ADC300359625 /* SWChatMessageViewController.m */,
+				046ABE922568C0EA00359625 /* SWChatAdressBookController.h */,
+				046ABE932568C0EA00359625 /* SWChatAdressBookController.m */,
+				046ABE9E2568D55900359625 /* SWChatSettingViewController.h */,
+				046ABE9F2568D55900359625 /* SWChatSettingViewController.m */,
+				046ABEA12568DD9800359625 /* SWChatSingViewController.h */,
+				046ABEA22568DD9800359625 /* SWChatSingViewController.m */,
+			);
+			path = ChatController;
+			sourceTree = "<group>";
+		};
+		048867DB255E75EB0003F275 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				046ABEA7256B60BC00359625 /* FMLabel */,
+				048869F92564BA910003F275 /* Categories */,
+				048869D42563D1490003F275 /* FMDB */,
+				0488686725637EB90003F275 /* menuController */,
+				0488680D255E84240003F275 /* mokrecord */,
+				0488684825621EA90003F275 /* SWChatManage.h */,
+				0488684925621EA90003F275 /* SWChatManage.m */,
+				04886861256266780003F275 /* SWChatCellManager.h */,
+				04886862256266780003F275 /* SWChatCellManager.m */,
+				046ABE802568A69A00359625 /* SWHXTool.h */,
+				046ABE812568A69A00359625 /* SWHXTool.m */,
+				046ABE8F2568BD6500359625 /* SWFriendSortManager.h */,
+				046ABE902568BD6500359625 /* SWFriendSortManager.m */,
+				046ABEAB256B872D00359625 /* SWPlaceTopTool.h */,
+				046ABEAC256B872D00359625 /* SWPlaceTopTool.m */,
+				6452DC67259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.h */,
+				6452DC68259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		048867DC255E75EB0003F275 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0489E08F2566050B0084EF76 /* SearchBar */,
+				0488687925639EEC0003F275 /* ChatCell */,
+				0488683E25621B190003F275 /* ExpressVies */,
+				048867E0255E76EE0003F275 /* SWTouchBarView.h */,
+				048867E1255E76EE0003F275 /* SWTouchBarView.m */,
+				04886807255E79D60003F275 /* SWTouchTextView.h */,
+				04886808255E79D60003F275 /* SWTouchTextView.m */,
+				0488680A255E7B180003F275 /* SWFuncView.h */,
+				0488680B255E7B180003F275 /* SWFuncView.m */,
+				0488685E256264F60003F275 /* SWChatButton.h */,
+				0488685F256264F60003F275 /* SWChatButton.m */,
+				04886A032564F1980003F275 /* SWReadTextView.h */,
+				04886A042564F1980003F275 /* SWReadTextView.m */,
+				0489E08C25651F2E0084EF76 /* SWLocationTableViewCell.h */,
+				0489E08D25651F2E0084EF76 /* SWLocationTableViewCell.m */,
+				046ABE772567B6B800359625 /* SWLabel.h */,
+				046ABE782567B6B800359625 /* SWLabel.m */,
+				046ABE8C2568B47800359625 /* SWNmberButton.h */,
+				046ABE8D2568B47800359625 /* SWNmberButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0488680D255E84240003F275 /* mokrecord */ = {
+			isa = PBXGroup;
+			children = (
+				04886832255E84400003F275 /* SWAVAudioPlayer.h */,
+				04886839256212800003F275 /* SWAVAudioPlayer.m */,
+				0488680E255E84240003F275 /* MOKORecordToastContentView.m */,
+				0488680F255E84240003F275 /* MOKORecordHeaderDefine.h */,
+				04886810255E84240003F275 /* MOKORecordButton.h */,
+				04886811255E84240003F275 /* MOKORecordPowerAnimationView.h */,
+				04886812255E84240003F275 /* ic_record_ripple@3x.png */,
+				04886813255E84240003F275 /* MOKORecordView.m */,
+				04886814255E84240003F275 /* MOKORecordShowManager.m */,
+				04886815255E84240003F275 /* ic_record_ripple@2x.png */,
+				04886816255E84240003F275 /* MOKORecorderTool.m */,
+				04886817255E84240003F275 /* ic_record_too_short@2x.png */,
+				04886818255E84240003F275 /* MOKORecordToastContentView.h */,
+				04886819255E84240003F275 /* ic_record_too_short@3x.png */,
+				0488681A255E84240003F275 /* MOKORecordPowerAnimationView.m */,
+				0488681B255E84240003F275 /* MOKORecordButton.m */,
+				0488681C255E84240003F275 /* ic_release_to_cancel@3x.png */,
+				0488681D255E84240003F275 /* ic_record@2x.png */,
+				0488681E255E84240003F275 /* MOKORecordShowManager.h */,
+				0488681F255E84240003F275 /* MOKORecordView.h */,
+				04886820255E84240003F275 /* MOKORecorderTool.h */,
+				04886821255E84240003F275 /* ic_record@3x.png */,
+				04886822255E84240003F275 /* ic_release_to_cancel@2x.png */,
+			);
+			path = mokrecord;
+			sourceTree = "<group>";
+		};
+		0488683E25621B190003F275 /* ExpressVies */ = {
+			isa = PBXGroup;
+			children = (
+				0488683B256218E90003F275 /* SWExpressionView.h */,
+				0488683C256218E90003F275 /* SWExpressionView.m */,
+				0488683F25621B390003F275 /* SWExpressionScrollView.h */,
+				0488684025621B390003F275 /* SWExpressionScrollView.m */,
+				0488684225621B4A0003F275 /* SWExpressionCustomView.h */,
+				0488684325621B4A0003F275 /* SWExpressionCustomView.m */,
+				0488684525621C480003F275 /* SWExpressionCollectionCell.h */,
+				0488684625621C480003F275 /* SWExpressionCollectionCell.m */,
+				0488684B256222B20003F275 /* SWExpressionBtn.h */,
+				0488684C256222B20003F275 /* SWExpressionBtn.m */,
+			);
+			path = ExpressVies;
+			sourceTree = "<group>";
+		};
+		0488684E25624E3C0003F275 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0488684F25624E580003F275 /* SWFriendInfoModel.h */,
+				0488685025624E580003F275 /* SWFriendInfoModel.m */,
+				04886855256253610003F275 /* SWMessageModel.h */,
+				04886856256253610003F275 /* SWMessageModel.m */,
+				04886858256256DE0003F275 /* SWChatTouchModel.h */,
+				04886859256256DE0003F275 /* SWChatTouchModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0488686725637EB90003F275 /* menuController */ = {
+			isa = PBXGroup;
+			children = (
+				0488686825637EB90003F275 /* Internal */,
+				0488687125637EB90003F275 /* GMenuController.h */,
+				0488687225637EB90003F275 /* GMenuControllerHeader.h */,
+				0488687325637EB90003F275 /* GMenuController.m */,
+			);
+			path = menuController;
+			sourceTree = "<group>";
+		};
+		0488686825637EB90003F275 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				0488686925637EB90003F275 /* GMenuViewContainer.h */,
+				0488686A25637EB90003F275 /* GMenuEffectsWindow.h */,
+				0488686B25637EB90003F275 /* GAdjustButton.m */,
+				0488686C25637EB90003F275 /* GMenuDefaultView.m */,
+				0488686D25637EB90003F275 /* GMenuEffectsWindow.m */,
+				0488686E25637EB90003F275 /* GMenuViewContainer.m */,
+				0488686F25637EB90003F275 /* GAdjustButton.h */,
+				0488687025637EB90003F275 /* GMenuDefaultView.h */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		0488687925639EEC0003F275 /* ChatCell */ = {
+			isa = PBXGroup;
+			children = (
+				0488685B256264940003F275 /* SWTouchBaseCell.h */,
+				0488685C256264940003F275 /* SWTouchBaseCell.m */,
+				04886864256268B80003F275 /* SWChatTextCell.h */,
+				04886865256268B80003F275 /* SWChatTextCell.m */,
+				0488687A25639EFF0003F275 /* SWChatImageCell.h */,
+				0488687B25639EFF0003F275 /* SWChatImageCell.m */,
+				04F3466825662CB70048FE87 /* SWChatLocationCell.h */,
+				04F3466925662CB70048FE87 /* SWChatLocationCell.m */,
+				046ABE7425675BBF00359625 /* SWChatRedBagCell.h */,
+				046ABE7525675BBF00359625 /* SWChatRedBagCell.m */,
+				046ABE892568B29A00359625 /* SWMessageCell.h */,
+				046ABE8A2568B29A00359625 /* SWMessageCell.m */,
+				046ABE952568C41600359625 /* SWFriendListCell.h */,
+				046ABE962568C41600359625 /* SWFriendListCell.m */,
+				046ABEA4256B609100359625 /* SWChatSystemCell.h */,
+				046ABEA5256B609100359625 /* SWChatSystemCell.m */,
+			);
+			path = ChatCell;
+			sourceTree = "<group>";
+		};
+		048869D42563D1490003F275 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				048869D52563D1490003F275 /* ATFMDBTool.h */,
+				048869D62563D1490003F275 /* FMDatabase.h */,
+				048869D72563D1490003F275 /* FMDatabaseQueue.m */,
+				048869D82563D1490003F275 /* FMResultSet.h */,
+				048869D92563D1490003F275 /* FMDatabasePool.h */,
+				048869DA2563D1490003F275 /* FMDatabaseAdditions.m */,
+				048869DB2563D1490003F275 /* FMDatabase.m */,
+				048869DC2563D1490003F275 /* ATFMDBTool.m */,
+				048869DD2563D1490003F275 /* FMDatabaseQueue.h */,
+				048869DE2563D1490003F275 /* FMDB.h */,
+				048869DF2563D1490003F275 /* FMDatabaseAdditions.h */,
+				048869E02563D1490003F275 /* FMDatabasePool.m */,
+				048869E12563D1490003F275 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		048869F92564BA910003F275 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		0489E08F2566050B0084EF76 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				0489E086256518170084EF76 /* SWSearchBar.h */,
+				0489E087256518170084EF76 /* SWSearchBar.m */,
+				0489E0902566053E0084EF76 /* SWSearchViewController.h */,
+				0489E0912566053E0084EF76 /* SWSearchViewController.m */,
+				0489E0932566073D0084EF76 /* SWSearchResultDelegate.h */,
+				0489E09625660A6A0084EF76 /* SWSearchControllerDelegate.h */,
+				0489E09925660BE00084EF76 /* SWLocationSearchResultController.h */,
+				0489E09A25660BE00084EF76 /* SWLocationSearchResultController.m */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		46AC810A5FE497D9F50A8C40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15072FE021C9E8D73F243182 /* Pods_SWChatUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D947BF4B25E4DD78902CEADD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0FA546FF0967186321EB151D /* Pods-SWChatUI.debug.xcconfig */,
+				6996BDAA302CC8CCB772843F /* Pods-SWChatUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		048867BC255E754A0003F275 /* SWChatUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 048867D6255E754B0003F275 /* Build configuration list for PBXNativeTarget "SWChatUI" */;
+			buildPhases = (
+				D6F7967B56CADA4F62A33256 /* [CP] Check Pods Manifest.lock */,
+				048867B9255E754A0003F275 /* Sources */,
+				048867BA255E754A0003F275 /* Frameworks */,
+				048867BB255E754A0003F275 /* Resources */,
+				21F1B84E5D41C5DBCA250789 /* [CP] Embed Pods Frameworks */,
+				BE4F3517494E352AC285BB11 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SWChatUI;
+			productName = SWChatUI;
+			productReference = 048867BD255E754A0003F275 /* SWChatUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		048867B5255E754A0003F275 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = sw;
+				TargetAttributes = {
+					048867BC255E754A0003F275 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = 048867B8255E754A0003F275 /* Build configuration list for PBXProject "SWChatUI" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 048867B4255E754A0003F275;
+			productRefGroup = 048867BE255E754A0003F275 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				048867BC255E754A0003F275 /* SWChatUI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		048867BB255E754A0003F275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04886827255E84240003F275 /* ic_record_ripple@2x.png in Resources */,
+				04886829255E84240003F275 /* ic_record_too_short@2x.png in Resources */,
+				048868382562106A0003F275 /* expression.plist in Resources */,
+				046ABE7F2568A48500359625 /* SWLoginViewController.xib in Resources */,
+				0488682E255E84240003F275 /* ic_record@2x.png in Resources */,
+				048867D0255E754B0003F275 /* LaunchScreen.storyboard in Resources */,
+				04886830255E84240003F275 /* ic_release_to_cancel@2x.png in Resources */,
+				0488682F255E84240003F275 /* ic_record@3x.png in Resources */,
+				048867CD255E754B0003F275 /* Assets.xcassets in Resources */,
+				0488682D255E84240003F275 /* ic_release_to_cancel@3x.png in Resources */,
+				04886824255E84240003F275 /* ic_record_ripple@3x.png in Resources */,
+				0488682A255E84240003F275 /* ic_record_too_short@3x.png in Resources */,
+				048867CB255E754A0003F275 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21F1B84E5D41C5DBCA250789 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWChatUI/Pods-SWChatUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWChatUI/Pods-SWChatUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SWChatUI/Pods-SWChatUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE4F3517494E352AC285BB11 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWChatUI/Pods-SWChatUI-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWChatUI/Pods-SWChatUI-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SWChatUI/Pods-SWChatUI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6F7967B56CADA4F62A33256 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWChatUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		048867B9255E754A0003F275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				046ABE7E2568A48500359625 /* SWLoginViewController.m in Sources */,
+				0488684A25621EA90003F275 /* SWChatManage.m in Sources */,
+				0488680C255E7B180003F275 /* SWFuncView.m in Sources */,
+				04886823255E84240003F275 /* MOKORecordToastContentView.m in Sources */,
+				048869E42563D1490003F275 /* FMDatabase.m in Sources */,
+				048869E52563D1490003F275 /* ATFMDBTool.m in Sources */,
+				048867C8255E754A0003F275 /* ViewController.m in Sources */,
+				048869E72563D1490003F275 /* FMResultSet.m in Sources */,
+				0489E08E25651F2E0084EF76 /* SWLocationTableViewCell.m in Sources */,
+				0488683D256218E90003F275 /* SWExpressionView.m in Sources */,
+				04886863256266780003F275 /* SWChatCellManager.m in Sources */,
+				048867C2255E754A0003F275 /* AppDelegate.m in Sources */,
+				048867E2255E76EE0003F275 /* SWTouchBarView.m in Sources */,
+				046ABE7625675BBF00359625 /* SWChatRedBagCell.m in Sources */,
+				048867DF255E75F70003F275 /* SWChatViewController.m in Sources */,
+				04F3466A25662CB70048FE87 /* SWChatLocationCell.m in Sources */,
+				0488685125624E580003F275 /* SWFriendInfoModel.m in Sources */,
+				0489E088256518170084EF76 /* SWSearchBar.m in Sources */,
+				0488684125621B390003F275 /* SWExpressionScrollView.m in Sources */,
+				0488687C25639EFF0003F275 /* SWChatImageCell.m in Sources */,
+				0488683A256212800003F275 /* SWAVAudioPlayer.m in Sources */,
+				046ABEA6256B609100359625 /* SWChatSystemCell.m in Sources */,
+				0488687825637EB90003F275 /* GMenuController.m in Sources */,
+				0488684725621C480003F275 /* SWExpressionCollectionCell.m in Sources */,
+				046ABE8B2568B29A00359625 /* SWMessageCell.m in Sources */,
+				046ABEAA256B60BC00359625 /* FMLinkLabel.m in Sources */,
+				0488687625637EB90003F275 /* GMenuEffectsWindow.m in Sources */,
+				046ABE852568AB4600359625 /* SWChatTabbarViewController.m in Sources */,
+				046ABE792567B6B800359625 /* SWLabel.m in Sources */,
+				0489E0822564FCAC0084EF76 /* SWChatLocationViewController.m in Sources */,
+				0488685D256264940003F275 /* SWTouchBaseCell.m in Sources */,
+				0488684425621B4A0003F275 /* SWExpressionCustomView.m in Sources */,
+				0488682B255E84240003F275 /* MOKORecordPowerAnimationView.m in Sources */,
+				048869E62563D1490003F275 /* FMDatabasePool.m in Sources */,
+				04886A052564F1980003F275 /* SWReadTextView.m in Sources */,
+				048869E32563D1490003F275 /* FMDatabaseAdditions.m in Sources */,
+				04886826255E84240003F275 /* MOKORecordShowManager.m in Sources */,
+				046ABEA32568DD9800359625 /* SWChatSingViewController.m in Sources */,
+				04886857256253610003F275 /* SWMessageModel.m in Sources */,
+				0488684D256222B20003F275 /* SWExpressionBtn.m in Sources */,
+				046ABE912568BD6500359625 /* SWFriendSortManager.m in Sources */,
+				04886A022564EFD40003F275 /* SWChatWebViewController.m in Sources */,
+				0488682C255E84240003F275 /* MOKORecordButton.m in Sources */,
+				0488687425637EB90003F275 /* GAdjustButton.m in Sources */,
+				046ABE942568C0EA00359625 /* SWChatAdressBookController.m in Sources */,
+				048867D3255E754B0003F275 /* main.m in Sources */,
+				0488687725637EB90003F275 /* GMenuViewContainer.m in Sources */,
+				04886809255E79D60003F275 /* SWTouchTextView.m in Sources */,
+				046ABE972568C41600359625 /* SWFriendListCell.m in Sources */,
+				0489E0922566053E0084EF76 /* SWSearchViewController.m in Sources */,
+				0489E09B25660BE00084EF76 /* SWLocationSearchResultController.m in Sources */,
+				046ABE882568ADC300359625 /* SWChatMessageViewController.m in Sources */,
+				0488687525637EB90003F275 /* GMenuDefaultView.m in Sources */,
+				046ABE822568A69A00359625 /* SWHXTool.m in Sources */,
+				046ABE8E2568B47800359625 /* SWNmberButton.m in Sources */,
+				04886825255E84240003F275 /* MOKORecordView.m in Sources */,
+				046ABEA02568D55900359625 /* SWChatSettingViewController.m in Sources */,
+				0488685A256256DE0003F275 /* SWChatTouchModel.m in Sources */,
+				04886860256264F60003F275 /* SWChatButton.m in Sources */,
+				048869E22563D1490003F275 /* FMDatabaseQueue.m in Sources */,
+				6452DC69259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m in Sources */,
+				04886866256268B80003F275 /* SWChatTextCell.m in Sources */,
+				046ABEAD256B872D00359625 /* SWPlaceTopTool.m in Sources */,
+				04886828255E84240003F275 /* MOKORecorderTool.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		048867C9255E754A0003F275 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				048867CA255E754A0003F275 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		048867CE255E754B0003F275 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				048867CF255E754B0003F275 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		048867D4255E754B0003F275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		048867D5255E754B0003F275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		048867D7255E754B0003F275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FA546FF0967186321EB151D /* Pods-SWChatUI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CJRS442Z5B;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SWChatUI/Chat.pch;
+				INFOPLIST_FILE = SWChatUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sw.SWChatUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		048867D8255E754B0003F275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6996BDAA302CC8CCB772843F /* Pods-SWChatUI.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CJRS442Z5B;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SWChatUI/Chat.pch;
+				INFOPLIST_FILE = SWChatUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sw.SWChatUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		048867B8255E754A0003F275 /* Build configuration list for PBXProject "SWChatUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				048867D4255E754B0003F275 /* Debug */,
+				048867D5255E754B0003F275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		048867D6255E754B0003F275 /* Build configuration list for PBXNativeTarget "SWChatUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				048867D7255E754B0003F275 /* Debug */,
+				048867D8255E754B0003F275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 048867B5255E754A0003F275 /* Project object */;
+}

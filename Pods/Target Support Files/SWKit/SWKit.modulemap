@@ -1,0 +1,6 @@
+framework module SWKit {
+  umbrella header "SWKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

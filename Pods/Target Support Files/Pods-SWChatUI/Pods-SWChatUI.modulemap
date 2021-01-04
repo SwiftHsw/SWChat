@@ -1,0 +1,6 @@
+framework module Pods_SWChatUI {
+  umbrella header "Pods-SWChatUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

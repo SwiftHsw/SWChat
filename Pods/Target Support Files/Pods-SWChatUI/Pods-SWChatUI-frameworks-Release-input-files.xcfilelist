@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-SWChatUI/Pods-SWChatUI-frameworks.sh
+${PODS_ROOT}/HyphenateLite/HyphenateLite.framework
+${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework
+${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/SWKit/SWKit.framework
+${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework
