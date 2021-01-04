@@ -282,7 +282,8 @@ CREATE_SHARED_MANAGER(SWHXTool)
 {
     [[EMClient sharedClient].contactManager getContactsFromServerWithCompletion:^(NSArray *aList, EMError *aError) {
         NSLog(@"获取好友列表成功%@ %@",aList,aError.debugDescription);
-        weakSelf(self);
+        __weak typeof(self) weakSelf = self;
+        
         NSMutableArray *friendList = [[NSMutableArray alloc] initWithArray:aList];
         if (aError || aList.count==0) {
             //如果从服务端请求好友发生错误，那么从环信本地获取好友，如果没有则好友为空
@@ -445,7 +446,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
     controller.messageModel = model;
     controller.drafrStr = model.draft;
     controller.conversation = conver;
-    [[SWKit getCurrentVC].navigationController pushViewController:controller animated:YES];
+    [[UIView getCurrentVC].navigationController pushViewController:controller animated:YES];
 }
 
 - (void)sendMessageToUser:(NSString *)toUser messageType:(NSString *)messtype chatType:(NSInteger)chatType userInfo:(NSDictionary *)info content:(NSDictionary *)content messageID:(NSString *)messageID isInsert:(BOOL)isInsert isConversation:(BOOL)isConversation isJoin:(BOOL)isJoin{
@@ -455,7 +456,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
            [SWPlaceTopTool addFromTopARR:toUser];
        }
     
-     UIViewController *nowController = [SWKit getCurrentVC];
+     UIViewController *nowController = [UIView getCurrentVC];
     if (!isJoin) {
         if (chatType == 1) { //这边判断是否群聊 或者单聊 再判断是否为本地好友
               isJoin = [[ATFMDBTool shareDatabase]isFriendWithName:toUser];
@@ -481,7 +482,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
         return;
     }
     
-    NSString *pidStr = messageID.length==0?[SWKit getRandomString]:messageID;
+    NSString *pidStr = messageID.length==0?[NSString getRandomString]:messageID;
     //群聊另外判断
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                 content,@"data",
@@ -538,7 +539,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
                        [[SWChatManage messageControll] loadData];
                   }
                   
-//                  UIViewController *controller = [SWKit getCurrentVC];
+//                  UIViewController *controller = [UIView getCurrentVC];
 //                  if ([controller isKindOfClass:[SWChatMessageViewController class]]) {
 //                      [[SWChatManage messageControll] loadData];
 //                  }
@@ -593,7 +594,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
             NSLog(@"再次发送消息成功");
             model.messageId = message.messageId;
             model.EMMessage = message;
-            UIViewController *nowController = [SWKit getCurrentVC];
+            UIViewController *nowController = [UIView getCurrentVC];
             if ([nowController isKindOfClass:[SWChatMessageViewController class]]) {
                 SWChatMessageViewController *messageController = (SWChatMessageViewController *)nowController;
                 [messageController loadData];
@@ -644,7 +645,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
      4. 群系统消息，禁言或者解除禁言
      5. 单聊系统消息，领取红包详情
      */
-    NSString *pid = [SWKit getRandomString];
+    NSString *pid = [NSString getRandomString];
     NSMutableDictionary *contentDict = [[NSMutableDictionary alloc] init];
     [contentDict setObject:systemType forKey:@"systemType"];
     [contentDict setObject:content forKey:@"content"];

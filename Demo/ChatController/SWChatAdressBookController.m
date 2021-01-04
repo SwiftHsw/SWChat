@@ -71,7 +71,7 @@
     [super viewDidLoad];
     self.title = @"通讯录";
   
-    self.view.backgroundColor = [SWKit colorWithHexString:@"#f5f5f5"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
     self.navigationItem.rightBarButtonItem =[ UIBarButtonItem itemWithTitle:@"添加" ImageName:@"" highImageName:@"" target:self action:@selector(addFreadsAction)];
  
     
@@ -157,7 +157,7 @@
         label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 25)];
         [label setFont:[UIFont systemFontOfSize:14.5f]];
         [label setTextColor:[UIColor grayColor]];
-        [label setBackgroundColor:[SWKit colorWithHexString:@"#f5f5f5"]];
+        [label setBackgroundColor:[UIColor colorWithHexString:@"#f5f5f5"]];
     }
     if ([[self.indexArray objectAtIndex:section] isEqualToString:@"#"]) {
         [label setText:@"    特殊字符"];

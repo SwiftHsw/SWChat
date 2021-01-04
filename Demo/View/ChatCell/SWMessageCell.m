@@ -56,7 +56,7 @@
     _failureImage = failureImage;
     
     UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-50, 13, 40, 25)];
-    time.textColor = [SWKit colorWithHexString:@"#b2b2b2"];
+    time.textColor = [UIColor colorWithHexString:@"#b2b2b2"];
     time.font = [UIFont systemFontOfSize:12];
     time.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:time];
@@ -66,13 +66,13 @@
     UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(75, 13, SCREEN_WIDTH-150, 25)];
     name.font = [UIFont systemFontOfSize:17];
     [self.contentView addSubview:name];
-    [name setTextColor:[SWKit colorWithHexString:@"#333333"]];
+    [name setTextColor:[UIColor colorWithHexString:@"#333333"]];
     _nameLabel = name;
     
     
     UILabel *content = [UILabel new];
     content.font = [UIFont systemFontOfSize:14];
-    content.textColor = [SWKit colorWithHexString:@"#9e9e9e"];
+    content.textColor = [UIColor colorWithHexString:@"#9e9e9e"];
     content.numberOfLines = 1;
     content.frame = CGRectMake(75, 38, SCREEN_WIDTH-130, 24);
     [self.contentView addSubview:content];
@@ -88,7 +88,7 @@
     _disturbImage = disturb;
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15+50+10, 79.8, SCREEN_WIDTH, 0.3)];
-    line.backgroundColor = [SWKit colorWithHexString:@"#ebebeb"];
+    line.backgroundColor = [UIColor colorWithHexString:@"#ebebeb"];
     [self addSubview:line];
     _TopLine = line;
     
@@ -166,7 +166,7 @@
         _longTouchBtn.hidden = YES;
     }
  
-        _contentLabel.textColor = [SWKit colorWithHexString:@"#9b9b9b"];
+        _contentLabel.textColor = [UIColor colorWithHexString:@"#9b9b9b"];
         if (model.lastContent && model.lastContent.length>0) {
             _contentLabel.text = model.lastContent;
             NSDictionary *info = [SWChatManage JsonToDict:model.lastContent];

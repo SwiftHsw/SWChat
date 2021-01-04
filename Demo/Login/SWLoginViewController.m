@@ -40,7 +40,7 @@
       [[SWHXTool sharedManager] setOperationBlock:^(NSDictionary * _Nonnull info, EMError * _Nonnull error) {
           [SWChatManage setUserName:self->_login_acount.text];
           SWChatTabbarViewController *tabbar = [SWChatTabbarViewController new];
-          [SWKit currentWindow].rootViewController = tabbar;
+          [UIView currentWindow].rootViewController = tabbar;
           
       }];
 }

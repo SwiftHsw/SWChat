@@ -115,7 +115,7 @@ static MOKORecorderTool *instance = nil;
     if (![[NSFileManager defaultManager] fileExistsAtPath:TouchVoice]) {
         [[NSFileManager defaultManager] createDirectoryAtPath:TouchVoice withIntermediateDirectories:YES attributes:nil error:NULL];
     }
-    NSString *filePath = [NSString stringWithFormat:@"%@%@.m4a",TouchVoice,[SWKit  getRandomString]];
+    NSString *filePath = [NSString stringWithFormat:@"%@%@.m4a",TouchVoice,[NSString  getRandomString]];
     NSLog(@"filePath =%@",filePath);
     return filePath;
     

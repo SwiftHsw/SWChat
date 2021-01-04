@@ -276,13 +276,13 @@
             NSNumber *typeNum = [rangeDict allKeys][0];
             NSValue *rangeValue = [rangeDict objectForKey:typeNum];
             NSRange range = [rangeValue rangeValue];
-            [mAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)[SWKit colorWithHexString:@"#3b779a"].CGColor range:range];
+            [mAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)[UIColor colorWithHexString:@"#3b779a"].CGColor range:range];
 
             // 1. 创建一个"高亮"属性，当用户点击了高亮区域的文本时，"高亮"属性会替换掉原本的属性
             YYTextBorder *highlightBorder = [YYTextBorder borderWithFillColor:[UIColor colorWithWhite:0.2 alpha:0.2f] cornerRadius:3];
 
             YYTextHighlight *highlight = [YYTextHighlight new];
-            [highlight setColor:[SWKit colorWithHexString:@"#3b779a"]];
+            [highlight setColor:[UIColor colorWithHexString:@"#3b779a"]];
             [highlight setBackgroundBorder:highlightBorder];
             [highlight setTapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect) {
                 // 点击回调
@@ -533,7 +533,7 @@
             //网址
             SWChatWebViewController *vc = [SWChatWebViewController new];
             vc.url_string = value;
-            [kCurrentVC.navigationController pushViewController:vc animated:YES];
+            [[UIView getCurrentVC].navigationController pushViewController:vc animated:YES];
             
         }
 
@@ -541,7 +541,7 @@
         case 2:
         {
             //电话
-            [SWKit callPhoneNumber:value];
+            [NSObject callPhoneNumber:value];
  
         }
             break;

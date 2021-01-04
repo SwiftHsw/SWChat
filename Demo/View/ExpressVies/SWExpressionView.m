@@ -110,7 +110,7 @@ UICollectionViewDataSource>{
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [SWKit colorWithHexString:@"#ebebeb"];
+        self.backgroundColor = [UIColor colorWithHexString:@"#ebebeb"];
         [self loadPlist];
         [self creatUI];
         [self addSubview:self.collectView];
@@ -139,9 +139,9 @@ UICollectionViewDataSource>{
     [self.helpScrView setContentSize:CGSizeMake(SCREEN_WIDTH * total,HELPSCROLLVIEWHEIGHT)];
     _pageCtrl  = [[UIPageControl alloc] initWithFrame:CGRectMake(0,160,SCREEN_WIDTH,30)];
     _pageCtrl.numberOfPages  =  [[_totalAllDict valueForKey:[NSString stringWithFormat:@"%@_page",nowPlist]] integerValue];
-    _pageCtrl.currentPageIndicatorTintColor =[SWKit colorWithHexString:@"#8b8b8b"];
+    _pageCtrl.currentPageIndicatorTintColor =[UIColor colorWithHexString:@"#8b8b8b"];
     
-    _pageCtrl.pageIndicatorTintColor = [SWKit colorWithHexString:@"#d6d6d6"];
+    _pageCtrl.pageIndicatorTintColor = [UIColor colorWithHexString:@"#d6d6d6"];
     _pageCtrl.currentPage  =  0 ;
     _pageCtrl.userInteractionEnabled=false;
     NSInteger index = 0;
@@ -321,7 +321,7 @@ UICollectionViewDataSource>{
         //处理滚动表情包逻辑
         NSIndexPath *selectPath = [NSIndexPath indexPathForRow:view.section inSection:0];
         SWExpressionCollectionCell *cell = (SWExpressionCollectionCell *)[_collectView cellForItemAtIndexPath:selectPath];
-        cell.backgroundColor = [SWKit colorWithHexString:@"#ebebeb"];
+        cell.backgroundColor = [UIColor colorWithHexString:@"#ebebeb"];
         _oldCell = cell;
         _nowSection = view.section;
         [_collectView scrollToItemAtIndexPath:selectPath atScrollPosition:0 animated:YES];
@@ -342,12 +342,12 @@ UICollectionViewDataSource>{
     cell.backgroundColor = [UIColor whiteColor];
     [cell setCollectViewData:_collectDataArr[indexPath.row]];
     if (!_oldCell && indexPath.row==0) {
-        cell.backgroundColor = [SWKit colorWithHexString:@"#ebebeb"];
+        cell.backgroundColor = [UIColor colorWithHexString:@"#ebebeb"];
         
         _oldCell = cell;
     }else if ([_oldCell isEqual:cell])
     {
-        cell.backgroundColor = [SWKit colorWithHexString:@"#ebebeb"];
+        cell.backgroundColor = [UIColor colorWithHexString:@"#ebebeb"];
     }else
         cell.backgroundColor = [UIColor whiteColor];
     return cell;
@@ -366,7 +366,7 @@ UICollectionViewDataSource>{
         _oldCell.backgroundColor = [UIColor whiteColor];
     }
     
-    cell.backgroundColor = [SWKit colorWithHexString:@"#ebebeb"];
+    cell.backgroundColor = [UIColor colorWithHexString:@"#ebebeb"];
     _oldCell = cell;
     NSInteger index = 0;
     for (int i = 0; i<indexPath.row; i++) {

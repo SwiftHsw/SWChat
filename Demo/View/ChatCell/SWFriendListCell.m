@@ -51,12 +51,12 @@
     
     
     UIView *top = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.3)];
-    top.backgroundColor = [SWKit colorWithHexString:@"#ebebeb"];;
+    top.backgroundColor = [UIColor colorWithHexString:@"#ebebeb"];;
 //    [self.contentView addSubview:top];
     _TopLine = top;
     
     UIView *under = [[UIView alloc] initWithFrame:CGRectMake(0, 70-0.3-0.1, SCREEN_WIDTH, 0.3)];
-    under.backgroundColor = [SWKit colorWithHexString:@"#ebebeb"];;
+    under.backgroundColor = [UIColor colorWithHexString:@"#ebebeb"];;
     [self.contentView addSubview:under];
     _UnderLine = under;
     
@@ -88,7 +88,7 @@
     if (model.isSystem) {
         _UnderLine.hidden = YES;
         _nameLabel.textAlignment = NSTextAlignmentCenter;
-        _nameLabel.textColor = [SWKit colorWithHexString:@"#bababa"];
+        _nameLabel.textColor = [UIColor colorWithHexString:@"#bababa"];
         _nameLabel.font =[UIFont systemFontOfSize:16];
         _nameLabel.frame = CGRectMake(25, 0, SCREEN_WIDTH-50, 50);
         _headImage.hidden = YES;
@@ -96,7 +96,7 @@
     }else {
         _headImage.hidden = NO;
         _nameLabel.textAlignment = NSTextAlignmentLeft;
-        _nameLabel.textColor = [SWKit colorWithHexString:@"#2e2e2e"];
+        _nameLabel.textColor = [UIColor colorWithHexString:@"#2e2e2e"];
         _nameLabel.font =[UIFont systemFontOfSize:17];
         _nameLabel.frame = CGRectMake(_headImage.width+25, 10, SCREEN_WIDTH-_headImage.width-25, 50);
         

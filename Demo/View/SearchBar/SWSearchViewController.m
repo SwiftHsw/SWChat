@@ -138,7 +138,7 @@ static SWSearchViewController *_instance;
     //系统弃用
     originStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
 
-    fromSearchBarFrame = [fromSearchBar convertRect:fromSearchBar.bounds toView:[SWKit currentWindow]];
+    fromSearchBarFrame = [fromSearchBar convertRect:fromSearchBar.bounds toView:[UIView currentWindow]];
     self.toNavigationBarView.frame = CGRectMake(0, 0, SCREEN_WIDTH, CGRectGetMaxY(fromSearchBarFrame));
     self.toNavigationBarView.backgroundColor = fromSearchBar.barTintColor;
      

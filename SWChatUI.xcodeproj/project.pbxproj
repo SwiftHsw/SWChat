@@ -348,7 +348,6 @@
 			isa = PBXGroup;
 			children = (
 				046ABEA7256B60BC00359625 /* FMLabel */,
-				048869F92564BA910003F275 /* Categories */,
 				048869D42563D1490003F275 /* FMDB */,
 				0488686725637EB90003F275 /* menuController */,
 				0488680D255E84240003F275 /* mokrecord */,
@@ -521,13 +520,6 @@
 				048869E12563D1490003F275 /* FMResultSet.m */,
 			);
 			path = FMDB;
-			sourceTree = "<group>";
-		};
-		048869F92564BA910003F275 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Categories;
 			sourceTree = "<group>";
 		};
 		0489E08F2566050B0084EF76 /* SearchBar */ = {

@@ -44,10 +44,10 @@
 - (UIView *)initTouchBarView:(touchBarBlock)blcok{
     self.touchBarBlcok = blcok;
       _picCache = [SWChatManage getTouchCache];
-     self.backgroundColor = [SWKit colorWithHexString:@"#f5f5f9"];
+     self.backgroundColor = [UIColor colorWithHexString:@"#f5f5f9"];
     
     UIView *lineview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 0.5)];
-    lineview.backgroundColor=[SWKit colorWithHexString:@"#d9d9d9"];
+    lineview.backgroundColor=[UIColor colorWithHexString:@"#d9d9d9"];
     [self addSubview:lineview];
     
    //最左边
@@ -63,8 +63,8 @@
     //中间按住说话
     _startSoundBtn = [MOKORecordButton buttonWithType:UIButtonTypeCustom];
       [_startSoundBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
-      [_startSoundBtn setTitleColor:[SWKit colorWithHexString:@"#666666"] forState:UIControlStateNormal];
-      [_startSoundBtn setTitleColor:[SWKit colorWithHexString:@"#666666"] forState:UIControlStateSelected];
+      [_startSoundBtn setTitleColor:[UIColor colorWithHexString:@"#666666"] forState:UIControlStateNormal];
+      [_startSoundBtn setTitleColor:[UIColor colorWithHexString:@"#666666"] forState:UIControlStateSelected];
       [_startSoundBtn.titleLabel setFont:[UIFont boldSystemFontOfSize:15]];
       _startSoundBtn.hidden = YES;
       _startSoundBtn.selected = NO;
@@ -97,7 +97,7 @@
     [self setupTextView];
     
      _lastLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 49.5, SCREEN_WIDTH, 0.4)];
-       _lastLineView.backgroundColor = [SWKit colorWithHexString:@"#d9d9d9"];
+       _lastLineView.backgroundColor = [UIColor colorWithHexString:@"#d9d9d9"];
        _lastLineView.hidden = YES;
        [self addSubview:_lastLineView];
  
@@ -245,7 +245,7 @@
             [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentAutomatic];
         }
         pictureVC.modalPresentationStyle =  UIModalPresentationOverFullScreen;
-        [[SWKit getCurrentVC] presentViewController:pictureVC animated:YES completion:^{}];
+        [[UIView getCurrentVC] presentViewController:pictureVC animated:YES completion:^{}];
  
     }else if ([buttonName isEqualToString:@"位置"]){
         
@@ -256,7 +256,7 @@
             [self sendLocationMessage:latitude longitude:longitude address:address title:title mageData:image];
             
         }];
-        [kCurrentVC presentViewController:nav animated:YES completion:nil];
+        [[UIView getCurrentVC] presentViewController:nav animated:YES completion:nil];
         
     }else if ([buttonName isEqualToString:@"红包"]){
        //具体逻辑不做处理，这边实现发送自定义红包cell 并且点击后则被领取
@@ -267,7 +267,7 @@
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    [kCurrentVC dismissViewControllerAnimated:YES completion:^{
+    [[UIView getCurrentVC] dismissViewControllerAnimated:YES completion:^{
         if (@available(iOS 11.0, *)){
             [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
         }
@@ -510,13 +510,14 @@
 }
 #pragma mark - 输入框代理
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    weakSelf(self);
+    __weak __typeof(&*self)    weakSelf  = self;
+    
     if ([text isEqualToString:@"\n"]) {
         //未输入禁止换行
         if ([textView.text isEqual:@""]) return NO;
         if([SWChatManage isEmpty:textView.text]) {
-             weakSelf.touchBarBlcok(@"键盘消失",textView.text,@"",nil);
-            [SWAlertViewController showInController:[SWKit getCurrentVC] title:nil message:@"不能发送空白消息" cancelButton: nil other:@"确定" completionHandler:^(SWAlertButtonStyle buttonStyle) {
+            weakSelf.touchBarBlcok(@"键盘消失",textView.text,@"",nil);
+            [SWAlertViewController showInController:[UIView getCurrentVC] title:nil message:@"不能发送空白消息" cancelButton: nil other:@"确定" completionHandler:^(SWAlertButtonStyle buttonStyle) {
                           textView.text = @"";
                           dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
                           dispatch_after(delayTime, dispatch_get_main_queue(), ^{
@@ -571,7 +572,7 @@
         vc.view.backgroundColor = UIColor.whiteColor;
       weakSelf.touchBarBlcok(@"进入@某人",@"进入@某人",nil,nil);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-             [[SWKit getCurrentVC].navigationController pushViewController:vc animated:YES];
+             [[UIView getCurrentVC].navigationController pushViewController:vc animated:YES];
         });
         
         //模拟 vc 回调
@@ -629,7 +630,7 @@
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    [kCurrentVC dismissViewControllerAnimated:YES completion:^{
+    [[UIView getCurrentVC] dismissViewControllerAnimated:YES completion:^{
         if (@available(iOS 11.0, *)){
             [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
         }
@@ -655,7 +656,7 @@
      }
     //随机字符串作为图片名称
    
-       NSString *messageID = [SWKit getRandomString];
+       NSString *messageID = [NSString getRandomString];
       //模拟发送数据
        [self sendFileMessage:originImage
                          pid:messageID
@@ -742,7 +743,7 @@
 #pragma mark - 模拟发送位置
 - (void)sendLocationMessage:(double)latitude  longitude:(double)longitude  address:(NSString *)address title:(NSString *)title mageData:(NSData *)image{
    SWLog(@"=====SD缓存写入数据====");
-    __block NSString *messageID = [SWKit getRandomString];
+    __block NSString *messageID = [NSString getRandomString];
       UIImage *immm = [UIImage imageWithData:image];
        [self.picCache storeImage:immm forKey:messageID completion:^{
            //构造消息体

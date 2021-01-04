@@ -341,9 +341,9 @@ CLLocationManagerDelegate
             }
             }
             
-            SWWeakSelf(self)
+            __weak typeof(self) weakSelf = self;
           NSData * imageData = [self darwMapImageData];
-         !self.getLoactionBlock?:weakself.getLoactionBlock(model.location.latitude,model.location.longitude,model.address,model.name,imageData);
+         !self.getLoactionBlock?:weakSelf.getLoactionBlock(model.location.latitude,model.location.longitude,model.address,model.name,imageData);
   
         [self backsssss];
         

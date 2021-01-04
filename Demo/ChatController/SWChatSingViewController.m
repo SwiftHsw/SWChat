@@ -22,8 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:@"返回" ImageName:@"" highImageName:@"" target:self action:@selector(back)];
-    
+ 
     self.baseConversation = _conversation;
     self.isReceived = false;
     _friendInfo = [[ATFMDBTool shareDatabase] isFriendWithName:self.baseConversation.conversationId];
@@ -39,7 +38,7 @@
 
 -(void)loadData
 {
-    weakSelf(self);
+    __weak typeof(self) weakSelf = self;
     [self.conversation loadMessagesStartFromId:nil count:20 searchDirection:EMMessageSearchDirectionUp completion:^(NSArray *aMessages, EMError *aError) {
         if (!aError) {
             NSMutableArray *timeArr = [[NSMutableArray alloc] init];
@@ -58,7 +57,10 @@
             double delayInSeconds = 0.01;
                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [self.tableView scrollToRow:self.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+                   
+                   if (weakSelf.dataArray.count > 2) {
+                       [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                   }
                });
         }
     }];

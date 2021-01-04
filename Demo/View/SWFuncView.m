@@ -37,7 +37,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [SWKit colorWithHexString:@"#f4f4f6"];
+        self.backgroundColor = [UIColor colorWithHexString:@"#f4f4f6"];
         
         _isGroup =is;
         [self creatUI];
@@ -71,8 +71,8 @@
     //创建UIPageControl
     _pageCtrl  = [[UIPageControl alloc] initWithFrame:CGRectMake(0,180,SCREEN_WIDTH,30)];
     _pageCtrl.numberOfPages  =  numberOfPage ;
-    _pageCtrl.currentPageIndicatorTintColor = [SWKit colorWithHexString:@"#8b8b8b"];
-    _pageCtrl.pageIndicatorTintColor = [SWKit colorWithHexString:@"#d6d6d6"];
+    _pageCtrl.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"#8b8b8b"];
+    _pageCtrl.pageIndicatorTintColor = [UIColor colorWithHexString:@"#d6d6d6"];
     _pageCtrl.currentPage  =  0 ;
     
     [_pageCtrl addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];

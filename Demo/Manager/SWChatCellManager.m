@@ -33,7 +33,7 @@ CREATE_SHARED_MANAGER(SWChatCellManager)
 withReuseIdentifier:(NSString *)reuseId
                                             tableview:(UITableView *)tableview{
     
-    SWWeakSelf(self)
+    __weak typeof(self) weakSelf = self;
     Class cellClass = [self tableViewCellClassForMessegeModel:messageModel];
     SWTouchBaseCell * _cell;
     //注册Cell
@@ -68,7 +68,7 @@ withReuseIdentifier:(NSString *)reuseId
         [_loadArr addObject:textCell];
         //文本操作
         [textCell setMenuTouchActionBlock:^(SWChatTouchModel * _Nonnull model, NSString * _Nonnull actionName, NSInteger index, SWChatButton * _Nonnull checkBtn) {
-             weakself.menuTouchActionBlock(model, actionName, index, checkBtn);
+            weakSelf.menuTouchActionBlock(model, actionName, index, checkBtn);
         }];
       
         
@@ -81,7 +81,7 @@ withReuseIdentifier:(NSString *)reuseId
         [imageCell setMenuTouchActionBlock:^(SWChatTouchModel * _Nonnull model, NSString * _Nonnull actionName, NSInteger index, SWChatButton * _Nonnull checkBtn) {
            //Cell 的操作
             if ([actionName isEqualToString:@"查看图片"]) {
-                [weakself checkTouchImage:model index:index showView:checkBtn];
+                [weakSelf checkTouchImage:model index:index showView:checkBtn];
             }
         }];
     }
@@ -101,7 +101,7 @@ withReuseIdentifier:(NSString *)reuseId
         redBagCell.index = index;
         [redBagCell setRedBagCell:messageModel touchUserModel:userModel isShowName:shareName];
         [redBagCell setMenuTouchActionBlock:^(SWChatTouchModel * _Nonnull model, NSString * _Nonnull actionName, NSInteger index, SWChatButton * _Nonnull checkBtn) {
-            weakself.menuTouchActionBlock(model, actionName, index, checkBtn);
+            weakSelf.menuTouchActionBlock(model, actionName, index, checkBtn);
         }];
     }else if ([_cell isKindOfClass:[SWChatSystemCell class]])
     {

@@ -24,7 +24,8 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 
 -(void)initHXTool
 {
-    weakSelf(self);
+    __weak typeof(self) weakSelf = self;
+    
     [SWHXTool sharedManager].messageSendBlock = ^(EMMessage *message, NSString *error) {
         if (!error && message) {
             if ([message.to isEqualToString:weakSelf.baseConversation.conversationId]) {
@@ -42,7 +43,8 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
                 [weakSelf.dataArray addObject:model];
                 
                 [weakSelf.tableView reloadData];
-                 [weakSelf.tableView scrollToRow:weakSelf.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//                 [weakSelf.tableView scrollToRow:weakSelf.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:weakSelf.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
             }
         }
     };
@@ -67,7 +69,9 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
                   //单聊
                   [weakSelf.dataArray addObject:model];
                   [weakSelf.tableView reloadData];
-                  [weakSelf.tableView scrollToRow:weakSelf.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//                  [weakSelf.tableView scrollToRow:weakSelf.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                  
+                  [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:weakSelf.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
               }
               
           }
@@ -101,13 +105,14 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setNavEnable:YES];
+//    self.isNavFullBackEnable = YES;
+    self.sw_leftNavItemSpacing = 15;
     
 }
 #pragma mark viewAction
 -(void)viewDidAppear:(BOOL)animated
 {
-    weakSelf(self);
+    __weak typeof(self) weakSelf = self;
     if (self.touchBarView.sw_TextView.text.length!=0) {
         double delayInSecondss = 0.3;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSecondss * NSEC_PER_SEC));
@@ -126,16 +131,18 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 - (void)viewDidLoad {
     [super viewDidLoad];
  
+    
+    
     _isReceived = YES;
     _cellManager = [SWChatCellManager sharedManager];
     self.view .backgroundColor = [UIColor whiteColor];
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50 - SafeBottomHeight - NavBarHeight);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundColor =  [SWKit colorWithHexString:@"#F5F5F5"];
+    self.tableView.backgroundColor =  [UIColor colorWithHexString:@"#F5F5F5"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.tableView];
-    self.view.backgroundColor =[SWKit colorWithHexString:@"#f2f2f2"];
+    self.view.backgroundColor =[UIColor colorWithHexString:@"#f2f2f2"];
     
       _touchBarView = [[SWTouchBarView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50-SafeBottomHeight - NavBarHeight, SCREEN_WIDTH, 50+SafeBottomHeight)];
      [self.view addSubview:[_touchBarView initTouchBarView:^(NSString *btnName, NSString *blcokContent, NSString *index, NSMutableArray *moderArr) {
@@ -169,7 +176,10 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
     double delayInSeconds = 0.01;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-     [self.tableView scrollToRow:self.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//     [self.tableView scrollToRow:self.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        
     });
 }
 
@@ -192,7 +202,7 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 -(void)touchKeyBoarbWillShow:(NSNotification *)notification
 {
  
-    if (![self isKindOfClass:[[SWKit getCurrentVC] class]]) {
+    if (![self isKindOfClass:[[UIView getCurrentVC] class]]) {
         // 其他界面的键盘通知
         return;
     }
@@ -219,7 +229,8 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
        self.tableView.frame = CGRectMake(0, _keyBoardHeight-SafeBottomHeight, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height-_keyBoardHeight-NavBarHeight+SafeBottomHeight);
        if (self.dataArray.count != 0)
        {
-           [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+           [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+//           [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
        }
 }
 -(void)touchKeyBoarbWillHide:(NSNotification *)notification
@@ -242,7 +253,8 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
                 self.tableView.frame = CGRectMake(0, _keyBoardHeight-SafeBottomHeight, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height-_keyBoardHeight -NavBarHeight +SafeBottomHeight);
            [ self.tableView reloadData];
            if (self.dataArray.count>0) {
-                [self.tableView scrollToRow:self.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+//                [self.tableView scrollToRow:self.dataArray.count-1 inSection:0 atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+               [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
            }
 }
 
@@ -281,7 +293,7 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
     SWChatTouchModel *touchModel  = self.dataArray[indexPath.row];
      
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.backgroundColor = [SWKit randomColor];
+    cell.backgroundColor = [UIColor randomColor];
     
      NSString *cellId = [NSString stringWithFormat:@"ATTouchBaseCell_%@",touchModel.type];
     if ([touchModel.type isEqualToString:@"text"]) {
@@ -294,11 +306,11 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
                                                                        index:indexPath.row
                                                          withReuseIdentifier:cellId
                                                                    tableview:tableView ];
- SWWeakSelf(self)
+ __weak typeof(self) weakSelf = self;
     //主要的点击事件回调
     [_cellManager setMenuTouchActionBlock:^(SWChatTouchModel * _Nonnull model, NSString * _Nonnull actionName, NSInteger index, SWChatButton * _Nonnull checkBtn) {
                
-        [weakself menuBlockAction:model name:actionName index:index button:checkBtn];
+        [weakSelf menuBlockAction:model name:actionName index:index button:checkBtn];
         
     }];
     
@@ -370,7 +382,10 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
                 model = [[SWHXTool sharedManager] updateUploadState:@"" content:content touchModel:model conversation:self.baseConversation];
                 [self.dataArray replaceObjectAtIndex:i withObject:model];
                 [self.tableView reloadData];
-                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+                
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+                
+//                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
                 return;
             }
         }
@@ -406,7 +421,10 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
             [_cellManager.loadArr removeAllObjects];
             [self.tableView  reloadData];
             if (index-1>0) {
-              [self.tableView  scrollToRow:index-1 inSection:0 atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+                
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index-1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                
+//              [self.tableView  scrollToRow:index-1 inSection:0 atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
            }
     }else if ([actionName isEqualToString:@"键盘消失"]) {
         [self viewBecomeFirstResponder];
@@ -434,7 +452,11 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
          [[SWChatCellManager sharedManager].loadArr removeAllObjects];
        [self.tableView reloadData];
        if (index-1>0) {
-           [self.tableView scrollToRow:index-1 inSection:0 atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+           
+           [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index-1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+           
+           
+//           [self.tableView scrollToRow:index-1 inSection:0 atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
        }
         
        //插入一条系统消息

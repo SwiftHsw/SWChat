@@ -31,12 +31,12 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        self.tintColor = [SWKit colorWithHexString:@"#1cc3b1"];
+        self.tintColor = [UIColor colorWithHexString:@"#1cc3b1"];
         UIFont *font = [UIFont systemFontOfSize:14];
         UILabel *time = [[UILabel alloc] init];
         [time setTextColor:[UIColor whiteColor]];
         time.font = font;
-        time.backgroundColor =[SWKit colorWithHexString:@"#cecece"];
+        time.backgroundColor =[UIColor colorWithHexString:@"#cecece"];
         time.textAlignment = NSTextAlignmentCenter;
         time.layer.masksToBounds = YES;
         time.layer.cornerRadius = 4.0;
@@ -46,7 +46,7 @@
         UIView *view =[[UIView alloc] init];
         view.layer.cornerRadius = 4.0;
         view.layer.masksToBounds =YES;
-        view.backgroundColor =[SWKit colorWithHexString:@"#cecece"];
+        view.backgroundColor =[UIColor colorWithHexString:@"#cecece"];
         [self.contentView addSubview:view];
         _bgView = view;
         
@@ -100,9 +100,9 @@
 
     if ([cellModel.messType isEqualToString:@"系统消息"]) {
         _bgView.backgroundColor =[UIColor clearColor];
-        _contentLab.textColor = [SWKit colorWithHexString:@"#cecece"];
+        _contentLab.textColor = [UIColor colorWithHexString:@"#cecece"];
     }else{
-        _bgView.backgroundColor =[SWKit colorWithHexString:@"#cecece"];
+        _bgView.backgroundColor =[UIColor colorWithHexString:@"#cecece"];
         _contentLab.textColor = [UIColor whiteColor];
         _contentLab.backgroundColor = [UIColor clearColor];
     }

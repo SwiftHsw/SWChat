@@ -160,7 +160,7 @@
         
         [_pressLab removeFromSuperview];
                [_alphaView removeFromSuperview];
-               weakSelf(self);
+               __weak typeof(self) weakSelf = self;
                dispatch_async(dispatch_get_main_queue(), ^{
                    
                    weakSelf.activityView.hidden = NO;

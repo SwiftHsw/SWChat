@@ -27,7 +27,7 @@
         [self.contentView addSubview:_imageView];
         
         _lineView =[[UIView alloc] initWithFrame:CGRectMake(39.6, 5, 0.4, 30)];
-        _lineView.backgroundColor = [SWKit colorWithHexString:@"#dadada"];
+        _lineView.backgroundColor = [UIColor colorWithHexString:@"#dadada"];
         [self.contentView addSubview:_lineView];
         
     }

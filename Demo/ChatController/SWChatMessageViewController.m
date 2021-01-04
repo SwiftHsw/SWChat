@@ -72,7 +72,7 @@
 - (void)setupHXTool
 {
     self.navigationItem.title = @"收取中...";
-    weakSelf(self);
+    __weak typeof(self) weakSelf = self;
     _hxTool = [SWHXTool sharedManager];
     _hxTool.OperationBlock = ^(NSDictionary *info, EMError *error) {
         if (!error) {
@@ -113,7 +113,7 @@
 }
 - (void)setupTable{
     self.tableView.rowHeight = 80;
-    self.tableView.backgroundColor = [SWKit colorWithHexString:@"#f2f2f2"];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
     self.tableView.allowsSelectionDuringEditing = true;
     self.tableView.userInteractionEnabled = YES;
     self.tableView.tableHeaderView.userInteractionEnabled = YES;
@@ -131,8 +131,8 @@
     //未登录成功的View
     UIView *topView;
     if (index == 1) {
-        UILabel *errorView = [SWKit labelWithText:@"聊天未登录成功,点击即可重新登录" fontSize:13 textColor:[SWKit colorWithHexString:@"#f76a24"] textAlignment:1 frame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
-        errorView.backgroundColor = [SWKit colorWithHexString:@"#fff9c6"];
+        UILabel *errorView = [UILabel labelWithText:@"聊天未登录成功,点击即可重新登录" fontSize:13 textColor:[UIColor colorWithHexString:@"#f76a24"] textAlignment:1 frame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+        errorView.backgroundColor = [UIColor colorWithHexString:@"#fff9c6"];
         errorView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
         [errorView addGestureRecognizer:tapGesturRecognizer];
@@ -162,7 +162,7 @@
 
 - (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    weakSelf(self);
+    __weak typeof(self) weakSelf = self;
     SWMessageModel *model = self.dataArray[indexPath.row];
     UITableViewRowAction *deleteBtn = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         //删除置顶
@@ -185,7 +185,7 @@
             [weakSelf loadData];
         }
     }];
-    topBtn.backgroundColor = [SWKit colorWithHexString:@"#c7c7cc"];
+    topBtn.backgroundColor = [UIColor colorWithHexString:@"#c7c7cc"];
     return @[deleteBtn,topBtn];
 }
 - (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -212,7 +212,7 @@
     }
     [cell setMessageLsitCellData:model top:YES last:last unCount:model.messageCount isVoice:NO isSearch:NO];
     if (model.isTop) {
-        [cell setBackgroundColor:[SWKit colorWithHexString:@"#f8f8f8"]];
+        [cell setBackgroundColor:[UIColor colorWithHexString:@"#f8f8f8"]];
     }else
         [cell setBackgroundColor:[UIColor whiteColor]];
     return cell;

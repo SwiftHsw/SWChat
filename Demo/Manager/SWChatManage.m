@@ -475,7 +475,7 @@ CREATE_SHARED_MANAGER(SWChatManage)
     if (imageSWidth == 0 && imageSHeight == 0) {
         size = CGSizeMake(0, 0);
     }else{
-        size = [SWKit getSingleSize:CGSizeMake(imageSWidth, imageSHeight) max:230];
+        size = [UIImage getSingleSize:CGSizeMake(imageSWidth, imageSHeight) max:230];
     }
     return size;
 }
@@ -490,7 +490,7 @@ CREATE_SHARED_MANAGER(SWChatManage)
 
 +(void)updateMessageCount:(NSInteger)count
 {
-    UIViewController *nowController = [SWKit getCurrentVC];
+    UIViewController *nowController = [UIView getCurrentVC];
     if (nowController.tabBarController.tabBar.items.count>2) {
         UITabBarController *tabbar = nowController.tabBarController;
         UITabBarItem *messageItem = [tabbar.tabBar.items objectAtIndex:0];
@@ -555,7 +555,7 @@ successBlock:(void (^)(SWChatTouchModel *model))block{
        //红包
        if ([messtype isEqualToString:@"envelope"]) {
            model.messageInfoString = @"0";
-           model.pid = [SWKit getRandomString];
+           model.pid = [NSString getRandomString];
        }
         self.getBlock(model);
      

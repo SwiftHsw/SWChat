@@ -29,14 +29,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [SWKit isLocation];
+    [NSObject setMainColor:@"#333333"];
+    
     
     //初始化图片缓存
     [SWChatManage initTouchCache];
     //创建聊天缓存文件夹
-    [SWKit creatFile:[NSString stringWithFormat:@"SWChatUI/%@",@"chat"] filePath:ATDocumentPath];
-//    [[ATFMDBTool shareDatabase] at_createTable:IMCACEL dicOrModel:[SWChatTouchModel new]];
-    
+    [NSObject creatFile:[NSString stringWithFormat:@"SWChatUI/%@",@"chat"] filePath:SWDocumentPath];
     //好友列表
      [[ATFMDBTool shareDatabase] at_createTable:@"friendList" dicOrModel:[SWFriendInfoModel new]];
  
@@ -59,6 +58,7 @@
     self.window.rootViewController = [SWLoginViewController new];
     [self.window makeKeyAndVisible];
        
+   
     return YES;
 }
 
@@ -73,7 +73,7 @@
          return;
      }
                
-     [SWAlertViewController showInController:[SWKit getCurrentVC] title:[NSString stringWithFormat:@"收到%@的好友请求，请求信息:%@",aUsername,aMessage] message:@"是否接受?" cancelButton:@"拒绝" other:@"同意" completionHandler:^(SWAlertButtonStyle buttonStyle) {
+     [SWAlertViewController showInController:[UIView getCurrentVC] title:[NSString stringWithFormat:@"收到%@的好友请求，请求信息:%@",aUsername,aMessage] message:@"是否接受?" cancelButton:@"拒绝" other:@"同意" completionHandler:^(SWAlertButtonStyle buttonStyle) {
          if (buttonStyle == SWAlertButtonStyleOK) {
              //发送同意请求
                  [[SWHXTool sharedManager] accapectAddFriendPost:aUsername];
@@ -101,7 +101,7 @@
        
     
      BOOL isHave = false;
-            UIViewController *controller = [SWKit getCurrentVC];
+            UIViewController *controller = [UIView getCurrentVC];
             NSArray *oldControllerArr =controller.navigationController.viewControllers;
             for (int i = 0; i<oldControllerArr.count; i++) {
                 UIViewController *old = oldControllerArr[i];
@@ -153,7 +153,7 @@
 - (void)cmdMessagesDidReceive:(NSArray *)aCmdMessages{
     
     NSLog(@"接收到一条及以上cmd消息");
-    UIViewController *controller = [SWKit getCurrentVC];
+    UIViewController *controller = [UIView getCurrentVC];
     if (aCmdMessages.count!=0) {
         [aCmdMessages enumerateObjectsUsingBlock:^(EMMessage *cmdMessage, NSUInteger idx, BOOL * _Nonnull stop) {
                EMCmdMessageBody *body = (EMCmdMessageBody *)cmdMessage.body;
@@ -245,7 +245,7 @@
                      }
                      bIndex = bIndex+1;
                      [self parsingMessageArr:messageArr index:bIndex];
-                     UIViewController *controller = [SWKit getCurrentVC];
+                     UIViewController *controller = [UIView getCurrentVC];
                      if (![controller isKindOfClass:[SWChatSingViewController class]]) {
                          //如果不在聊天界面 发出消息提示音
                          AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -256,7 +256,7 @@
          }
      }else{
           //获取更新会话列表 或者 直接加载
-         UIViewController *controller = [SWKit getCurrentVC];
+         UIViewController *controller = [UIView getCurrentVC];
          if ([controller isKindOfClass:[SWChatMessageViewController  class]]) {
              [[NSNotificationCenter defaultCenter] postNotificationName:ATDIDRECEIVENEWMESSAGE_NOTIFICATION object:nil];
          }else{
@@ -283,7 +283,7 @@
  */
 - (void)connectionStateDidChange:(EMConnectionState)aConnectionState{
     NSLog(@"连接状态  =============== %d",aConnectionState);
-      NSArray *navArr = [SWKit getCurrentVC].navigationController.viewControllers;
+      NSArray *navArr = [UIView getCurrentVC].navigationController.viewControllers;
       SWChatMessageViewController *now;
       for (int i = 0; i<navArr.count; i++) {
           UIViewController *controller = navArr[i];

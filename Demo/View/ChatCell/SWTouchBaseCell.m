@@ -43,13 +43,13 @@
        if (self) {
            self.selectionStyle = UITableViewCellSelectionStyleNone;
            self.backgroundColor = [UIColor clearColor];
-           self.tintColor = [SWKit colorWithHexString:@"#1cc3b1"];
+           self.tintColor = [UIColor colorWithHexString:@"#1cc3b1"];
            //时间
              UIFont *font = [UIFont systemFontOfSize:14];
                 UILabel *time = [[UILabel alloc] init];
                 [time setTextColor:[UIColor whiteColor]];
                 time.font = font;
-           time.backgroundColor =[SWKit colorWithHexString: @"#cecece"];
+           time.backgroundColor =[UIColor colorWithHexString: @"#cecece"];
                 time.textAlignment = NSTextAlignmentCenter;
                 time.layer.masksToBounds = YES;
                 time.layer.cornerRadius = 4.0;
@@ -75,7 +75,7 @@
            UILabel *remarkName = [[UILabel alloc] init];
                  remarkName.font = [UIFont systemFontOfSize:14];
                  remarkName.hidden = NO;
-                 remarkName.textColor = [SWKit colorWithHexString: @"#2e2e2e"];
+                 remarkName.textColor = [UIColor colorWithHexString: @"#2e2e2e"];
                  [self.contentView addSubview:remarkName];
                  _remarkName = remarkName;
            

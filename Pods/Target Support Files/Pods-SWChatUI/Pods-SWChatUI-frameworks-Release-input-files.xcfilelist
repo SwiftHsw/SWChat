@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-SWChatUI/Pods-SWChatUI-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
 ${PODS_ROOT}/HyphenateLite/HyphenateLite.framework
 ${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework
 ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework

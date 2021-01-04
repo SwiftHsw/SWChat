@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - AMap2DMap (5.6.1):
     - AMapFoundation (~> 1.4)
   - AMapFoundation (1.6.5.1)
@@ -6,14 +21,15 @@ PODS:
     - AMapFoundation (~> 1.6.4)
   - AMapSearch (7.7.0):
     - AMapFoundation (~> 1.6.4)
-  - HyphenateLite (3.7.2)
+  - HyphenateLite (3.7.3)
   - Masonry (1.1.0)
   - MJExtension (3.2.2)
-  - SDWebImage (5.9.1):
-    - SDWebImage/Core (= 5.9.1)
-  - SDWebImage/Core (5.9.1)
+  - SDWebImage (5.10.2):
+    - SDWebImage/Core (= 5.10.2)
+  - SDWebImage/Core (5.10.2)
   - SVProgressHUD (2.2.5)
-  - SWKit (1.1.7)
+  - SWKit (1.2.1):
+    - AFNetworking
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -32,6 +48,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AFNetworking
     - AMap2DMap
     - AMapFoundation
     - AMapLocation
@@ -45,18 +62,19 @@ SPEC REPOS:
     - YYKit
 
 SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   AMap2DMap: cac76bc057de18a1641f34df6b50bf5bc6b23571
   AMapFoundation: b67560a6f21aab81c8c12f84616b55a3833b6253
   AMapLocation: a46c30d9930d0f3a3bd21139d8f845d10ac3f01d
   AMapSearch: 93bccff245dada46060758f828ca1058ec3363fc
-  HyphenateLite: 7ffceb06c7281245037f0dc05f10b0730d85b4df
+  HyphenateLite: 9b3b92e98d743ef45a1738b0396674eb84b17cad
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
-  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  SDWebImage: b969dcfc02c40a5da71eac0b03b8f1a0c794a86f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SWKit: 76de52be5593d87eff6dcf07874579c5b12943b9
+  SWKit: 120f3e4e2f5adfcbfe6d8931a709b83a5be020ae
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
 PODFILE CHECKSUM: 04038421f3e19d6501758d6cf4311a48ce551737
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

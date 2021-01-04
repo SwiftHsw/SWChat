@@ -10,8 +10,7 @@
 #import "SWLoginViewController.h"
   
 
-@interface SWChatSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+@interface SWChatSettingViewController()
 
 @property(nonatomic, strong)UIView          *tableViewHeaderView;
 @property (nonatomic,strong)UIImageView     *headImage;
@@ -29,17 +28,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setUpdataUser];
-    [self setNavgationBarHidden:YES];
-    
+    [self setNavgationBarHidden:YES animated:animated];
+   
 }
  
  
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TabbarHeight) style:UITableViewStyleGrouped];
-    self.tableView.delegate =self;
-    self.tableView.dataSource =self;
+   
     self.view.backgroundColor =  self.tableView.backgroundColor =  [UIColor whiteColor]; //
     [self.view addSubview:self.tableView];
     self.tableView.rowHeight = 100.f;
@@ -86,7 +82,7 @@
     UIView *whithe = [[UIView alloc]initWithFrame:CGRectMake(0, _tableViewHeaderView.height-20, SCREEN_WIDTH, 20)];
          whithe.backgroundColor = [UIColor whiteColor];
           [_tableViewHeaderView addSubview:whithe];
-          [SWKit maskPathView:whithe rad:UIRectCornerTopLeft | UIRectCornerTopRight size:CGSizeMake(20,20)];
+          [UIView maskPathView:whithe rad:UIRectCornerTopLeft | UIRectCornerTopRight size:CGSizeMake(20,20)];
     
 }
 
@@ -115,7 +111,7 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return 3;
     
 }
 
@@ -124,7 +120,8 @@
         UITableViewCell *cell   = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
   
               cell.textLabel.text = @[
-                              [NSString stringWithFormat:@"当前版本(%@)",GETSYSTEM] ,@"退出当前账号"][indexPath.row];
+                              [NSString stringWithFormat:@"当前版本(%@)",GETSYSTEM],
+                              @"支持一下作者的SWKit，求Star谢谢！",@"退出当前账号"][indexPath.row];
        
         return cell;
 
@@ -135,9 +132,12 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 1) {
+    if (indexPath.row == 2) {
         [[SWHXTool sharedManager]logout];
-        [SWKit currentWindow].rootViewController = [SWLoginViewController new];
+        [UIView currentWindow].rootViewController = [SWLoginViewController new];
+    }if (indexPath.row == 1) {
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://github.com/SwiftHsw/SWKit"]];
+         
     }
 }
 

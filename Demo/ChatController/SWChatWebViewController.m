@@ -115,7 +115,7 @@ UIGestureRecognizerDelegate
         _wkWebview = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT +SafeBottomHeight)];
         _wkWebview.UIDelegate = self;
         _wkWebview.navigationDelegate = self;
-        _wkWebview.backgroundColor =  [SWKit colorWithHexString:@"#FAFAFA"];
+        _wkWebview.backgroundColor =  [UIColor colorWithHexString:@"#FAFAFA"];
         _wkWebview.allowsBackForwardNavigationGestures = YES;
         [self.view addSubview:_wkWebview];
      

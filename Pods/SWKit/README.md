@@ -1,3 +1,18 @@
+If you have any questions, you can either leave a message or send the questions to our email address.
+
+We will answer them for you in the first time.
+
+Address: 392287145@qq.com
+
+thank you！
+ 
+
+```
+cocoapods 导入 
+pod 'SWKit'
+pod install 
+ ```
+
 # SWKit
 快速开发APP的工具
 
@@ -566,5 +581,4 @@ extern CGPoint SCREEN_CENTER;
 + (NSString *)timeInfoWithDateString:(NSString *)dateString;
 ```
 
-
-# 工具使用,拖入到工程即可;如果有什么建议~可以私信我的邮箱,392287145@qq.com 🙏 cocopods 可使用
+# 工具使用,拖入到工程即可;如果有什么建议~可以私信我的邮箱,392287145@qq.com 

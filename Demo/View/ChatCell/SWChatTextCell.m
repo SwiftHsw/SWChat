@@ -61,7 +61,7 @@
 //    NSLog(@"双击查看大屏幕文字逻辑");
     self.menuTouchActionBlock(_touchModel, @"键盘消失", _index, nil);
  
-    UIViewController *controller = [SWKit getCurrentVC];
+    UIViewController *controller = [UIView getCurrentVC];
        [controller.navigationController setNavigationBarHidden:YES animated:YES];
        UIView *view = controller.view;
        SWReadTextView *textView = [[SWReadTextView alloc] initWithFrame:view.frame showText:_touchModel.content];
@@ -110,7 +110,7 @@
     
     //设置文本赋值
     _bubbleText.textLayout = touchModel.textLayout;
-      weakSelf(self);
+      __weak typeof(self) weakSelf = self;
       [_bubbleText setTextLongPressAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
           [weakSelf longAction];
       }];
@@ -157,9 +157,9 @@
 -(void)withdrawAction
 {
     self.menuTouchActionBlock(nil, @"键盘消失",0,nil);
-    weakSelf(self);
+    __weak typeof(self) weakSelf = self;
     [[GMenuController sharedMenuController] setMenuVisible:NO];
-    [SWAlertViewController showInController:[SWKit getCurrentVC] title:@"是否撤回该条消息?" message:@"" cancelButton:@"取消" other:@"确定" completionHandler:^(SWAlertButtonStyle buttonStyle) {
+    [SWAlertViewController showInController:[UIView getCurrentVC] title:@"是否撤回该条消息?" message:@"" cancelButton:@"取消" other:@"确定" completionHandler:^(SWAlertButtonStyle buttonStyle) {
         if (buttonStyle == SWAlertButtonStyleOK) {
             if ([SWChatManage withdrawWithOldTime:_touchModel.oldTime]) {
                     weakSelf.menuTouchActionBlock(weakSelf.touchModel, @"撤回",weakSelf.chooseIndex,nil);

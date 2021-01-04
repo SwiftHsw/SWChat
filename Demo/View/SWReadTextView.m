@@ -46,7 +46,7 @@
     }
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50-SafeBottomHeight, SCREEN_WIDTH, 0.5)];
-    line.backgroundColor = [SWKit colorWithHexString:@"#f5f5f5"];
+    line.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
     [self addSubview:line];
     NSArray *arr =@[@"分享",@"收藏"];
     float width=SCREEN_WIDTH/2;
@@ -68,7 +68,7 @@
 -(void)handleSingleTap:(UIGestureRecognizer *)sender{
     //    [self makes]
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    UIViewController *controller = [SWKit getCurrentVC];
+    UIViewController *controller = [UIView getCurrentVC];
     [controller.navigationController setNavigationBarHidden:NO animated:NO];
     [UIView animateWithDuration:0.5 animations:^{
         self.alpha = 0;

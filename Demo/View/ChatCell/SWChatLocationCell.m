@@ -74,7 +74,7 @@
         UILabel *one = [[UILabel alloc] init];
         one.font =[UIFont systemFontOfSize:16];
         one.backgroundColor =[UIColor clearColor];
-        one.textColor =[SWKit colorWithHexString:@"#2e2e2e"];
+        one.textColor =[UIColor colorWithHexString:@"#2e2e2e"];
         [_whiteView addSubview:one];
         _oneLab =one;
 
@@ -85,7 +85,7 @@
         _twoLab =two;
 
         UIView *line = [[UIView alloc] init];
-        line.backgroundColor = [SWKit colorWithHexString:@"#f5f5f5"];;
+        line.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];;
         [_whiteView addSubview:line];
         _lineView = line;
         
@@ -147,7 +147,7 @@
         _showImage.image = touchModel.pictImage;
     }else
     {
-        weakSelf(self);
+        __weak typeof(self) weakSelf = self;
         [_showImage sd_setImageWithURL:[NSURL URLWithString:touchModel.content] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
          {
              if (image) {
@@ -237,7 +237,7 @@
 -(void)withdrawAction
 {
     self.menuTouchActionBlock(nil, @"键盘消失",0,nil);
-    weakSelf(self);
+    __weak typeof(self) weakSelf = self;
     [[GMenuController sharedMenuController] setMenuVisible:NO];
 //    [LPActionSheet showActionSheetWithTitle:@"是否撤回该条消息?"
 //                          cancelButtonTitle:@"取消"

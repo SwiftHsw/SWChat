@@ -42,9 +42,9 @@
 
 
 //聊天表情包
-#define IMEmtionPath [NSString stringWithFormat:@"%@/userImage/%@/emoticon",ATDocumentPath,FORM_USERNAME]
+#define IMEmtionPath [NSString stringWithFormat:@"%@/userImage/%@/emoticon",SWDocumentPath,FORM_USERNAME]
 
-#define IMGifImagePath [NSString stringWithFormat:@"%@/userImage/%@/gifImage/",ATDocumentPath,FORM_USERNAME]
+#define IMGifImagePath [NSString stringWithFormat:@"%@/userImage/%@/gifImage/",SWDocumentPath,FORM_USERNAME]
 
  
 //聊天数据缓存
