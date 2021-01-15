@@ -12,6 +12,7 @@
 #import "SWChatLocationCell.h"
 #import "SWChatRedBagCell.h"
 #import "SWChatSystemCell.h"
+#import "SWChatVoiceCell.h"
 
 @implementation SWChatCellManager
 
@@ -110,6 +111,14 @@ withReuseIdentifier:(NSString *)reuseId
 //            [systemCell setFriendActionSystemCell:messageModel friendInfo:userModel];
 //        }else
             [systemCell setNoActionSystemCell:messageModel];
+    }else if ([_cell isKindOfClass:[SWChatVoiceCell class]]){
+        
+        SWChatVoiceCell *voiceCell =  (SWChatVoiceCell *)_cell;
+//        voiceCell.index =index;
+        voiceCell.reSend = [messageModel.isSuccess isEqualToString:@"failure"];
+        voiceCell.cellIndex = index;
+        [voiceCell setSoundCell:messageModel touchUserModel:userModel isShowName:shareName];
+        
     }
     
         return _cell;
@@ -131,6 +140,9 @@ withReuseIdentifier:(NSString *)reuseId
     else if ([model.type isEqualToString:@"system"]) {
       return [SWChatSystemCell  class];
       }
+    else if ([model.type isEqualToString:@"voiceAud"]){
+        return [SWChatVoiceCell class];
+    }
     //这边的逻辑:
     //根据不一样的消息类型加载不一样的cell video location system 等
  

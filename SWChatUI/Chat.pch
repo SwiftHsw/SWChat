@@ -60,6 +60,7 @@
 #import <HyphenateLite/HyphenateLite.h>//环信SDK
 #import "SWHXTool.h" //环信二次封装管理工具
 #import <SVProgressHUD.h>
+#import "LVRecordTool.h"//录音工具
 
 //单聊界面
 #import "SWChatSingViewController.h"

@@ -50,7 +50,7 @@
                 }
                 model.conversation = self.baseConversation;
                 [timeArr addObject:model.timeArr];
-                [addArr addObject:model];
+                 [addArr addObject:model];
             }
             weakSelf.dataArray = addArr;
             [self.tableView reloadData];
@@ -59,7 +59,7 @@
                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                    
                    if (weakSelf.dataArray.count > 2) {
-                       [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                       [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
                    }
                });
         }

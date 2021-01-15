@@ -101,30 +101,16 @@
        _lastLineView.hidden = YES;
        [self addSubview:_lastLineView];
  
+     [[LVRecordTool sharedRecordTool] setAvSuccessBlock:^(NSString *filePath,int time,NSString *disName) {
     
-//    [[SWHXTool sharedManager]setSendImageInsertBlock:^(EMMessage * _Nonnull message, NSString * _Nonnull error) {
-//
-//        SWLog(@"上传图片");
-//        if (message) {
-//            //如果原数组个数为0，那么开启上传，不为0则为上传中
-////        模拟上传成功 因为没有服务器
-//            NSString *Str = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605946139171&di=df11437b35cd32d9d0866d2de3c561b0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201409%2F11%2F20140911211243_3rT4u.jpeg";
-//
-//          SWChatTouchModel *touchModel = [[SWChatTouchModel alloc] EMMToChatModel:message timeArr:nil];
-//                            //上传成功 逻辑可以用一套静态数组来存储图片，如果多张照片 可以上传成功进行下一章
-//                             if ([SWChatManage GetTouchUser].length==0) {
-//                                 EMConversation *conver = [[EMClient sharedClient].chatManager getConversation:touchModel.pid type:EMConversationTypeChat createIfNotExist:YES];
-//                                 if (conver) {
-//                                     //已退出界面，后台继续上传
-////                                     [_hxTool updateUploadState:@"" content:ossTouchUrl(fileName) touchModel:touchModel conversation:conver];
-//                                 }
-//                             }else{
-//                                 self.touchBarBlcok(@"上传状态", Str, touchModel.pid, nil);
-//                             }
-//
-//        }
-//
-//    }];
+    [[SWHXTool sharedManager]sendTouchVoiceToUser:[SWChatManage GetTouchUser]
+                                        localPath:filePath
+                                      displayName:disName
+                                         duration:time];
+    
+    SWLog(@"录音地址=====%@",filePath);
+}];
+
     return self;
 }
 #pragma mark - 表情视图 + 功能视图
@@ -310,6 +296,15 @@
 -(void)toDoRecord
 {
     __weak typeof(self) weak_self = self;
+    
+    [[LVRecordTool sharedRecordTool] setAvCuttimeBlock:^(double time) {
+        if (time < 2) {
+            weak_self.currentRecordState = MOKORecordState_RecordTooShort;
+        }else if (time == kMaxRecordDuration - kRemainCountingDuration){
+            weak_self.currentRecordState = MOKORecordState_RecordCounting;
+        }
+    }];
+     
       //手指按下
     _startSoundBtn.recordTouchDownAction = ^(MOKORecordButton *recordButton) {
         NSLog(@"开始录音");
@@ -322,6 +317,13 @@
                   [weak_self.recorder startRecording];
                   weak_self.currentRecordState = MOKORecordState_Recording;
                   [weak_self dispatchVoiceState];
+            
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+            [[AVAudioSession sharedInstance] setActive:YES error:nil];
+            
+            [[LVRecordTool sharedRecordTool]startRecording];
+            
+            
         }
     };
       //手指抬起
@@ -332,12 +334,15 @@
                [weak_self.recorder stopRecording];
                weak_self.currentRecordState = MOKORecordState_Normal;
                [weak_self dispatchVoiceState];
+        [[LVRecordTool sharedRecordTool]stopRecording];
+       
         
     };
    //手指滑出按钮
     _startSoundBtn.recordTouchUpOutsideAction = ^(MOKORecordButton *sender){
         NSLog(@"手指滑出按钮,取消录音");
-          [weak_self.recorder stopRecording];
+//        [[LVRecordTool sharedRecordTool]stopRecording];
+        [weak_self.recorder stopRecording];
         [sender setButtonStateWithNormal];
         weak_self.currentRecordState = MOKORecordState_Normal;
         [weak_self dispatchVoiceState];
@@ -357,8 +362,10 @@
            [weak_self dispatchVoiceState];
        };
     
-    
+     
 }
+
+
 - (void)dispatchVoiceState
 {
     if (_currentRecordState == MOKORecordState_Recording) {

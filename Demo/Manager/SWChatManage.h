@@ -53,6 +53,8 @@ typedef void (^getIMMessageDataBlock)(SWChatTouchModel *model);
 +(SWChatMessageViewController *)messageControll;
 +(void)setMessageController:(SWChatMessageViewController *)controller;
 
+/// 消息会话界面转换表情
++ (NSMutableAttributedString *)setMaattiEmoMessageList:(NSString*)text;
 //匹配富文本表情
 +(NSMutableDictionary *)emjonDict;
 //是否空字符

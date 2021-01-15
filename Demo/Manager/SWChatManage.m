@@ -153,6 +153,63 @@ CREATE_SHARED_MANAGER(SWChatManage)
 }
 
 
++ (NSMutableAttributedString *)setMaattiEmoMessageList:(NSString*)text{
+    //转成可变属性字符串
+    NSMutableAttributedString * mAttributedString = [[NSMutableAttributedString alloc]init];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:4];//调整行间距
+    [paragraphStyle setParagraphSpacing:4];//调整行间距
+      NSDictionary *attri;
+    attri = [NSDictionary dictionaryWithObjects:@[[UIFont systemFontOfSize:14],[UIColor colorWithHexString:@"#9e9e9e"],paragraphStyle] forKeys:@[NSFontAttributeName,NSForegroundColorAttributeName,NSParagraphStyleAttributeName]];
+   
+    
+    [mAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:text attributes:attri]];
+    //创建匹配正则表达式的类型描述模板
+    NSString * pattern = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
+    //创建匹配对象
+    NSError * error;
+    NSRegularExpression * regularExpression = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+    //判断
+    if (!regularExpression)//如果匹配规则对象为nil
+    {
+        NSLog(@"正则创建失败！");
+        NSLog(@"error = %@",[error localizedDescription]);
+        return nil;
+    }
+    else
+    {
+        NSArray * resultArray = [regularExpression matchesInString:mAttributedString.string options:NSMatchingReportCompletion range:NSMakeRange(0, mAttributedString.string.length)];
+        //开始遍历 逆序遍历
+        for (NSInteger i = resultArray.count - 1; i >= 0; i --)
+        {
+            //获取检查结果，里面有range
+            NSTextCheckingResult * result = resultArray[i];
+            //根据range获取字符串
+            NSString * rangeString = [mAttributedString.string substringWithRange:result.range];
+            NSString *imageName =  rangeString;
+            if (imageName)
+            {
+                //获取图片
+                YYImage * image = [SWChatManage emjonDict][imageName];//这是个自定义的方法
+                if (image != nil)
+                {
+                    image.preloadAllAnimatedImageFrames = YES;
+                    YYAnimatedImageView *imageView = [[YYAnimatedImageView alloc] initWithImage:image];
+                    NSMutableAttributedString *attachText = [NSMutableAttributedString attachmentStringWithContent:imageView
+                                                                                                       contentMode:UIViewContentModeCenter attachmentSize:imageView.bounds.size alignToFont:[UIFont systemFontOfSize:14] alignment:YYTextVerticalAlignmentCenter];
+                    //开始替换
+                    [mAttributedString replaceCharactersInRange:result.range withAttributedString:attachText];
+                }
+            }
+        }
+    }
+    
+    if ([text containsString:@"[草稿]"]) {
+        [mAttributedString addAttribute:NSForegroundColorAttributeName value:UIColor.redColor range:NSMakeRange(0,@"[草稿]".length)];
+    }
+    return  mAttributedString;
+}
+
 +(NSMutableDictionary *)emjonDict
 {
     if (!emjonDict) {

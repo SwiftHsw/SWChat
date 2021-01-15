@@ -127,6 +127,13 @@ CREATE_SHARED_MANAGER(SWHXTool)
         model.isGroupChat =message.chatType==EMChatTypeChat ?false:true;
   
         infoModel = [[ATFMDBTool shareDatabase] isFriendWithName:conver.conversationId];
+        if (infoModel == nil ) {
+            //强制匹配吧，数据库这边没做处理，没有匹配网络
+            infoModel = [SWFriendInfoModel new];
+            infoModel.userId = conver.conversationId;
+            infoModel.remark = conver.conversationId;
+              
+        }
         model.friendModel = infoModel;
         if ([model.touchUser isEqualToString:[SWChatManage GetTouchUser]]) {
             model.messageCount = 0;
@@ -207,11 +214,15 @@ CREATE_SHARED_MANAGER(SWHXTool)
                 }
             }else if ([model.messageType isEqualToString:@"voiceAud"])
             {
-                model.shouContent = [data valueForKey:@"voiceContent"];
+                model.shouContent = @"[语音]";
+            }
+            else if ([model.messageType isEqualToString:@"location"])
+            {
+                model.shouContent = @"[位置]";
             }else if ([model.messageType isEqualToString:@"envelope"])
             {
                 if (message.chatType == EMChatTypeChat) {
-                    model.shouContent = [NSString stringWithFormat:@"[模拟红包]:%@",@"恭喜发财，"];
+                    model.shouContent = [NSString stringWithFormat:@"[收到红包]:%@",@"恭喜发财"];
                 }else{
                    
                 }
@@ -413,6 +424,18 @@ CREATE_SHARED_MANAGER(SWHXTool)
         EMTextMessageBody *textBody = (EMTextMessageBody *)msgBody;
         return textBody.text;
     }
+    if (msgBody.type == EMMessageBodyTypeVoice) {
+        //没办法的办法，因为构造了消息，用的却是环信的，demo 只能这样吧～
+        
+        NSDictionary *  info = [SWChatManage sendInfoWithSing:nil];
+        NSDictionary * data = @{@"state":@"1"};
+        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                  data,@"data",
+                                    @"id",@"id",
+                                    @"voiceAud",@"type",
+                                    info,@"sendUser",nil];
+        return [jsonDict mj_JSONString];
+    }
     return @"";
 }
 //删除会话
@@ -538,21 +561,45 @@ CREATE_SHARED_MANAGER(SWHXTool)
                   if ([SWChatManage messageControll] !=nil) {
                        [[SWChatManage messageControll] loadData];
                   }
-                  
-//                  UIViewController *controller = [UIView getCurrentVC];
-//                  if ([controller isKindOfClass:[SWChatMessageViewController class]]) {
-//                      [[SWChatManage messageControll] loadData];
-//                  }
-//                  if ([nowController isKindOfClass:[SWChatMessageViewController class]]) {
-//                      SWChatMessageViewController *messageController = (SWChatMessageViewController *)nowController;
-//                      [messageController loadData];
-//                  }
-                  
                    
               }else
                   [SVProgressHUD showErrorWithStatus:error.errorDescription];
           }];
     }
+    
+}
+
+- (void)sendTouchVoiceToUser:(NSString *)toUser localPath:(NSString *)alocalPath displayName:(NSString *)aDisplayName duration:(int)duration{
+    
+    
+    EMVoiceMessageBody *body = [[EMVoiceMessageBody alloc]initWithLocalPath:alocalPath displayName:aDisplayName];
+    body.duration = duration;
+    NSString *form = [SWChatManage getUserName];//[[EMClient sharedClient]currentUsername];
+    EMMessage *message = [[EMMessage alloc]initWithConversationID:toUser
+                                                             from:form
+                                                               to:toUser
+                                                             body:body
+                                                              ext:nil];
+    
+    message.chatType = EMChatTypeChat;//单聊
+    
+    [[EMClient sharedClient].chatManager sendMessage:message progress:^(int progress) {
+              
+          } completion:^(EMMessage *message, EMError *error) {
+              if (!error)
+              {
+                  if (self.messageSendBlock) {
+                      self.messageSendBlock(message, nil);
+                  }                   //更新会话
+                  if ([SWChatManage messageControll] !=nil) {
+                       [[SWChatManage messageControll] loadData];
+                  }
+              }else
+                  [SVProgressHUD showErrorWithStatus:error.errorDescription];
+          }];
+    
+    
+    
     
 }
 -(SWChatTouchModel *)updateUploadState:(NSString *)state content:(NSString *)content touchModel:(SWChatTouchModel *)model conversation:(EMConversation *)conver
@@ -564,6 +611,9 @@ CREATE_SHARED_MANAGER(SWHXTool)
     if (content.length!=0) {
         model.content = content;
         model.isSuccess = @"success";
+        if ([model.type isEqualToString:@"voiceAud"]){
+            model.content = @"[语音]";
+        }
         [data setValue:content forKey:@"content"];
     }else{
         if (state.length!=0) {

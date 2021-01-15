@@ -73,6 +73,13 @@ NS_ASSUME_NONNULL_BEGIN
                 isInsert:(BOOL)isInsert
           isConversation:(BOOL)isConversation
                   isJoin:(BOOL)isJoin;
+
+//发送语音消息 走环信～
+- (void)sendTouchVoiceToUser:(NSString *)toUser
+                   localPath:(NSString *)alocalPath
+                 displayName:(NSString *)aDisplayName
+                    duration:(int)duration;
+
 -(void)getFriendList;
  //文件上传完成后重新发送
 -(void)sendMessageToUser:(EMMessage *)message touchModel:(SWChatTouchModel *)model;

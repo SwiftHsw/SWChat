@@ -16,7 +16,7 @@
 /*用户昵称*/
 @property (nonatomic, strong) UILabel *nameLabel;
 /*最后一条记录*/
-@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) YYLabel *contentLabel;
 /*时间*/
 @property (nonatomic, strong) UILabel *timeLabel;
 /*是否免打扰*/
@@ -70,13 +70,25 @@
     _nameLabel = name;
     
     
-    UILabel *content = [UILabel new];
-    content.font = [UIFont systemFontOfSize:14];
-    content.textColor = [UIColor colorWithHexString:@"#9e9e9e"];
+//    UILabel *content = [UILabel new];
+//    content.font = [UIFont systemFontOfSize:14];
+//    content.textColor = [UIColor colorWithHexString:@"#9e9e9e"];
+//    content.numberOfLines = 1;
+//    content.frame = CGRectMake(75, 38, SCREEN_WIDTH-130, 24);
+//    [self.contentView addSubview:content];
+//
+    
+    // 开启异步绘制
+    YYLabel *content = [YYLabel new];
+    content.displaysAsynchronously = YES;
+    content.ignoreCommonProperties = YES;
+    content.lineBreakMode = NSLineBreakByCharWrapping;
     content.numberOfLines = 1;
+    content.textColor = [UIColor colorWithHexString:@"#9e9e9e"];
+    content.font = [UIFont systemFontOfSize:10];
     content.frame = CGRectMake(75, 38, SCREEN_WIDTH-130, 24);
-    [self.contentView addSubview:content];
     _contentLabel = content;
+    [self.contentView addSubview:content];
     
     
 //    disturbImage
@@ -175,22 +187,11 @@
                 if (model.messageCount>0 && model.showAttrContent.length!=0) {
                     _contentLabel.attributedText = model.showAttrContent;
                 }else
-                    _contentLabel.text = model.shouContent;
-            }else if ([type isEqualToString:@"img"])
+                _contentLabel.textLayout = model.textLayout;
+                    
+            }else
             {
-                 _contentLabel.text = @"[图片]";
-            } else if ([type isEqualToString:@"aud"])
-            {
-                _contentLabel.text = @"[语音]";
-            } else if ([type isEqualToString:@"envelope"])
-            {
-                _contentLabel.text = model.shouContent;
-            } else if ([type isEqualToString:@"system"])
-            {
-                _contentLabel.text = model.shouContent;
-            }else if ([type isEqualToString:@"location"])
-            {
-                _contentLabel.text = @"[位置]";
+                _contentLabel.textLayout = model.textLayout;
             }
             NSDictionary *data = [info valueForKey:@"data"];
             NSString *state = [data valueForKey:@"state"];
@@ -216,7 +217,8 @@
         NSDictionary *draft = [SWPlaceTopTool getAllDraft];
         NSString *con = [draft valueForKey:model.touchUser];
         if (con && con.length!=0) {
-            _contentLabel.attributedText = [self labelWithString:@"草稿" oldStr:con];
+            _contentLabel.textLayout = [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH-140, 5000)
+                                                                        text:[SWChatManage setMaattiEmoMessageList:[NSString stringWithFormat:@"[草稿]%@",con]]];
             model.draft = con;
         } 
 }
@@ -225,7 +227,7 @@
     str = [NSString stringWithFormat:@"[%@] ",str];
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[str stringByAppendingString:old]];
     [attrStr addAttribute:NSForegroundColorAttributeName value:UIColor.redColor range:NSMakeRange(0,str.length)];
-    [attrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0,str.length)];
+    [attrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0,str.length)];
     return attrStr;
 }
 

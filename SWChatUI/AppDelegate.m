@@ -36,6 +36,9 @@
     [SWChatManage initTouchCache];
     //创建聊天缓存文件夹
     [NSObject creatFile:[NSString stringWithFormat:@"SWChatUI/%@",@"chat"] filePath:SWDocumentPath];
+    //语音文件夹
+    [NSObject creatFile:@"SWChatUI/chat/touchVoice" filePath:SWDocumentPath];
+     
     //好友列表
      [[ATFMDBTool shareDatabase] at_createTable:@"friendList" dicOrModel:[SWFriendInfoModel new]];
  

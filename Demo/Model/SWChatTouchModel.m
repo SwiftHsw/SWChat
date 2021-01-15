@@ -22,10 +22,21 @@
 }
 -(SWChatTouchModel *)EMMToChatModel:(EMMessage *)message timeArr:(NSMutableArray *)timeArr{
      SWChatTouchModel *model = [SWChatTouchModel new];
-    //模拟数据
-//    model.pid = message.pid;
-  //    NSDictionary *info = @{@"data":@{@"content":message.content},@"type":message.type,@"state":@"1"};
-      
+    if (message.body.type == EMMessageBodyTypeVoice) {
+        //语音走环信特殊处理
+        SWLog(@"%@",message)
+        model = [self setupModel:model ChatModel:message timeArr:timeArr];
+        model.type = @"voiceAud";
+        model.messType = @"单聊信息";
+        model.toUser = message.to;
+        model.messageId = message.messageId;
+        model.textLayout = [YYTextLayout alloc];
+        
+        EMVoiceMessageBody *body = (EMVoiceMessageBody*)message.body;
+        model.audLength = body.duration;
+       
+        return model;
+    }
     NSDictionary *info = [SWChatManage JsonToDict:[self textContent:message]];
 
      if (!info) {
@@ -38,26 +49,8 @@
     if (!model.content) {
           model.content = @"未知内容";
       }
-    model.EMMessage = message;
-    model.showTime = [SWChatManage longLongToStr:message.timestamp dateFormat:@"HH:mm"];
-       model.oldTime = [SWChatManage longLongToStr:message.timestamp dateFormat:longTimeformatss];
-       NSString *toDay = [SWChatManage getUTCFormateDate:model.oldTime];
-       if ([toDay isEqualToString:@"昨天"]) {
-           model.showTime = [NSString stringWithFormat:@"昨天 %@",model.showTime];
-       }else if ([toDay isEqualToString:@"其他时间"]){
-           model.showTime = [SWChatManage longLongToStr:message.timestamp dateFormat:longTimeformatmm];
-           model.showTime = [[model.showTime componentsSeparatedByString:@"年"] lastObject];
-       }
-    if ([timeArr containsObject:model.showTime]) {
-        model.showTime = @"0000";
-        [timeArr addObject:@"0000"];
-        _showTime = @"0000";
-    }else{
-        _showTime= model.showTime;
-        [timeArr addObject:model.showTime];
-    }
-    model.timeArr = timeArr;
-    model.fromUser =  message.from;
+     model = [self setupModel:model ChatModel:message timeArr:timeArr];
+    
      model.type = [info valueForKey:@"type"];
     
      NSDictionary *sendUser = [info valueForKey:@"sendUser"];
@@ -78,7 +71,7 @@
     }
     if ([model.type isEqualToString:@"img"]) {
         model.isGIF = false;
-               model.cellHeight = [[data valueForKey:@"height"] floatValue];
+               model.cellHeight =  [[data valueForKey:@"height"] floatValue];
                model.cellWidth = [[data valueForKey:@"width"] floatValue]+10;
                if (model.cellWidth<50) {
                    model.cellWidth=60;
@@ -96,13 +89,8 @@
     }
     if ([model.type isEqualToString:@"location"]) {
          model.messageInfo = data;
-//        if (message.messageInfo == nil) {
-//            model.messageInfo = [SWChatManage JsonToDict:message.messageInfoString];
-//        }else
-//        model.messageInfo =  message.messageInfo;
     }
     if ([model.type isEqualToString:@"envelope"]) {
-//           model.messageInfoString = message.messageInfoString;
         model.content =[info valueForKey:@"data"];
                model.redBagInfo = info;
        }
@@ -119,6 +107,30 @@
     
     return model;
     
+}
+
+- (SWChatTouchModel *)setupModel:(SWChatTouchModel *)model  ChatModel:(EMMessage *)message timeArr:(NSMutableArray *)timeArr{
+    model.EMMessage = message;
+    model.showTime = [SWChatManage longLongToStr:message.timestamp dateFormat:@"HH:mm"];
+       model.oldTime = [SWChatManage longLongToStr:message.timestamp dateFormat:longTimeformatss];
+       NSString *toDay = [SWChatManage getUTCFormateDate:model.oldTime];
+       if ([toDay isEqualToString:@"昨天"]) {
+           model.showTime = [NSString stringWithFormat:@"昨天 %@",model.showTime];
+       }else if ([toDay isEqualToString:@"其他时间"]){
+           model.showTime = [SWChatManage longLongToStr:message.timestamp dateFormat:longTimeformatmm];
+           model.showTime = [[model.showTime componentsSeparatedByString:@"年"] lastObject];
+       }
+    if ([timeArr containsObject:model.showTime]) {
+        model.showTime = @"0000";
+        [timeArr addObject:@"0000"];
+        _showTime = @"0000";
+    }else{
+        _showTime= model.showTime;
+        [timeArr addObject:model.showTime];
+    }
+    model.timeArr = timeArr;
+    model.fromUser =  message.from;
+    return model;
 }
 #pragma mark - 设置 计算Cell 高度
 
@@ -146,7 +158,13 @@
            
            _cellHeight = [_showTime isEqualToString:@"0000"] ? 115:  90;
            
-       }  else if ([_type isEqual:@"system"])
+       }
+       else if ([_type isEqual:@"voiceAud"])  {
+          
+          _cellHeight = [_showTime isEqualToString:@"0000"] ? 90:  60;
+          
+      }
+       else if ([_type isEqual:@"system"])
         {
                CGSize size = [SWChatManage sizeWithText:_content font:[UIFont systemFontOfSize:14] maxSize:CGSizeMake(SCREEN_WIDTH-30, 9999)];
                         _cellHeight = size.height+30+26;
@@ -179,8 +197,8 @@
              //系统消息
              return _cellHeight;
          }
-         if ([_type isEqualToString:@"location"] || [_type isEqualToString:@"envelope"] || [_type isEqualToString:@"text"]  ) {
-             //地图 ｜｜ 红包 || 文本
+         if ([_type isEqualToString:@"location"] || [_type isEqualToString:@"envelope"] || [_type isEqualToString:@"text"] || [_type isEqualToString:@"voiceAud"] ) {
+             //地图 ｜｜ 红包 || 文本  || 语音
              if ([_type isEqualToString:@"text"] && _cellHeight<49) {
                  return 54+showName; //文本只有一行的情况下
              }

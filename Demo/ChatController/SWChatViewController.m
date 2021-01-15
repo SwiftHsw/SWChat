@@ -105,7 +105,7 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    self.isNavFullBackEnable = YES;
+    self.isNavFullBackEnable = YES;
     self.sw_leftNavItemSpacing = 15;
     
 }

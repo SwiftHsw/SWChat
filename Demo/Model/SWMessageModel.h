@@ -102,6 +102,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) EMConversation *conversation;
 
+/**
+ yylabel的lay
+ */
+@property (nonatomic, strong) YYTextLayout *textLayout;
+
 @end
 
 NS_ASSUME_NONNULL_END

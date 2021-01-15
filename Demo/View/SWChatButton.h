@@ -40,6 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isUser;
 
 @property (nonatomic, assign) BOOL isCell;
+
+/**
+ 播放动画的view
+ */
+@property (nonatomic, strong) UIImageView *animationView;
+@property (nonatomic, strong) NSString *oldUrl;
  
 @end
 
