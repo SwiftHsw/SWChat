@@ -256,27 +256,34 @@
                  }
              }
              
+         }else if (msgBody.type == EMMessageBodyTypeVoice){
+              
+             [self getVersi:messageArr];
          }
      }else{
-          //获取更新会话列表 或者 直接加载
-         UIViewController *controller = [UIView getCurrentVC];
-         if ([controller isKindOfClass:[SWChatMessageViewController  class]]) {
-             [[NSNotificationCenter defaultCenter] postNotificationName:ATDIDRECEIVENEWMESSAGE_NOTIFICATION object:nil];
-         }else{
-             [[SWHXTool sharedManager] getConversations];
-         }
-         for (int i = 0; i<controller.navigationController.viewControllers.count; i++) {
-                   UIViewController *old = controller.navigationController.viewControllers[i];
-                   if ([old isKindOfClass:[SWChatSingViewController class]]) {
-                       SWChatSingViewController *singChat = (SWChatSingViewController *)old;
-                       //插入消息
-                       [singChat addMessageToArr:messageArr];
-               }
-          }
-        //更新会话界面
-         [[SWChatManage messageControll] loadData];
+         [self getVersi:messageArr];
      }
  }
+
+- (void)getVersi:(NSArray *)messageArr{
+    //获取更新会话列表 或者 直接加载
+   UIViewController *controller = [UIView getCurrentVC];
+   if ([controller isKindOfClass:[SWChatMessageViewController  class]]) {
+       [[NSNotificationCenter defaultCenter] postNotificationName:ATDIDRECEIVENEWMESSAGE_NOTIFICATION object:nil];
+   }else{
+       [[SWHXTool sharedManager] getConversations];
+   }
+   for (int i = 0; i<controller.navigationController.viewControllers.count; i++) {
+             UIViewController *old = controller.navigationController.viewControllers[i];
+             if ([old isKindOfClass:[SWChatSingViewController class]]) {
+                 SWChatSingViewController *singChat = (SWChatSingViewController *)old;
+                 //插入消息
+                 [singChat addMessageToArr:messageArr];
+         }
+    }
+  //更新会话界面
+   [[SWChatManage messageControll] loadData];
+}
 #pragma mark - 网络连接
 /*!
  *  有以下几种情况, 会引起该方法的调用:
