@@ -11,7 +11,7 @@
 - (void)setShouContent:(NSString *)shouContent{
      
     
-  _textLayout =   [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH-140, 50)
+  _textLayout =   [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH-140, 40)
                                                    text:  [SWChatManage setMaattiEmoMessageList:shouContent]];
     
 }

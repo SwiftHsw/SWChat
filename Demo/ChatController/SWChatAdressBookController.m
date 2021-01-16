@@ -11,7 +11,7 @@
 #import "SWFriendSortManager.h"
 #import "SWChatSingViewController.h"
  
-@interface SWChatAdressBookController ()<UITableViewDelegate,UITableViewDataSource>
+@interface SWChatAdressBookController ()
 /*排序后的出现过的拼音首字母数组*/
 @property(nonatomic,strong)NSMutableArray *indexArray;
 /*排序好的结果数组*/
@@ -72,11 +72,12 @@
     self.title = @"通讯录";
   
     self.view.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
-    self.navigationItem.rightBarButtonItem =[ UIBarButtonItem itemWithTitle:@"添加" ImageName:@"" highImageName:@"" target:self action:@selector(addFreadsAction)];
- 
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithNavImageName:@"添加好友"
+                                                                  selectedImageName:@"添加好友"
+                                                                             target:self
+                                                                             action:@selector(addFreadsAction)];
+      
     [self.view addSubview:self.tableView];
     [self loadData];
   

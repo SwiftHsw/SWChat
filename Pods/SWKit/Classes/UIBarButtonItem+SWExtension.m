@@ -24,14 +24,15 @@
 
 + (instancetype)itemWithNavImageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName target:(id)target action:(SEL)action
 {
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
     UIButton *tagButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [tagButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [tagButton setImage:[UIImage imageNamed:selectedImageName] forState:UIControlStateSelected];
-    tagButton.size = CGSizeMake(50, 50);
-    tagButton.imageEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
+    tagButton.size = CGSizeMake(30, 30);
+//    tagButton.imageEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
     [tagButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    
-    return [[self alloc] initWithCustomView:tagButton];
+    [view addSubview:tagButton];
+    return [[self alloc] initWithCustomView:view];
 }
 
 

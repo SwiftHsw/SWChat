@@ -238,7 +238,9 @@
         SWChatLocationViewController *vc = [SWChatLocationViewController new];
         SWNavigationViewController *nav = [[SWNavigationViewController alloc]initWithRootViewController:vc];
         nav.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        WeakSelf(self);
         [vc setGetLoactionBlock:^(double latitude, double longitude, NSString * _Nonnull address, NSString * _Nonnull title, NSData * _Nonnull image) {
+            StrongSelf(self);
             [self sendLocationMessage:latitude longitude:longitude address:address title:title mageData:image];
             
         }];

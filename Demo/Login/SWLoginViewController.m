@@ -21,6 +21,7 @@
     [super viewDidLoad];
     _login_acount.text = @"hsw1234";
     // Do any additional setup after loading the view from its nib.
+//    [self login_Action:nil];
 }
 - (IBAction)login_rigistAction:(id)sender {
     if (kStringIsEmpty(_login_acount.text)) {

@@ -85,7 +85,7 @@
     content.lineBreakMode = NSLineBreakByCharWrapping;
     content.numberOfLines = 1;
     content.textColor = [UIColor colorWithHexString:@"#9e9e9e"];
-    content.font = [UIFont systemFontOfSize:10];
+    content.font = [UIFont systemFontOfSize:14];
     content.frame = CGRectMake(75, 38, SCREEN_WIDTH-130, 24);
     _contentLabel = content;
     [self.contentView addSubview:content];

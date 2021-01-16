@@ -50,7 +50,7 @@
     EMOptions *options = [EMOptions optionsWithAppkey:@"1152161013178489#xmg1chat"];
     // apnsCertName是证书名称，可以先传nil，等后期配置apns推送时在传入证书名称
      options.apnsCertName = nil;
-      [options setIsAutoLogin:false];
+     [options setIsAutoLogin:false];
      [[EMClient sharedClient] initializeSDKWithOptions:options];
      [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
      [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
@@ -60,12 +60,30 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [SWLoginViewController new];
     [self.window makeKeyAndVisible];
-       
-   
+        
+    [self setupTabbar];
+    
+    
     return YES;
 }
 
-
+- (void)setupTabbar{
+    // 默认
+          NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+          attrs[NSForegroundColorAttributeName] = [UIColor grayColor];
+          attrs[NSFontAttributeName] = kBoldFontWithSize(18);
+          // 选中
+          NSMutableDictionary *attrSelected = [NSMutableDictionary dictionary];
+          attrSelected[NSForegroundColorAttributeName] = [[UIColor blackColor] colorWithAlphaComponent:.4];
+         attrSelected[NSFontAttributeName] = kBoldFontWithSize(18);
+        UITabBarItem *item = [UITabBarItem appearance] ;
+          [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
+          [item setTitleTextAttributes:attrSelected forState:UIControlStateSelected];
+                               
+       //设置文字位置
+        [item setTitlePositionAdjustment:UIOffsetMake(0, -2.5)];
+ 
+}
 #pragma mark 好友操作区
 
  - (void)friendRequestDidReceiveFromUser:(NSString *)aUsername

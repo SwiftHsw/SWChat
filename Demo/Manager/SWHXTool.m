@@ -73,6 +73,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
     }else{
         SWLog(@"自动登录，直接获取数据");
         [[SWHXTool sharedManager] getFriendList];
+       
     }
     
 }

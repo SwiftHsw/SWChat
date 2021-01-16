@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SWChatViewController : SWSuperViewContoller <UITableViewDelegate,UITableViewDataSource>
+@interface SWChatViewController : SWSuperViewContoller  
 
 @property (nonatomic, strong) SWMessageModel *messageModel;
  

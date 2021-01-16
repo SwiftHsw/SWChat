@@ -23,13 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSDictionary *lastInfo;
 
+/// 收到对象发送的消息
 -(void)addMessageToArr:(NSArray *)addArr;
-
+/// 更新状态栏标题
 -(void)updateTitleState:(NSString *)state parames:(NSDictionary *)parames;
-
--(void)friendStateDidChange:(BOOL)isFriend;
-
--(void)updateUserInfo:(SWFriendInfoModel *)infoModel;
+   
 
 
 @end

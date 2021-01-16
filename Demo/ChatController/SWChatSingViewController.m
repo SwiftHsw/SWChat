@@ -38,8 +38,9 @@
 
 -(void)loadData
 {
-    __weak typeof(self) weakSelf = self;
+    WeakSelf(self);
     [self.conversation loadMessagesStartFromId:nil count:20 searchDirection:EMMessageSearchDirectionUp completion:^(NSArray *aMessages, EMError *aError) {
+        StrongSelf(self);
         if (!aError) {
             NSMutableArray *timeArr = [[NSMutableArray alloc] init];
             NSMutableArray *addArr = [[NSMutableArray alloc] init];
@@ -52,13 +53,13 @@
                 [timeArr addObject:model.timeArr];
                  [addArr addObject:model];
             }
-            weakSelf.dataArray = addArr;
+            self.dataArray = addArr;
             [self.tableView reloadData];
             double delayInSeconds = 0.01;
                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                   
-                   if (weakSelf.dataArray.count > 2) {
+                   StrongSelf(self);
+                   if (self.dataArray.count > 2) {
                        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
                    }
                });
@@ -102,7 +103,6 @@
 #pragma mark viewAction
 -(void)dealloc
 {
-    
     NSLog(@"销毁单聊%@,%@",self.touchBarView.sw_TextView.text,self.messageModel.touchUser);
     [_timer invalidate];
     [SWChatManage setTouchUser:@""];
@@ -171,14 +171,5 @@
      }
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+ 
 @end
