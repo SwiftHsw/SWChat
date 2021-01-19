@@ -324,7 +324,7 @@ CLLocationManagerDelegate
             
             if (!_curCenterReGeocode) {
                 address = LOCATION_UNKNOWE_ADDRESS;
-                 name = LOCATION_UNKNOWE_NAME;
+                name = LOCATION_UNKNOWE_NAME;
             }else{
                 
             MAMapPoint point1 = MAMapPointForCoordinate(self.mapView.centerCoordinate);

@@ -95,7 +95,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
 //    //获取群列表
 //    [self getChatGroupList];
     if (self.OperationBlock) {
-        self.OperationBlock(nil, nil);
+        self.OperationBlock(@{@"isLogin":@"success"}, nil);
     }
    
 }

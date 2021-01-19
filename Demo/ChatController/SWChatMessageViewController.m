@@ -76,6 +76,9 @@
     _hxTool = [SWHXTool sharedManager];
     _hxTool.OperationBlock = ^(NSDictionary *info, EMError *error) {
         if (!error) {
+            if ([info[@"isLogin"] isEqualToString:@"success"]) {
+                weakSelf.tableView.tableHeaderView = [weakSelf creatHeadView:0];
+            }
         }else{
             weakSelf.tableView.tableHeaderView = [weakSelf creatHeadView:1];
         }

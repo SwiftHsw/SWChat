@@ -94,7 +94,9 @@
         }else
             _drafrStr = @"";
     }
-    [SWPlaceTopTool updateDraftWithName:self.messageModel.touchUser content:self.touchBarView.sw_TextView.text];
+    [SWPlaceTopTool updateDraftWithName:self.messageModel.touchUser
+                                content:self.touchBarView.sw_TextView.text];
+    
     [_conversation markAllMessagesAsRead:nil];
     [_timer invalidate];
     _timer = nil;
