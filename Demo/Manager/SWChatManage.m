@@ -570,17 +570,16 @@ CREATE_SHARED_MANAGER(SWChatManage)
 }
 
 
-+ (void)starBoomAnmintion{
++ (void)starBoomAnmintion:(CGPoint)center{
 
     UIImageView *boom_View = [[UIImageView alloc]init];
     boom_View.image = kImageName(@"baozha");
-    boom_View.size = CGSizeMake(200, 200);
-    boom_View.backgroundColor = UIColor.redColor;
+    boom_View.size = CGSizeMake(100, 100);
     [[UIView getCurrentVC].view addSubview:boom_View];
-    boom_View.center = [UIView getCurrentVC].view.center;
+    boom_View.center = center;
  
      [NSObject playVibration];
-    [boom_View explodeWithPartsNum:4 timeInterval:2];
+    [boom_View explodeWithPartsNum:5 timeInterval:2];
     
      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
          [boom_View removeFromSuperview];

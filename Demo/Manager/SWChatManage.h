@@ -101,7 +101,7 @@ typedef void (^getIMMessageDataBlock)(SWChatTouchModel *model);
 
 //模仿微信8.0 动画爆炸效果
 
-+ (void)starBoomAnmintion;
++ (void)starBoomAnmintion:(CGPoint)center;
  
  
 

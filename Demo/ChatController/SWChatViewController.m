@@ -46,15 +46,22 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
                 [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:weakSelf.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
                 
                 if (model.isBoom) {
+                  
                                    //模拟微信发送炸弹后震动还有抖动动画
                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                        for ( SWTouchBaseCell *cell  in weakSelf.tableView.visibleCells) {
                                                  [cell.layer addAnimation:[self stratAnmation] forKey:@"stratAnmation"];
                                            }
-                                          [SWChatManage starBoomAnmintion]; //找到最后一个cell 传入一个y值
+                                       CGPoint center = CGPointMake(SCREEN_WIDTH - 100, SCREEN_HEIGHT - weakSelf.keyBoardHeight);
+                                       SWLog(@">>>>>>>%@",NSStringFromCGPoint(center));
+                                       
+                                       [SWChatManage starBoomAnmintion:center];
                                    });
+                    
+                    
+                    //找到最后一个cell 传入一个y值
                       model.isBoom = NO;
-                   } 
+                   }
             }
         }
     };
