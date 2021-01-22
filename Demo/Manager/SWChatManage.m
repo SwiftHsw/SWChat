@@ -8,6 +8,8 @@
 
 #import "SWChatManage.h"
 #import "SWFriendSortManager.h"
+#import "UIView+YDExplode.h"
+
 
  NSString * const longTimeformatss = @"yyyy年MM月dd日 HH:mm:ss";
 
@@ -568,54 +570,21 @@ CREATE_SHARED_MANAGER(SWChatManage)
 }
 
 
++ (void)starBoomAnmintion{
 
--(void)sendMessageToUser:(NSString *)toUser
-   messageType:(NSString *)messtype
-      chatType:(NSInteger)chatType
-      userInfo:(NSDictionary *)info
-       content:(NSDictionary *)content
-     messageID:(NSString *) messageID
-      isInsert:(BOOL)isInsert
-isConversation:(BOOL)isConversation
-        isJoin:(BOOL)isJoin
-successBlock:(void (^)(SWChatTouchModel *model))block{
+    UIImageView *boom_View = [[UIImageView alloc]init];
+    boom_View.image = kImageName(@"baozha");
+    boom_View.size = CGSizeMake(200, 200);
+    boom_View.backgroundColor = UIColor.redColor;
+    [[UIView getCurrentVC].view addSubview:boom_View];
+    boom_View.center = [UIView getCurrentVC].view.center;
+ 
+     [NSObject playVibration];
+    [boom_View explodeWithPartsNum:4 timeInterval:2];
     
-     
-    //操作IM发送逻辑
-    SWChatTouchModel *model = [[SWChatTouchModel alloc]init];
-   
-    model.showTime = [NSDate getNowTimeTimestamp3]; 
-    NSArray *arr = @[[SWChatManage getUserName],@"2222"];
-    int index =  arc4random()%arr.count;
-     //模拟消息发送方
-    model.fromUser = arr[index];
-    
-    
-    //文本
-       model.content = [content valueForKey:@"content"];
-       model.type = messtype;
-       
-       //图片
-       if ([messtype isEqualToString:@"img"]) {
-           model.pid = [content valueForKey:@"fileName"];
-           model.imageHeight = [[content valueForKey:@"height"] floatValue];
-           model.imageWight = [[content valueForKey:@"width"] floatValue];
-           model.isSuccess = @"upload";
-//          model.fromUser = [SWChatManage getUserName];
-       }
-       //位置
-       if ([messtype isEqualToString:@"location"]) {
-             model.pid = [content valueForKey:@"fileName"];
-           model.messageInfo = @{@"addressTitle":content[@"addressTitle"],@"addressDet":content[@"addressTitle"]};
-//           model.fromUser = [SWChatManage getUserName];
-       }
-       //红包
-       if ([messtype isEqualToString:@"envelope"]) {
-           model.messageInfoString = @"0";
-           model.pid = [NSString getRandomString];
-       }
-        self.getBlock(model);
-     
-         block(model);
+     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+         [boom_View removeFromSuperview];
+     });
 }
+ 
 @end

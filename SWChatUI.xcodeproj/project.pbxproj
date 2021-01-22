@@ -84,6 +84,7 @@
 		0489E09B25660BE00084EF76 /* SWLocationSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489E09A25660BE00084EF76 /* SWLocationSearchResultController.m */; };
 		04F3466A25662CB70048FE87 /* SWChatLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F3466925662CB70048FE87 /* SWChatLocationCell.m */; };
 		6402BC2625B1669C0053D24D /* SWChatVoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6402BC2525B1669C0053D24D /* SWChatVoiceCell.m */; };
+		6409C53625BAC2A200DF3232 /* UIView+YDExplode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6409C53425BAC2A100DF3232 /* UIView+YDExplode.m */; };
 		6452DC69259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6452DC68259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m */; };
 		64D30E8925B04C26001A2CBA /* LVRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D30E8725B04C26001A2CBA /* LVRecordTool.m */; };
 		DF0F768EBBE3D550ACB814C4 /* Pods_SWChatUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15072FE021C9E8D73F243182 /* Pods_SWChatUI.framework */; };
@@ -240,6 +241,8 @@
 		15072FE021C9E8D73F243182 /* Pods_SWChatUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWChatUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6402BC2425B1669C0053D24D /* SWChatVoiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatVoiceCell.h; sourceTree = "<group>"; };
 		6402BC2525B1669C0053D24D /* SWChatVoiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatVoiceCell.m; sourceTree = "<group>"; };
+		6409C53425BAC2A100DF3232 /* UIView+YDExplode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YDExplode.m"; sourceTree = "<group>"; };
+		6409C53525BAC2A200DF3232 /* UIView+YDExplode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YDExplode.h"; sourceTree = "<group>"; };
 		6452DC67259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYAnimatedImageView+ImageShow.h"; sourceTree = "<group>"; };
 		6452DC68259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYAnimatedImageView+ImageShow.m"; sourceTree = "<group>"; };
 		64D30E8725B04C26001A2CBA /* LVRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVRecordTool.m; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 		048867DB255E75EB0003F275 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				6409C53525BAC2A200DF3232 /* UIView+YDExplode.h */,
+				6409C53425BAC2A100DF3232 /* UIView+YDExplode.m */,
 				046ABEA7256B60BC00359625 /* FMLabel */,
 				048869D42563D1490003F275 /* FMDB */,
 				0488686725637EB90003F275 /* menuController */,
@@ -757,6 +762,7 @@
 				04886809255E79D60003F275 /* SWTouchTextView.m in Sources */,
 				046ABE972568C41600359625 /* SWFriendListCell.m in Sources */,
 				64D30E8925B04C26001A2CBA /* LVRecordTool.m in Sources */,
+				6409C53625BAC2A200DF3232 /* UIView+YDExplode.m in Sources */,
 				0489E0922566053E0084EF76 /* SWSearchViewController.m in Sources */,
 				0489E09B25660BE00084EF76 /* SWLocationSearchResultController.m in Sources */,
 				046ABE882568ADC300359625 /* SWChatMessageViewController.m in Sources */,

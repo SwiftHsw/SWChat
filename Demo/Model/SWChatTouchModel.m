@@ -572,4 +572,6 @@
     SWLog(@"richTextLongTouchAction");
     
 }
+
+
 @end

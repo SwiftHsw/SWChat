@@ -97,31 +97,13 @@ typedef void (^getIMMessageDataBlock)(SWChatTouchModel *model);
  
 //缓存未读的数据
 +(void)updateMessageCount:(NSInteger)count;
-#pragma mark - 模拟第三方IM发送消息
-/*
-发送消息
-@param toUser 接收方的ID
-@param messtype 聊天类型
-@param chatType 会话类型 1单聊 2群聊
-@param info 接收方的信息
-@param content 会话内容
-@param messageID 会话ID
- @param successBlock 成功回调
-**/
--(void)sendMessageToUser:(NSString *)toUser
-             messageType:(NSString *)messtype
-                chatType:(NSInteger)chatType
-                userInfo:(NSDictionary *)info
-                 content:(NSDictionary *)content
-               messageID:(NSString *)messageID
-                isInsert:(BOOL)isInsert
-          isConversation:(BOOL)isConversation
-                  isJoin:(BOOL)isJoin
-          successBlock:(void (^)(SWChatTouchModel *model))block;
 
-//消息回调
-@property (nonatomic,copy) getIMMessageDataBlock getBlock;
 
+//模仿微信8.0 动画爆炸效果
+
++ (void)starBoomAnmintion;
+ 
+ 
 
 
 @end

@@ -154,6 +154,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL isGIF;
 
+@property (nonatomic, assign) BOOL isBoom;
+
 @property (nonatomic, strong) NSDictionary *messageInfo;
 
 @property (nonatomic, copy) NSString *messageInfoString ; //由于数据库不支持字典类型，这边用字符串转换做缓存用

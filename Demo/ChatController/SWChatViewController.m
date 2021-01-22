@@ -44,6 +44,17 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
                 
                 [weakSelf.tableView reloadData];
                 [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:weakSelf.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                
+                if (model.isBoom) {
+                                   //模拟微信发送炸弹后震动还有抖动动画
+                                   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                       for ( SWTouchBaseCell *cell  in weakSelf.tableView.visibleCells) {
+                                                 [cell.layer addAnimation:[self stratAnmation] forKey:@"stratAnmation"];
+                                           }
+                                          [SWChatManage starBoomAnmintion]; //找到最后一个cell 传入一个y值
+                                   });
+                      model.isBoom = NO;
+                   } 
             }
         }
     };
@@ -86,6 +97,24 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
     
 }
  
+#define ANGLE_TO_RADIAN(angle) ((angle)/180.0 * M_PI)
+- (CAKeyframeAnimation *)stratAnmation
+{
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animation];
+    //拿到动画 key
+    anim.keyPath =@"transform.rotation";
+    anim.duration= .5;//设置动画时间，如果动画组中动画已经设置过动画属性则不再生效
+    // 重复的次数
+    anim.repeatCount = 1;
+    //设置抖动数值
+    anim.values = @[@(ANGLE_TO_RADIAN(0)),@(ANGLE_TO_RADIAN(-17)),@(ANGLE_TO_RADIAN(17)),@(ANGLE_TO_RADIAN(0))];
+    // 保持最后的状态
+    anim.removedOnCompletion =NO;
+    //动画的填充模式
+    anim.fillMode =kCAFillModeForwards;
+    return anim;
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
