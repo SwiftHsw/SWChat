@@ -220,6 +220,9 @@
                                                                   handler:nil];
         textLayout = [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH-140, 5000)
                                                       text:text];
+        if ([model.content isEqualToString:@"[炸弹]"]) {
+                   model.isBoom = YES;
+           }
     }
     // 赋值排版并且计算高度
     model.textLayout = textLayout;
