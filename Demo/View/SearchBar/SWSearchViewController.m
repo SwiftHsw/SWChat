@@ -148,7 +148,7 @@ static SWSearchViewController *_instance;
      self.searchBar.frame = frame;
      self.searchBar.placeholder = fromSearchBar.placeholder;
      
-     self.fromNavigationBarView = [controller.navigationController.navigationBar resizableSnapshotViewFromRect:CGRectMake(0, 0, SCREEN_WIDTH, NavBarHeight) afterScreenUpdates:NO withCapInsets:UIEdgeInsetsZero];
+     self.fromNavigationBarView = [controller.navigationController.navigationBar resizableSnapshotViewFromRect:CGRectMake(0, 0, SCREEN_WIDTH,  NAVBAR_HEIGHT) afterScreenUpdates:NO withCapInsets:UIEdgeInsetsZero];
      [self.view addSubview:self.fromNavigationBarView];
      
      searchResultView = nil;
@@ -218,7 +218,7 @@ static SWSearchViewController *_instance;
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          CGRect frame = self.toNavigationBarView.frame;
-                         frame.origin.y = -frame.size.height + NavBarHeight;
+                         frame.origin.y = -frame.size.height + NAVBAR_HEIGHT;
                          self.toNavigationBarView.frame = frame;
                          
         frame = self->_searchBar.frame;

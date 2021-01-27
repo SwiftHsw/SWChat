@@ -134,7 +134,7 @@
         [self addSubview:_soundField];
         
        //功能区域view
-        _funcView = [[SWFuncView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 210+SafeBottomHeight) isGroup:1];
+        _funcView = [[SWFuncView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 210+SAFEBOTTOM_HEIGHT) isGroup:1];
           _funcView.delegate = self;
           _soundField.inputView = _funcView;
         
@@ -282,7 +282,7 @@
     }
     float height = size.height+10;
  
-        self.frame = CGRectMake(0, SCREEN_HEIGHT-height- NavBarHeight-SafeBottomHeight, SCREEN_WIDTH, height+SafeBottomHeight);
+        self.frame = CGRectMake(0, SCREEN_HEIGHT-height- NAVBAR_HEIGHT-SAFEBOTTOM_HEIGHT, SCREEN_WIDTH, height+SAFEBOTTOM_HEIGHT);
         _lastLineView.frame = CGRectMake(0, height-0.5, SCREEN_WIDTH, 0.5);
         soundBtn.frame = CGRectMake(8, height-40-2, 34, 34);
         addBtn.frame = CGRectMake(SCREEN_WIDTH-35, height-40-2, 34, 34);

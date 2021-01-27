@@ -22,6 +22,7 @@
 #import "SWKit.h"
 #import "SWNavigationViewController.h"
 #import "SWNoDataView.h"
+#import "SWSlidePopupView.h"
 #import "SWSuperViewContoller.h"
 #import "SWTabbarController.h"
 #import "UIBarButtonItem+SWExtension.h"

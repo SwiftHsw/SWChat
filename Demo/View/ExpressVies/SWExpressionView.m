@@ -79,7 +79,7 @@ UICollectionViewDataSource>{
          _collectView.alwaysBounceVertical = NO;
          [_collectView registerClass:[SWExpressionCollectionCell class] forCellWithReuseIdentifier:@"expressionViewID"];
          
-         UIView *last = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_collectView.frame), SCREEN_WIDTH, SafeBottomHeight)];
+         UIView *last = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_collectView.frame), SCREEN_WIDTH, SAFEBOTTOM_HEIGHT)];
          last.backgroundColor =[UIColor whiteColor];
          [self addSubview:last];
      }

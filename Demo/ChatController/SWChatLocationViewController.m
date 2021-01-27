@@ -107,7 +107,7 @@ CLLocationManagerDelegate
     [self.view addSubview:_searchBar];
      
     //地图
-    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0,50, ScreenWidth, 250)];
+    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0,50, SCREEN_WIDTH, 250)];
      _mapView.delegate = self;
      _mapView.mapType = MAMapTypeStandard;
      _mapView.language = MAMapLanguageZhCN;
@@ -127,7 +127,7 @@ CLLocationManagerDelegate
        CGRect frame = SCREEN_FRAME;
        accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AlbumCheckmark"]];
        frame.size.height = floor(SCREEN_HEIGHT * TABLE_VIEW_HEIGHT_MIN_FACTOR);
-       frame.origin.y = SCREEN_HEIGHT - frame.size.height - NavBarHeight;
+       frame.origin.y = SCREEN_HEIGHT - frame.size.height - NAVBAR_HEIGHT;
     //tableView
        self.tableView .frame = CGRectMake(0,frame.origin.y , SCREEN_WIDTH, frame.size.height);
         self.tableView.backgroundColor = UIColor.whiteColor;
@@ -551,7 +551,7 @@ CLLocationManagerDelegate
                          CGRect frame= self.tableView.frame;
                          frame.size.height = floor(SCREEN_HEIGHT *
                                                    (bigger ? TABLE_VIEW_HEIGHT_MAX_FACTOR : TABLE_VIEW_HEIGHT_MIN_FACTOR));
-                         frame.origin.y = SCREEN_HEIGHT - frame.size.height - NavBarHeight;
+                         frame.origin.y = SCREEN_HEIGHT - frame.size.height - NAVBAR_HEIGHT;
                          self.tableView.frame = frame;
                          
                          frame = self.mapView.frame;
@@ -753,7 +753,7 @@ CLLocationManagerDelegate
 //        if (_y < 0) {
 //            self.view.top = 0;
 //        }else {
-//            self.view.top =  NavBarHeight - self->origionMapViewMinY;
+//            self.view.top =  NAVBAR_HEIGHT - self->origionMapViewMinY;
 //        }
 //
 //    }];

@@ -160,12 +160,12 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 }
 - (void)sw_bangdingSelfUI{
    
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50 - SafeBottomHeight - NavBarHeight);
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50 - SAFEBOTTOM_HEIGHT - NAVBAR_HEIGHT);
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
     self.view.backgroundColor =[UIColor colorWithHexString:@"#f2f2f2"];
     
-    self.touchBarView = [[SWTouchBarView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50-SafeBottomHeight - NavBarHeight, SCREEN_WIDTH, 50+SafeBottomHeight)];
+    self.touchBarView = [[SWTouchBarView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50-SAFEBOTTOM_HEIGHT - NAVBAR_HEIGHT, SCREEN_WIDTH, 50+SAFEBOTTOM_HEIGHT)];
     self.touchBarView.userInfoModel = self.messageModel.friendModel;
     
     WeakSelf(self);
@@ -243,13 +243,13 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
         _touchBarView.lastLineView.hidden = YES;
     }
     
-    if (Is_Iphone_X) {
-           self.view.transform = CGAffineTransformMakeTranslation(0, -_keyBoardHeight+SafeBottomHeight);
+    if (IS_iPhone_X) {
+           self.view.transform = CGAffineTransformMakeTranslation(0, -_keyBoardHeight+SAFEBOTTOM_HEIGHT);
     }else{
          self.view.transform = CGAffineTransformMakeTranslation(0, keyboardRect.origin.y-SCREEN_HEIGHT);
     }
            
-       self.tableView.frame = CGRectMake(0, _keyBoardHeight-SafeBottomHeight, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height-_keyBoardHeight-NavBarHeight+SafeBottomHeight);
+       self.tableView.frame = CGRectMake(0, _keyBoardHeight-SAFEBOTTOM_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height-_keyBoardHeight-NAVBAR_HEIGHT+SAFEBOTTOM_HEIGHT);
     
        if (self.dataArray.count != 0)
        {
@@ -259,7 +259,7 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 -(void)touchKeyBoarbWillHide:(NSNotification *)notification
 {
     self.view.transform = CGAffineTransformIdentity;
-    self.tableView.frame =  CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height - NavBarHeight);
+    self.tableView.frame =  CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height - NAVBAR_HEIGHT);
     _touchBarView.lastLineView.hidden = YES;
     _keyBoardHeight = 0;
     if (self.touchBarView.sw_TextView.isFirstResponder) {
@@ -271,9 +271,9 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 #pragma mark - 动态刷新界面坐标
 - (void)uploadViewFrame{
     if (_keyBoardHeight==0) {
-         self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height-_keyBoardHeight - NavBarHeight);
+         self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height-_keyBoardHeight - NAVBAR_HEIGHT);
      }else
-         self.tableView.frame = CGRectMake(0, _keyBoardHeight-SafeBottomHeight, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height-_keyBoardHeight -NavBarHeight +SafeBottomHeight);
+         self.tableView.frame = CGRectMake(0, _keyBoardHeight-SAFEBOTTOM_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-_touchBarView.frame.size.height-_keyBoardHeight -NAVBAR_HEIGHT +SAFEBOTTOM_HEIGHT);
         [self.tableView reloadData];
         if (self.dataArray.count>0) {
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];

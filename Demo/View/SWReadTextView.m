@@ -22,11 +22,11 @@
 {
     self.backgroundColor = [UIColor whiteColor];
     UIScrollView *scr  = [[UIScrollView alloc]init];
-    scr.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50 - SafeBottomHeight);
+    scr.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50 - SAFEBOTTOM_HEIGHT);
     
     [self addSubview:scr];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, SafeBottomHeight, SCREEN_WIDTH-20, scr.height - SafeBottomHeight)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, SAFEBOTTOM_HEIGHT, SCREEN_WIDTH-20, scr.height - SAFEBOTTOM_HEIGHT)];
     label.text = text;
     label.numberOfLines = 0;
     label.font =[UIFont systemFontOfSize:22];
@@ -45,7 +45,7 @@
         label.height = size.height;
     }
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50-SafeBottomHeight, SCREEN_WIDTH, 0.5)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50-SAFEBOTTOM_HEIGHT, SCREEN_WIDTH, 0.5)];
     line.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
     [self addSubview:line];
     NSArray *arr =@[@"分享",@"收藏"];
@@ -53,7 +53,7 @@
     for (int i = 0; i<2; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:arr[i] forState:UIControlStateNormal];
-        [button setFrame:CGRectMake(i*width, SCREEN_HEIGHT-50-SafeBottomHeight, width, 50)];
+        [button setFrame:CGRectMake(i*width, SCREEN_HEIGHT-50-SAFEBOTTOM_HEIGHT, width, 50)];
         [button.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];

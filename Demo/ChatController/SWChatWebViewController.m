@@ -112,7 +112,7 @@ UIGestureRecognizerDelegate
 {
     if (_wkWebview == nil)
     {
-        _wkWebview = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT +SafeBottomHeight)];
+        _wkWebview = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT +SAFEBOTTOM_HEIGHT)];
         _wkWebview.UIDelegate = self;
         _wkWebview.navigationDelegate = self;
         _wkWebview.backgroundColor =  [UIColor colorWithHexString:@"#FAFAFA"];

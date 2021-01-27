@@ -28,7 +28,7 @@ PODS:
     - SDWebImage/Core (= 5.10.2)
   - SDWebImage/Core (5.10.2)
   - SVProgressHUD (2.2.5)
-  - SWKit (1.2.3):
+  - SWKit (1.2.4):
     - AFNetworking
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -72,7 +72,7 @@ SPEC CHECKSUMS:
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   SDWebImage: b969dcfc02c40a5da71eac0b03b8f1a0c794a86f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SWKit: 33394603255ef56e28cde18adab624b72460e539
+  SWKit: 9a0f7cdfb3ccd2f62a7dbc60143ea04c4a83417d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
 PODFILE CHECKSUM: 04038421f3e19d6501758d6cf4311a48ce551737
