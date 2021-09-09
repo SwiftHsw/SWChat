@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SWFriendInfoModel *friendModel;
 
 //群聊数据
-//@property (nonatomic, strong) SWChatGroupModel *groupModel;
+@property (nonatomic, strong) SWChatGroupModel *groupModel;
 
 @property (nonatomic, strong) EMMessage *oldMessage;
 /**

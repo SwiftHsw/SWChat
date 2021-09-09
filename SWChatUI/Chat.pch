@@ -46,6 +46,8 @@
 
 #define IMGifImagePath [NSString stringWithFormat:@"%@/userImage/%@/gifImage/",SWDocumentPath,FORM_USERNAME]
 
+
+#define USERHEAD @"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1194131577,2954769920&fm=26&gp=0.jpg"
  
 //聊天数据缓存
 #define IMCACEL @"IMCACEL"
@@ -74,7 +76,10 @@
 #import "SWMessageModel.h"
 //用户模型
 #import "SWFriendInfoModel.h"
- 
+//群里模型
+#import "SWChatGroupModel.h"
+#import "SWGroupServerModel.h"
+
 //cell 显示模型
 #import "SWChatTouchModel.h"
 //cell  功能管理工具

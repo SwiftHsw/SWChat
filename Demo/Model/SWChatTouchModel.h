@@ -100,13 +100,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 是否显示群成员名称
  */
-@property (nonatomic, copy) NSString *isShow;
+@property (nonatomic, assign)BOOL isShow;
 
 /**
  cell高
  */
-@property (nonatomic, assign) CGFloat cellHeight;
-@property (nonatomic, assign) CGFloat cellFinalHeight;
+@property (nonatomic, assign) CGFloat cellHeight; 
 
 /**
  cell宽

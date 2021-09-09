@@ -10,6 +10,7 @@
 #import "SWMessageCell.h"
 #import "SWSearchBar.h"
 #import "SWSearchViewController.h"
+#import "SWGroupChatController.h"
 
 @interface SWChatMessageViewController ()
 <
@@ -66,7 +67,8 @@
      [self setupTable];
      [self setupHXTool];
      [self loadData];
-  
+    [self setupNotification];
+    
 }
 
 - (void)setupHXTool
@@ -155,7 +157,10 @@
    //做一些输入框 搜索的逻辑
     return NO;
 }
- 
+-(void)uploadInsertMessage:(NSString *)inertMesaageId{
+    _insertMessageId = inertMesaageId;
+    [self loadData];
+}
 #pragma mark - tableView Delagete
  
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -233,11 +238,37 @@
            model.messageCount = 0;
            [tableView reloadData];
        }
-       SWChatSingViewController *controller = [[SWChatSingViewController alloc] init];
-           controller.drafrStr = model.draft;
-           controller.messageModel = model;
-           controller.conversation = model.conversation;
-         [self.navigationController pushViewController:controller animated:YES];
+    
+    if (model.conversation.type != EMConversationTypeGroupChat) {
+        [[SWHXTool sharedManager] gotoSingChatControllerWithLoginName:model.shouName];
+    }else{
+        SWChatGroupModel *groupModel = [[ATFMDBTool shareDatabase] getGroupModelWithGroupId:model.touchUser];
+        if (groupModel) {
+            groupModel.isJoin = true;
+            groupModel.memberList = [groupModel.memberString componentsSeparatedByString:@","];
+            [[ATFMDBTool shareDatabase] updateGroupInfoWithGroup:groupModel];
+        }else{
+            NSDictionary *info = [SWChatManage JsonToDict:model.lastContent];
+            NSDictionary *sendUser = [info valueForKey:@"sendUser"];
+            SWChatGroupModel * groupModel = [SWChatGroupModel new];
+            groupModel.occupantsCount = [[sendUser valueForKey:@"groupMemberNum"] integerValue];
+            groupModel.subject= [sendUser valueForKey:@"groupName"];
+            groupModel.groupId = [sendUser valueForKey:@"groupId"];
+            groupModel.isJoin = false;
+        }
+        SWGroupChatController *controller = [[SWGroupChatController alloc] init];
+        controller.isJoin = groupModel.isJoin;
+        controller.messageModel = model;
+        controller.drafrStr = model.draft;
+        controller.conversation = model.conversation;
+        controller.touchBarHideen = NO;
+        controller.groupModel = groupModel;
+//        controller.unReadCount = unCount;
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    }
+    
+   
     
 }
  

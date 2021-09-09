@@ -132,13 +132,10 @@
            _userBtn.userId = [touchModel.sendUserInfo valueForKey:@"loginName"];
             
             //模拟是否显示群昵称
-              _remarkName.hidden = kStringIsEmpty(_shouldShowName);
-           if (_shouldShowName) {
-                _remarkName.frame = CGRectMake(60,CGRectGetMaxY(_timelab.frame)+5, SCREEN_WIDTH-70, 20);
-                _remarkName.text = _shouldShowName;
-               
-            }
+              _remarkName.hidden = !touchModel.isShow;
            
+                _remarkName.frame = CGRectMake(60,CGRectGetMaxY(_timelab.frame)+5, SCREEN_WIDTH-70, 20);
+                _remarkName.text = touchModel.fromUser; 
        }
    
     //这边统一设置重发按钮的中心点坐标

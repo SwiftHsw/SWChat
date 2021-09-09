@@ -105,6 +105,9 @@ typedef void (^getIMMessageDataBlock)(SWChatTouchModel *model);
  
  
 
++(NSMutableDictionary *)sendInfoWithGroupModel:(SWChatGroupModel *)model;
+
+
 
 @end
 

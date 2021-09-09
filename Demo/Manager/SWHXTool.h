@@ -26,9 +26,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void(^sendImageInsertBlock)(EMMessage *message,NSString *error);
 //重发
 @property (nonatomic, copy) void(^messageReSendBlock)(SWChatTouchModel *model);
+@property (nonatomic, copy) void(^leverFromGroupBlock)(NSDictionary *info,EMError *error);
+
 //单例
 + (instancetype)sharedManager;
-
+//1. 正序。2. 倒序
+@property (nonatomic, copy) NSString *action;
 #pragma mark 账号操作
 //账号注册
 -(void)registerWithUsername:(NSString *)name isReLogin:(BOOL)isReLogin didGoon:(BOOL)goon;
@@ -96,6 +99,44 @@ NS_ASSUME_NONNULL_BEGIN
                                content:(NSString *)content
                             touchModel:(SWChatTouchModel *)model
                           conversation:(EMConversation *)conver;
+
+#pragma 群操作
+//获取群列表
+-(void)getChatGroupList;
+/**
+ 创建群聊
+ 
+ @param invitees 被邀请的人
+ @param type
+ 1为消息转发/分享创建群聊
+ 2为单聊界面--详情--创建群聊
+ 3为群聊列表界面--创建群聊
+ 4为添加人员至群聊
+ 5为消息转发创建群聊需要回调群对象
+ 6为分享创建群聊需要回调的对象
+ 7为邀请打开创建群聊需要回调的对象
+ 8为分享链接创建群聊
+ 9为邀请圈子成员创建群聊
+ 10为推荐好友创建群聊
+ 
+ @param object type对应的实体信息
+ */
+-(void)createGroup:(NSArray *)invitees
+        actionType:(NSInteger)type
+            object:(id)object
+         friendArr:(NSArray *)friendArr
+     invitationArr:(NSArray *)invitationArr;
+
+//异步发送群邀请
+-(void)sendGroupInvitationMessage:(NSArray *)invitationArr index:(NSInteger)index groupId:(NSString *)name groupModel:(SWChatGroupModel *)groupModel;
+
+
+/*
+ 退出群聊
+ @param groupID 被邀请的人
+ @param isOwner 是否是群主，如果是群主是解散群聊，不然是退出群聊
+ */
+-(void)exitChatGroupWithGroupId:(NSString *)groupID isOwner:(BOOL)is;
 
 
 #pragma mark 其他

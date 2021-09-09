@@ -160,7 +160,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.sw_leftNavItemSpacing = self.sw_rightNavItemSpacing = 10;
+//    self.sw_leftNavItemSpacing = self.sw_rightNavItemSpacing = 10;
 }
  
 

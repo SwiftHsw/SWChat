@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h> 
 #import "FMDB.h"
 #import "SWFriendInfoModel.h"
+#import "SWChatGroupModel.h"
+#import "SWGroupServerModel.h"
 
 @interface ATFMDBTool : NSObject
 
@@ -172,11 +174,11 @@
 
 #pragma mark 功能区
 //更新群资料
-//-(void)updateGroupInfoWithGroup:(ATChatGroupModel *)model;
+-(void)updateGroupInfoWithGroup:(SWChatGroupModel *)model;
 ////获取群资料
-//-(ATChatGroupModel *)getGroupModelWithGroupId:(NSString *)groupId;
+-(SWChatGroupModel *)getGroupModelWithGroupId:(NSString *)groupId;
 ////获取群详情
-//-(ATGroupServerModel *)getGroupInfoModelWithGroupId:(NSString *)groupId;
+-(SWGroupServerModel *)getGroupInfoModelWithGroupId:(NSString *)groupId;
 ////获取是否显示群昵称(第一次进入)
 //-(BOOL)isShowGroupNameWithGroupId:(NSString *)groupId;
 //-(void)updateGroupServerModelWithGroup:(ATGroupServerModel *)model;

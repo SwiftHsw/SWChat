@@ -704,23 +704,24 @@ static ATFMDBTool *atdb = nil;
     return aa;
 }
 
-//-(void)updateGroupInfoWithGroup:(ATChatGroupModel *)model
-//{
-//    NSString *sql = [NSString stringWithFormat:@"where groupId = '%@'",model.groupId];
-//    [self at_updateTable:@"chatGroupList" dicOrModel:model whereFormat:sql];
-//}
-//-(ATChatGroupModel *)getGroupModelWithGroupId:(NSString *)groupId
-//{
-//    NSString *where = [NSString stringWithFormat:@"where groupId = '%@'",groupId];
-//    NSArray *arr = [[ATFMDBTool shareDatabase] at_lookupTable:@"chatGroupList" dicOrModel:[ATChatGroupModel new] whereFormat:where];
-//    return [arr firstObject];
-//}
-//-(ATGroupServerModel *)getGroupInfoModelWithGroupId:(NSString *)groupId
-//{
-//    NSString *where = [NSString stringWithFormat:@"where groupId = '%@'",groupId];
-//    NSArray *arr = [[ATFMDBTool shareDatabase] at_lookupTable:@"chatGroupInfo" dicOrModel:[ATGroupServerModel new] whereFormat:where];
-//    return [arr firstObject];
-//}
+-(void)updateGroupInfoWithGroup:(SWChatGroupModel *)model
+{
+    NSString *sql = [NSString stringWithFormat:@"where groupId = '%@'",model.groupId];
+    [self at_updateTable:@"chatGroupList" dicOrModel:model whereFormat:sql];
+}
+-(SWChatGroupModel *)getGroupModelWithGroupId:(NSString *)groupId
+{
+    NSString *where = [NSString stringWithFormat:@"where groupId = '%@'",groupId];
+    NSArray *arr = [[ATFMDBTool shareDatabase] at_lookupTable:@"chatGroupList"
+                                                   dicOrModel:[SWChatGroupModel new] whereFormat:where];
+    return [arr firstObject];
+}
+-(SWGroupServerModel *)getGroupInfoModelWithGroupId:(NSString *)groupId
+{
+    NSString *where = [NSString stringWithFormat:@"where groupId = '%@'",groupId];
+    NSArray *arr = [[ATFMDBTool shareDatabase] at_lookupTable:@"chatGroupInfo" dicOrModel:[SWGroupServerModel new] whereFormat:where];
+    return [arr firstObject];
+}
 //-(BOOL)isShowGroupNameWithGroupId:(NSString *)groupId
 //{
 //    NSString *sql = [NSString stringWithFormat:@"select settingStr from chatGroupInfo where groupId is '%@'",groupId];

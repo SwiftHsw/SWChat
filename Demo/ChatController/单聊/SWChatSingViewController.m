@@ -30,12 +30,29 @@
     if (_friendInfo) {
         self.messageModel.shouName = _friendInfo.remark;
         self.messageModel.headUrl = _friendInfo.headPic;
-//        self.isJoin = YES;
+        self.isJoin = YES;
     }
     self.title = self.baseConversation.conversationId;
-     [self loadData];
+    [self loadData];
+    
+     //单聊
+     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"创建群聊" style:UIBarButtonItemStylePlain target:self action:@selector(addgroup)];
+ 
 }
 
+
+- (void)addgroup{
+ 
+    NSString *showText = @"";
+    NSMutableArray *acceptArr = [[NSMutableArray alloc] initWithObjects:self.baseConversation.conversationId,@"1234",@"admin11",@"ccc",@"dddqqq", nil];
+ 
+    NSString *content = [NSString stringWithFormat:@"你邀请%@加入群聊",showText];
+    if (showText.length==0) {
+        content = @"您创建了群聊";
+    }
+    [[SWHXTool sharedManager] createGroup:acceptArr actionType:1 object:content friendArr:acceptArr invitationArr:acceptArr];
+
+}
 -(void)loadData
 {
     WeakSelf(self);
@@ -50,8 +67,9 @@
                     model.isSuccess = @"success";
                 }
                 model.conversation = self.baseConversation;
+                model.isShow = self.isShowMemberName;
                 [timeArr addObject:model.timeArr];
-                 [addArr addObject:model];
+                [addArr addObject:model];
             }
             self.dataArray = addArr;
             [self.tableView reloadData];

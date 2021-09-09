@@ -49,6 +49,12 @@ UINavigationControllerDelegate
 @property (nonatomic,strong) UITextField *imageField;
 
 @property (nonatomic, strong) UIView *lastLineView;
+@property (nonatomic, assign) BOOL isJoin;
+//1 是单聊，2是群聊
+@property (nonatomic,assign) NSInteger isGroup;
+@property (nonatomic, copy) NSString *isFrom;
+
+@property (nonatomic, strong) SWChatGroupModel *groupModel;
 
 /**
  动态刷新高度

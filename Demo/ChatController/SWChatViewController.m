@@ -8,6 +8,7 @@
 
 #import "SWChatViewController.h"
 #import "SWTouchBaseCell.h"
+#import "SWChatSingViewController.h"
 
 NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 
@@ -17,6 +18,8 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 @property (nonatomic, assign) BOOL isSend;
 /*聊天cell管理器*/
 @property (nonatomic, strong) SWChatCellManager *cellManager;
+
+@property (nonatomic, assign) NSInteger isGroup;
 
 @end
 
@@ -37,6 +40,7 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
                 }
                 SWChatTouchModel *model = [[SWChatTouchModel alloc] EMMToChatModel:message timeArr:timerArr];
                 model.conversation = weakSelf.baseConversation;
+                model.isShow = weakSelf.isShowMemberName;
                 if (!weakSelf.dataArray) {
                     weakSelf.dataArray = [[NSMutableArray alloc] init];
                 }
@@ -156,6 +160,7 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
     [self initHXTool];
   
     [self sw_bangdingSelfUI];
+ 
    
 }
 - (void)sw_bangdingSelfUI{
@@ -175,8 +180,20 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
     }];
     
     [self.view addSubview:self.touchBarView];
-}
-
+     
+    
+    if ([self isKindOfClass:[SWChatSingViewController class]]) {
+        _touchBarView.isGroup = 1;
+        _touchBarView.isFrom = @"来自单聊";
+        _isGroup = 1;
+    }else{
+        _isGroup = 2;
+        _touchBarView.isGroup = 2;
+        _touchBarView.isFrom = @"来自群聊";
+        _touchBarView.groupModel = self.groupModel;
+    }
+    
+} 
 -(void)setNotification
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchKeyBoarbWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -321,7 +338,7 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
     }
     SWTouchBaseCell *baseCell = (SWTouchBaseCell * )[self.cellManager createMessageCellForMessageModel:touchModel
                                                                    userModle:self.touchBarView.userInfoModel
-                                                                    showName:NO //显示群昵称
+                                                                    showName:self.isShowMemberName //显示群昵称
                                                                       reSend:false
                                                                        index:indexPath.row
                                                          withReuseIdentifier:cellId
@@ -339,7 +356,28 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     SWChatTouchModel *model  = self.dataArray[indexPath.row];
-    return model.cellFinalHeight;
+    CGFloat cellHeigh = model.cellHeight;
+       float showName = 0;
+       BOOL  isShowMemberName =_isShowMemberName;//是否显示群昵称
+         if (![model.fromUser isEqualToString:[SWChatManage getUserName]] && isShowMemberName) {
+             showName = 20;
+         }
+         if ([model.type isEqualToString:@"system"]) {
+             //系统消息
+             return cellHeigh;
+         }
+         if ([model.type isEqualToString:@"location"] || [model.type isEqualToString:@"envelope"] || [model.type isEqualToString:@"text"] || [model.type isEqualToString:@"voiceAud"] ) {
+             //地图 ｜｜ 红包 || 文本  || 语音
+             if ([model.type isEqualToString:@"text"] && cellHeigh<49) {
+                 return 54+showName; //文本只有一行的情况下
+             }
+              return [model.showTime isEqualToString:@"0000"]?cellHeigh+5+showName:cellHeigh+35+showName;
+         }else if ([model.type isEqualToString:@"img"]){
+             //图片
+              return [model.showTime isEqualToString:@"0000"]?cellHeigh+showName+15:cellHeigh+30+showName+15;
+         }
+         return 44+showName;
+     
 }
  
 #pragma mark - 操作区
@@ -350,13 +388,18 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
         _isSend = true;
         NSDictionary *info;
         //单聊  //群聊
-         info = [SWChatManage sendInfoWithSing:self.touchBarView.userInfoModel];
+        if (_isGroup == 2) {
+            info = [SWChatManage sendInfoWithGroupModel:_groupModel];
+        }else{
+            info = [SWChatManage sendInfoWithSing:self.touchBarView.userInfoModel];
+        }
+       
         NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:content,@"content", nil];
          //IM发送文字
          //在这里执行事件
          [[SWHXTool sharedManager] sendMessageToUser:_messageModel.touchUser
                                messageType:@"text"
-                                  chatType:1
+                                  chatType:_isGroup
                                   userInfo:info
                                    content:contentDic
                                  messageID:@""
@@ -421,6 +464,12 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
             
         }
 }
+
+-(void)withdrawWithTouchModel:(SWChatTouchModel *)model index:(NSInteger)index
+{
+    [self menuBlockAction:model name:@"撤回删除" index:index button:nil];
+}
+
 #pragma mark - CellManager 操作区回调
 
 -(void)menuBlockAction:(SWChatTouchModel *)model name:(NSString *)actionName index:(NSInteger)index button:(SWChatButton *)sender
@@ -484,4 +533,36 @@ NSString *const ATAPPDIDONBACKGROUND_NOTIFICATION  = @"appDidOnBackGround" ;
     
     
 }
+
+
+-(void)setIsJoin:(BOOL)isJoin
+{
+    _isJoin = isJoin;
+    self.touchBarView.isJoin = _isJoin;
+//    self.groupModel.isJoin = _isJoin;
+}
+-(void)setTouchBarHideen:(BOOL)touchBarHideen
+{
+    _touchBarHideen = touchBarHideen;
+    if (_touchBarHideen) {
+        [_touchBarView removeFromSuperview];
+    }else{
+        WeakSelf(self);
+        [self.view addSubview:[_touchBarView initTouchBarView:^(NSString *btnName, NSString *blcokContent, NSString *index, NSMutableArray *moderArr) {
+            [weakself touchBarBlock:btnName content:blcokContent inde:index];
+        }]];
+//        [self.view addSubview:self.bottomView];
+    }
+}
+
+-(void)setGroupModel:(SWChatGroupModel *)groupModel
+{
+    _groupModel = groupModel;
+    _touchBarView.groupModel =_groupModel;
+    if (_isShowMemberName != groupModel.isShowMemberName) {
+        self.isShowMemberName = _groupModel.isShowMemberName;
+        [_cellManager.loadArr removeAllObjects];
+    }
+}
+ 
 @end

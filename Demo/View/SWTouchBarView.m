@@ -13,6 +13,7 @@
 #import "MOKORecorderTool.h"
 #import "MOKORecordShowManager.h"
 #import "SWChatLocationViewController.h"
+#import "SWGroupChatController.h"
 
 
 #define kFakeTimerDuration       1
@@ -134,9 +135,9 @@
         [self addSubview:_soundField];
         
        //功能区域view
-        _funcView = [[SWFuncView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 210+SAFEBOTTOM_HEIGHT) isGroup:1];
+        _funcView = [[SWFuncView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 210+SAFEBOTTOM_HEIGHT) isGroup:_isGroup];
           _funcView.delegate = self;
-          _soundField.inputView = _funcView;
+         _soundField.inputView = _funcView;
         
 }
 //输入框，实现自动换行，自动高度
@@ -574,7 +575,7 @@
     //}
     //return [self deleteSmile];
         
-    }else if ([text isEqual:@"@"]){
+    }else if (_isGroup==2 && [text isEqual:@"@"] && [[UIView getCurrentVC] isKindOfClass:[SWGroupChatController class]]){
         // 确认群聊界面 进入@某人逻辑处理
         UIViewController *vc = [[UIViewController alloc]init];
         vc.title = @"@群成员";
@@ -583,25 +584,6 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              [[UIView getCurrentVC].navigationController pushViewController:vc animated:YES];
         });
-        
-        //模拟 vc 回调
-        /*
-         //构造一条发送@的消息
-         NSString *atStr = [NSString stringWithFormat:@"%@ ",remarkName];
-         NSString *start = [NSString stringWithFormat:@"%d",(int)_at_TextView.text.length-1];
-         NSString *end = [NSString stringWithFormat:@"%d",(int)atStr.length+1];
-         NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:
-                               start,@"start",
-                               end,@"end",
-                               remarkName,@"name",
-                               loginName,@"loginName", nil];
-         //静态存储
-         [ATStaticDataTool addInfoToAtArr:info];
-           block =  ^{
-          _at_TextView.text = [_at_TextView.text stringByAppendingString:@"群主"];
-         }
-         */
-        
     }
     double delayInSecondss = 0.1;
      dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSecondss * NSEC_PER_SEC));
@@ -679,8 +661,14 @@
     [_picCache storeImage:image forKey:pid completion:^{
         //构造消息体
         NSDictionary * info;
-        info = [SWChatManage sendInfoWithSing:self.userInfoModel];
-         
+        if (_groupModel) {
+            info = [SWChatManage sendInfoWithSing:_groupModel];
+             
+        }else{
+            info = [SWChatManage sendInfoWithSing:self.userInfoModel];
+             
+        }
+       
         CGSize size = [[SWChatManage sharedManager]imagePhotoSize:[NSString stringWithFormat:@"%.2f",image.size.width]
                                            videoFristFramesHeight:[NSString stringWithFormat:@"%.2f",image.size.height]];
         

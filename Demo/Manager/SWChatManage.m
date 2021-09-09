@@ -350,10 +350,10 @@ CREATE_SHARED_MANAGER(SWChatManage)
 }
 +(NSMutableDictionary *)sendInfoWithSing:(SWFriendInfoModel *)infoModel
 {
-//    if (!infoModel) {
-//        NSLog(@"单聊对方数据未空，不能发送");
-//        return nil;
-//    }
+    if (!infoModel) {
+        NSLog(@"单聊对方数据未空，不能发送");
+        return nil;
+    }
 //    ATUser *user = [ATUserHelper shareInstance].user; //模拟用户数据
     NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
     //发送者登录号
@@ -362,7 +362,7 @@ CREATE_SHARED_MANAGER(SWChatManage)
     [info setObject:[SWChatManage getUserName] forKey:@"remarkName"];
     //发送者头像
 //    if (user.head_img && user.head_img.length!=0) {
-        [info setObject:@"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1194131577,2954769920&fm=26&gp=0.jpg" forKey:@"headUrl"];
+        [info setObject:USERHEAD forKey:@"headUrl"];
 //    }else
 //        [info setObject:@"" forKey:@"headUrl"];
     if (infoModel.remark) {
@@ -401,6 +401,9 @@ CREATE_SHARED_MANAGER(SWChatManage)
 }
 +(NSString *)toJSOStr:(id)theData
 {
+    if ([theData isKindOfClass:[NSString class]]) {
+        return @"";
+    }
     NSError *error = nil;
     NSData *json = [NSJSONSerialization dataWithJSONObject:theData options:NSJSONWritingPrettyPrinted error:&error];
     NSString *jsonString = [[NSString alloc] initWithData:json
@@ -586,4 +589,36 @@ CREATE_SHARED_MANAGER(SWChatManage)
      });
 }
  
+
++(NSMutableDictionary *)sendInfoWithGroupModel:(SWChatGroupModel *)model
+{
+    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    //发送者登录号
+    [info setObject:[SWChatManage getUserName] forKey:@"loginName"];
+    //发送者昵称
+    [info setObject:[SWChatManage getUserName] forKey:@"remarkName"];
+    //发送者头像
+    [info setObject:USERHEAD forKey:@"headUrl"];
+    if (model) {
+        NSString *remark = [SWChatManage getUserName];
+        NSString *sql = [NSString stringWithFormat:@"where groupId = %@",model.groupId];
+        NSArray *arr = [[ATFMDBTool shareDatabase] at_lookupTable:@"chatGroupInfo" dicOrModel:[SWGroupServerModel new] whereFormat:sql];
+        if (arr.count>0) {
+            SWGroupServerModel *serverModel = [arr firstObject];
+            if (serverModel.groupNick && serverModel.groupNick.length!=0) {
+                remark = serverModel.groupNick;
+            }
+        }
+        [info setObject:remark forKey:@"remarkName"];
+        //群聊名称
+        [info setObject:model.subject.length==0?@"群聊":model.subject forKey:@"groupName"];
+        //群聊人数
+        [info setObject:[NSString stringWithFormat:@"%zd",model.occupantsCount] forKey:@"groupMemberNum"];
+        //发送者昵称
+        [info setObject:kStringIsEmpty(model.groupId) ? @"":model.groupId forKey:@"groupId"];
+    }
+    
+    return info;
+}
+
 @end

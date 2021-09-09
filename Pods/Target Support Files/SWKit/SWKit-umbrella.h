@@ -34,7 +34,7 @@
 #import "UITableView+SW_Extension.h"
 #import "UITextField+SW_Extension.h"
 #import "UIView+SW_Extension.h"
-#import "UIViewController+SW_Extension.h"
+//#import "UIViewController+SW_Extension.h"
 
 FOUNDATION_EXPORT double SWKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char SWKitVersionString[];

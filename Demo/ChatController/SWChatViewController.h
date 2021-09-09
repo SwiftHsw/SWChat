@@ -34,9 +34,24 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong, nonatomic) EMConversation *baseConversation;
 
+@property (nonatomic, assign) BOOL isJoin;
+@property (nonatomic, assign) BOOL isMessageController;
+@property (nonatomic, assign) BOOL touchBarHideen;
+
+@property (nonatomic, strong) SWChatGroupModel *groupModel;
+
+@property (nonatomic, strong) NSMutableDictionary *shouldShowNameDict;
+
+
+//是否显示群成员昵称
+@property (nonatomic, assign) BOOL isShowMemberName;
 
 //添加消息到数据
 -(void)baseAddMessageToData:(NSArray *)addArr;
+
+//消息被撤回
+-(void)withdrawWithTouchModel:(SWChatTouchModel *)model index:(NSInteger)index;
+
 
 @end
 

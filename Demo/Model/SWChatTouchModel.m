@@ -183,33 +183,37 @@
         _timeWidth = floor(size.width)+10;
     }
          //计算最终的高度
-   _cellFinalHeight =  [self setupFinalHeight];
+//   _cellFinalHeight =  [self setupFinalHeight];
     
 }
-- (CGFloat)setupFinalHeight{
-    
-    float showName = 0;
-       BOOL _isShowMemberName = NO;//是否显示群昵称
-         if (![_fromUser isEqualToString:[SWChatManage getUserName]] && _isShowMemberName) {
-             showName = 20;
-         }
-         if ([_type isEqualToString:@"system"]) {
-             //系统消息
-             return _cellHeight;
-         }
-         if ([_type isEqualToString:@"location"] || [_type isEqualToString:@"envelope"] || [_type isEqualToString:@"text"] || [_type isEqualToString:@"voiceAud"] ) {
-             //地图 ｜｜ 红包 || 文本  || 语音
-             if ([_type isEqualToString:@"text"] && _cellHeight<49) {
-                 return 54+showName; //文本只有一行的情况下
-             }
-              return [_showTime isEqualToString:@"0000"]?_cellHeight+5+showName:_cellHeight+35+showName;
-         }else if ([_type isEqualToString:@"img"]){
-             //图片
-              return [_showTime isEqualToString:@"0000"]?_cellHeight+showName+15:_cellHeight+30+showName+15;
-         }
-         return 44+showName;
-    
+-(void)setIsShow:(BOOL)isShow{
+    _isShow = isShow;
+    SWLog(@"====%d",isShow);
 }
+//- (CGFloat)setupFinalHeight{
+//    
+//    float showName = 0;
+//       BOOL _isShowMemberName = self.isShow;//是否显示群昵称
+//         if (![_fromUser isEqualToString:[SWChatManage getUserName]] && _isShowMemberName) {
+//             showName = 20;
+//         }
+//         if ([_type isEqualToString:@"system"]) {
+//             //系统消息
+//             return _cellHeight;
+//         }
+//         if ([_type isEqualToString:@"location"] || [_type isEqualToString:@"envelope"] || [_type isEqualToString:@"text"] || [_type isEqualToString:@"voiceAud"] ) {
+//             //地图 ｜｜ 红包 || 文本  || 语音
+//             if ([_type isEqualToString:@"text"] && _cellHeight<49) {
+//                 return 54+showName; //文本只有一行的情况下
+//             }
+//              return [_showTime isEqualToString:@"0000"]?_cellHeight+5+showName:_cellHeight+35+showName;
+//         }else if ([_type isEqualToString:@"img"]){
+//             //图片
+//              return [_showTime isEqualToString:@"0000"]?_cellHeight+showName+15:_cellHeight+30+showName+15;
+//         }
+//         return 44+showName;
+//    
+//}
 -(SWChatTouchModel *)configLayoutForModel:(SWChatTouchModel *)model
 {
     YYTextLayout *textLayout = nil;

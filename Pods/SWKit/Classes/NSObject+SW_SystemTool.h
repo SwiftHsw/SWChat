@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark -
 #pragma mark - 设备权限工具
 //配置
-#define iOS10Later ([UIDevice currentDevice].systemVersion.floatValue >= 10.0f)
+#define iOS10Later ([UIDevice currentDevice].systemVersion.floatValue >= 11.0f)
 
 //相机权限
 +(BOOL)isAuthorizationStatus;

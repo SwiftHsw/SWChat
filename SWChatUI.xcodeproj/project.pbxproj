@@ -86,6 +86,18 @@
 		6402BC2625B1669C0053D24D /* SWChatVoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6402BC2525B1669C0053D24D /* SWChatVoiceCell.m */; };
 		6409C53625BAC2A200DF3232 /* UIView+YDExplode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6409C53425BAC2A100DF3232 /* UIView+YDExplode.m */; };
 		6452DC69259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6452DC68259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m */; };
+		6479DEF326E5F9EE00876F55 /* SWChatGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DEF226E5F9EE00876F55 /* SWChatGroupModel.m */; };
+		6479DEF626E5FFE300876F55 /* SWGroupServerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DEF526E5FFE300876F55 /* SWGroupServerModel.m */; };
+		6479DEF926E6042100876F55 /* SWGroupChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DEF826E6042100876F55 /* SWGroupChatController.m */; };
+		6479DEFC26E6077700876F55 /* ATChatTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DEFA26E6077700876F55 /* ATChatTitleView.m */; };
+		6479DEFF26E73A0C00876F55 /* SWFriendPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DEFE26E73A0C00876F55 /* SWFriendPostModel.m */; };
+		6479DF1726E74E1300876F55 /* SWBaseSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DF0A26E74E1300876F55 /* SWBaseSettingViewController.m */; };
+		6479DF1826E74E1300876F55 /* SWSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DF0E26E74E1300876F55 /* SWSettingItem.m */; };
+		6479DF1926E74E1300876F55 /* SWSettingArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DF1126E74E1300876F55 /* SWSettingArrowItem.m */; };
+		6479DF1A26E74E1300876F55 /* SWSettingSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DF1226E74E1300876F55 /* SWSettingSwitchItem.m */; };
+		6479DF1B26E74E1300876F55 /* SWSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DF1326E74E1300876F55 /* SWSettingGroup.m */; };
+		6479DF1C26E74E1300876F55 /* SWSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DF1526E74E1300876F55 /* SWSettingCell.m */; };
+		6479DF2026E7507E00876F55 /* SWChatTouchInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6479DF1F26E7507E00876F55 /* SWChatTouchInfoController.m */; };
 		64D30E8925B04C26001A2CBA /* LVRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D30E8725B04C26001A2CBA /* LVRecordTool.m */; };
 		DF0F768EBBE3D550ACB814C4 /* Pods_SWChatUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15072FE021C9E8D73F243182 /* Pods_SWChatUI.framework */; };
 /* End PBXBuildFile section */
@@ -245,6 +257,30 @@
 		6409C53525BAC2A200DF3232 /* UIView+YDExplode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YDExplode.h"; sourceTree = "<group>"; };
 		6452DC67259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYAnimatedImageView+ImageShow.h"; sourceTree = "<group>"; };
 		6452DC68259AD9F500D4A7A3 /* YYAnimatedImageView+ImageShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYAnimatedImageView+ImageShow.m"; sourceTree = "<group>"; };
+		6479DEF126E5F9EE00876F55 /* SWChatGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatGroupModel.h; sourceTree = "<group>"; };
+		6479DEF226E5F9EE00876F55 /* SWChatGroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatGroupModel.m; sourceTree = "<group>"; };
+		6479DEF426E5FFE300876F55 /* SWGroupServerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWGroupServerModel.h; sourceTree = "<group>"; };
+		6479DEF526E5FFE300876F55 /* SWGroupServerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWGroupServerModel.m; sourceTree = "<group>"; };
+		6479DEF726E6042100876F55 /* SWGroupChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWGroupChatController.h; sourceTree = "<group>"; };
+		6479DEF826E6042100876F55 /* SWGroupChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWGroupChatController.m; sourceTree = "<group>"; };
+		6479DEFA26E6077700876F55 /* ATChatTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATChatTitleView.m; sourceTree = "<group>"; };
+		6479DEFB26E6077700876F55 /* ATChatTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATChatTitleView.h; sourceTree = "<group>"; };
+		6479DEFD26E73A0C00876F55 /* SWFriendPostModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFriendPostModel.h; sourceTree = "<group>"; };
+		6479DEFE26E73A0C00876F55 /* SWFriendPostModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFriendPostModel.m; sourceTree = "<group>"; };
+		6479DF0926E74E1300876F55 /* SWBaseSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWBaseSettingViewController.h; sourceTree = "<group>"; };
+		6479DF0A26E74E1300876F55 /* SWBaseSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWBaseSettingViewController.m; sourceTree = "<group>"; };
+		6479DF0C26E74E1300876F55 /* SWSettingGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSettingGroup.h; sourceTree = "<group>"; };
+		6479DF0D26E74E1300876F55 /* SWSettingSwitchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSettingSwitchItem.h; sourceTree = "<group>"; };
+		6479DF0E26E74E1300876F55 /* SWSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSettingItem.m; sourceTree = "<group>"; };
+		6479DF0F26E74E1300876F55 /* SWSettingArrowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSettingArrowItem.h; sourceTree = "<group>"; };
+		6479DF1026E74E1300876F55 /* SWSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSettingItem.h; sourceTree = "<group>"; };
+		6479DF1126E74E1300876F55 /* SWSettingArrowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSettingArrowItem.m; sourceTree = "<group>"; };
+		6479DF1226E74E1300876F55 /* SWSettingSwitchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSettingSwitchItem.m; sourceTree = "<group>"; };
+		6479DF1326E74E1300876F55 /* SWSettingGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSettingGroup.m; sourceTree = "<group>"; };
+		6479DF1526E74E1300876F55 /* SWSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSettingCell.m; sourceTree = "<group>"; };
+		6479DF1626E74E1300876F55 /* SWSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSettingCell.h; sourceTree = "<group>"; };
+		6479DF1E26E7507E00876F55 /* SWChatTouchInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWChatTouchInfoController.h; sourceTree = "<group>"; };
+		6479DF1F26E7507E00876F55 /* SWChatTouchInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWChatTouchInfoController.m; sourceTree = "<group>"; };
 		64D30E8725B04C26001A2CBA /* LVRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVRecordTool.m; sourceTree = "<group>"; };
 		64D30E8825B04C26001A2CBA /* LVRecordTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVRecordTool.h; sourceTree = "<group>"; };
 		6996BDAA302CC8CCB772843F /* Pods-SWChatUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWChatUI.release.xcconfig"; path = "Target Support Files/Pods-SWChatUI/Pods-SWChatUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -335,20 +371,16 @@
 		048867DA255E75EB0003F275 /* ChatController */ = {
 			isa = PBXGroup;
 			children = (
+				6479DF1D26E7506C00876F55 /* 群详情 */,
+				6479DF0626E74D3100876F55 /* 好友列表 */,
+				6479DF0526E74D0E00876F55 /* 网页 */,
+				6479DF0426E74CFF00876F55 /* 会话 */,
+				6479DF0326E74CEB00876F55 /* 发送位置 */,
+				6479DF0226E74CCE00876F55 /* 单聊 */,
+				6479DF0126E74CCE00876F55 /* 群聊 */,
+				6479DF0026E74CBB00876F55 /* 我的 */,
 				048867DD255E75F70003F275 /* SWChatViewController.h */,
 				048867DE255E75F70003F275 /* SWChatViewController.m */,
-				04886A002564EFD40003F275 /* SWChatWebViewController.h */,
-				04886A012564EFD40003F275 /* SWChatWebViewController.m */,
-				0489E0802564FCAC0084EF76 /* SWChatLocationViewController.h */,
-				0489E0812564FCAC0084EF76 /* SWChatLocationViewController.m */,
-				046ABE862568ADC300359625 /* SWChatMessageViewController.h */,
-				046ABE872568ADC300359625 /* SWChatMessageViewController.m */,
-				046ABE922568C0EA00359625 /* SWChatAdressBookController.h */,
-				046ABE932568C0EA00359625 /* SWChatAdressBookController.m */,
-				046ABE9E2568D55900359625 /* SWChatSettingViewController.h */,
-				046ABE9F2568D55900359625 /* SWChatSettingViewController.m */,
-				046ABEA12568DD9800359625 /* SWChatSingViewController.h */,
-				046ABEA22568DD9800359625 /* SWChatSingViewController.m */,
 			);
 			path = ChatController;
 			sourceTree = "<group>";
@@ -356,6 +388,7 @@
 		048867DB255E75EB0003F275 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				6479DF0726E74E1300876F55 /* 设置通用模块 */,
 				6409C53525BAC2A200DF3232 /* UIView+YDExplode.h */,
 				6409C53425BAC2A100DF3232 /* UIView+YDExplode.m */,
 				046ABEA7256B60BC00359625 /* FMLabel */,
@@ -400,6 +433,8 @@
 				046ABE782567B6B800359625 /* SWLabel.m */,
 				046ABE8C2568B47800359625 /* SWNmberButton.h */,
 				046ABE8D2568B47800359625 /* SWNmberButton.m */,
+				6479DEFB26E6077700876F55 /* ATChatTitleView.h */,
+				6479DEFA26E6077700876F55 /* ATChatTitleView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -462,6 +497,12 @@
 				04886856256253610003F275 /* SWMessageModel.m */,
 				04886858256256DE0003F275 /* SWChatTouchModel.h */,
 				04886859256256DE0003F275 /* SWChatTouchModel.m */,
+				6479DEF126E5F9EE00876F55 /* SWChatGroupModel.h */,
+				6479DEF226E5F9EE00876F55 /* SWChatGroupModel.m */,
+				6479DEF426E5FFE300876F55 /* SWGroupServerModel.h */,
+				6479DEF526E5FFE300876F55 /* SWGroupServerModel.m */,
+				6479DEFD26E73A0C00876F55 /* SWFriendPostModel.h */,
+				6479DEFE26E73A0C00876F55 /* SWFriendPostModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,6 +599,121 @@
 				15072FE021C9E8D73F243182 /* Pods_SWChatUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6479DF0026E74CBB00876F55 /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				046ABE9E2568D55900359625 /* SWChatSettingViewController.h */,
+				046ABE9F2568D55900359625 /* SWChatSettingViewController.m */,
+			);
+			path = "我的";
+			sourceTree = "<group>";
+		};
+		6479DF0126E74CCE00876F55 /* 群聊 */ = {
+			isa = PBXGroup;
+			children = (
+				6479DEF726E6042100876F55 /* SWGroupChatController.h */,
+				6479DEF826E6042100876F55 /* SWGroupChatController.m */,
+			);
+			path = "群聊";
+			sourceTree = "<group>";
+		};
+		6479DF0226E74CCE00876F55 /* 单聊 */ = {
+			isa = PBXGroup;
+			children = (
+				046ABEA12568DD9800359625 /* SWChatSingViewController.h */,
+				046ABEA22568DD9800359625 /* SWChatSingViewController.m */,
+			);
+			path = "单聊";
+			sourceTree = "<group>";
+		};
+		6479DF0326E74CEB00876F55 /* 发送位置 */ = {
+			isa = PBXGroup;
+			children = (
+				0489E0802564FCAC0084EF76 /* SWChatLocationViewController.h */,
+				0489E0812564FCAC0084EF76 /* SWChatLocationViewController.m */,
+			);
+			path = "发送位置";
+			sourceTree = "<group>";
+		};
+		6479DF0426E74CFF00876F55 /* 会话 */ = {
+			isa = PBXGroup;
+			children = (
+				046ABE862568ADC300359625 /* SWChatMessageViewController.h */,
+				046ABE872568ADC300359625 /* SWChatMessageViewController.m */,
+			);
+			path = "会话";
+			sourceTree = "<group>";
+		};
+		6479DF0526E74D0E00876F55 /* 网页 */ = {
+			isa = PBXGroup;
+			children = (
+				04886A002564EFD40003F275 /* SWChatWebViewController.h */,
+				04886A012564EFD40003F275 /* SWChatWebViewController.m */,
+			);
+			path = "网页";
+			sourceTree = "<group>";
+		};
+		6479DF0626E74D3100876F55 /* 好友列表 */ = {
+			isa = PBXGroup;
+			children = (
+				046ABE922568C0EA00359625 /* SWChatAdressBookController.h */,
+				046ABE932568C0EA00359625 /* SWChatAdressBookController.m */,
+			);
+			path = "好友列表";
+			sourceTree = "<group>";
+		};
+		6479DF0726E74E1300876F55 /* 设置通用模块 */ = {
+			isa = PBXGroup;
+			children = (
+				6479DF0826E74E1300876F55 /* Controller */,
+				6479DF0B26E74E1300876F55 /* Model */,
+				6479DF1426E74E1300876F55 /* View */,
+			);
+			path = "设置通用模块";
+			sourceTree = "<group>";
+		};
+		6479DF0826E74E1300876F55 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6479DF0926E74E1300876F55 /* SWBaseSettingViewController.h */,
+				6479DF0A26E74E1300876F55 /* SWBaseSettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6479DF0B26E74E1300876F55 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6479DF0F26E74E1300876F55 /* SWSettingArrowItem.h */,
+				6479DF1126E74E1300876F55 /* SWSettingArrowItem.m */,
+				6479DF0C26E74E1300876F55 /* SWSettingGroup.h */,
+				6479DF1326E74E1300876F55 /* SWSettingGroup.m */,
+				6479DF1026E74E1300876F55 /* SWSettingItem.h */,
+				6479DF0E26E74E1300876F55 /* SWSettingItem.m */,
+				6479DF0D26E74E1300876F55 /* SWSettingSwitchItem.h */,
+				6479DF1226E74E1300876F55 /* SWSettingSwitchItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6479DF1426E74E1300876F55 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6479DF1626E74E1300876F55 /* SWSettingCell.h */,
+				6479DF1526E74E1300876F55 /* SWSettingCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6479DF1D26E7506C00876F55 /* 群详情 */ = {
+			isa = PBXGroup;
+			children = (
+				6479DF1E26E7507E00876F55 /* SWChatTouchInfoController.h */,
+				6479DF1F26E7507E00876F55 /* SWChatTouchInfoController.m */,
+			);
+			path = "群详情";
 			sourceTree = "<group>";
 		};
 		D947BF4B25E4DD78902CEADD /* Pods */ = {
@@ -718,18 +874,24 @@
 				048869E42563D1490003F275 /* FMDatabase.m in Sources */,
 				048869E52563D1490003F275 /* ATFMDBTool.m in Sources */,
 				048867C8255E754A0003F275 /* ViewController.m in Sources */,
+				6479DEFF26E73A0C00876F55 /* SWFriendPostModel.m in Sources */,
 				048869E72563D1490003F275 /* FMResultSet.m in Sources */,
 				0489E08E25651F2E0084EF76 /* SWLocationTableViewCell.m in Sources */,
 				0488683D256218E90003F275 /* SWExpressionView.m in Sources */,
 				04886863256266780003F275 /* SWChatCellManager.m in Sources */,
 				048867C2255E754A0003F275 /* AppDelegate.m in Sources */,
+				6479DF1726E74E1300876F55 /* SWBaseSettingViewController.m in Sources */,
 				048867E2255E76EE0003F275 /* SWTouchBarView.m in Sources */,
 				046ABE7625675BBF00359625 /* SWChatRedBagCell.m in Sources */,
 				048867DF255E75F70003F275 /* SWChatViewController.m in Sources */,
 				04F3466A25662CB70048FE87 /* SWChatLocationCell.m in Sources */,
+				6479DF2026E7507E00876F55 /* SWChatTouchInfoController.m in Sources */,
 				0488685125624E580003F275 /* SWFriendInfoModel.m in Sources */,
 				0489E088256518170084EF76 /* SWSearchBar.m in Sources */,
+				6479DF1A26E74E1300876F55 /* SWSettingSwitchItem.m in Sources */,
 				0488684125621B390003F275 /* SWExpressionScrollView.m in Sources */,
+				6479DEF926E6042100876F55 /* SWGroupChatController.m in Sources */,
+				6479DF1826E74E1300876F55 /* SWSettingItem.m in Sources */,
 				0488687C25639EFF0003F275 /* SWChatImageCell.m in Sources */,
 				0488683A256212800003F275 /* SWAVAudioPlayer.m in Sources */,
 				046ABEA6256B609100359625 /* SWChatSystemCell.m in Sources */,
@@ -747,8 +909,11 @@
 				048869E62563D1490003F275 /* FMDatabasePool.m in Sources */,
 				04886A052564F1980003F275 /* SWReadTextView.m in Sources */,
 				048869E32563D1490003F275 /* FMDatabaseAdditions.m in Sources */,
+				6479DEF626E5FFE300876F55 /* SWGroupServerModel.m in Sources */,
 				6402BC2625B1669C0053D24D /* SWChatVoiceCell.m in Sources */,
+				6479DEFC26E6077700876F55 /* ATChatTitleView.m in Sources */,
 				04886826255E84240003F275 /* MOKORecordShowManager.m in Sources */,
+				6479DF1C26E74E1300876F55 /* SWSettingCell.m in Sources */,
 				046ABEA32568DD9800359625 /* SWChatSingViewController.m in Sources */,
 				04886857256253610003F275 /* SWMessageModel.m in Sources */,
 				0488684D256222B20003F275 /* SWExpressionBtn.m in Sources */,
@@ -763,11 +928,13 @@
 				046ABE972568C41600359625 /* SWFriendListCell.m in Sources */,
 				64D30E8925B04C26001A2CBA /* LVRecordTool.m in Sources */,
 				6409C53625BAC2A200DF3232 /* UIView+YDExplode.m in Sources */,
+				6479DF1B26E74E1300876F55 /* SWSettingGroup.m in Sources */,
 				0489E0922566053E0084EF76 /* SWSearchViewController.m in Sources */,
 				0489E09B25660BE00084EF76 /* SWLocationSearchResultController.m in Sources */,
 				046ABE882568ADC300359625 /* SWChatMessageViewController.m in Sources */,
 				0488687525637EB90003F275 /* GMenuDefaultView.m in Sources */,
 				046ABE822568A69A00359625 /* SWHXTool.m in Sources */,
+				6479DEF326E5F9EE00876F55 /* SWChatGroupModel.m in Sources */,
 				046ABE8E2568B47800359625 /* SWNmberButton.m in Sources */,
 				04886825255E84240003F275 /* MOKORecordView.m in Sources */,
 				046ABEA02568D55900359625 /* SWChatSettingViewController.m in Sources */,
@@ -778,6 +945,7 @@
 				04886866256268B80003F275 /* SWChatTextCell.m in Sources */,
 				046ABEAD256B872D00359625 /* SWPlaceTopTool.m in Sources */,
 				04886828255E84240003F275 /* MOKORecorderTool.m in Sources */,
+				6479DF1926E74E1300876F55 /* SWSettingArrowItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

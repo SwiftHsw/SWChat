@@ -9,6 +9,8 @@
 #import "SWHXTool.h"
 #import "SWFriendSortManager.h"
 #import "SWChatMessageViewController.h"
+#import "SWChatMessageViewController.h"
+#import "SWGroupChatController.h"
 
 @implementation SWHXTool
 
@@ -93,7 +95,7 @@ CREATE_SHARED_MANAGER(SWHXTool)
      //获取好友列表
     [self getFriendList];
 //    //获取群列表
-//    [self getChatGroupList];
+    [self getChatGroupList];
     if (self.OperationBlock) {
         self.OperationBlock(@{@"isLogin":@"success"}, nil);
     }
@@ -122,12 +124,18 @@ CREATE_SHARED_MANAGER(SWHXTool)
 //        BOOL canAdd = true;
         SWMessageModel *model = [SWMessageModel new];
         model.touchUser = conver.conversationId;
-//        ATChatGroupModel *groupModel;
+        SWChatGroupModel *groupModel;
         SWFriendInfoModel *infoModel;
         model.messageID = message.messageId;
         model.isGroupChat =message.chatType==EMChatTypeChat ?false:true;
-  
-        infoModel = [[ATFMDBTool shareDatabase] isFriendWithName:conver.conversationId];
+        if (model.isGroupChat) {
+            groupModel = [[ATFMDBTool shareDatabase] getGroupModelWithGroupId:model.touchUser];
+            model.groupModel = groupModel;
+        }else{
+            infoModel = [[ATFMDBTool shareDatabase] isFriendWithName:conver.conversationId];
+            model.friendModel = infoModel;
+        }
+       
         if (infoModel == nil ) {
             //强制匹配吧，数据库这边没做处理，没有匹配网络
             infoModel = [SWFriendInfoModel new];
@@ -154,23 +162,23 @@ CREATE_SHARED_MANAGER(SWHXTool)
             model.isSend = [send isEqualToString:[SWChatManage getUserName]];
             unCount = unCount + model.messageCount;
             if (model.isGroupChat) {
-                //群聊暂时不实现
-//                model.groupModel = groupModel;
-//                model.shouName = [userInfo valueForKey:@"groupName"];
-//                if (model.groupModel) {
-//                    model.shouName = model.groupModel.subject;
-//                    if (!model.groupModel.isPushNotificationEnabled) {
-//                        unCount = unCount - model.messageCount;
-//                    }
-//                }else{
-//                    groupModel = [ATChatGroupModel new];
-//                    groupModel.groupId = [userInfo valueForKey:@"groupId"];
-//                    unCount = unCount - model.messageCount;
-//                    if (!model.shouName) {
-//                        model.shouName = @"群聊";
-//                    }
-//                }
-//                model.headUrl=groupImage(groupModel.groupId);
+                //群聊
+                model.groupModel = groupModel;
+                model.shouName = [userInfo valueForKey:@"groupName"];
+                if (model.groupModel) {
+                    model.shouName = model.groupModel.subject;
+                    if (!model.groupModel.isPushNotificationEnabled) {
+                        unCount = unCount - model.messageCount;
+                    }
+                }else{
+                    groupModel = [SWChatGroupModel new];
+                    groupModel.groupId = [userInfo valueForKey:@"groupId"];
+                    unCount = unCount - model.messageCount;
+                    if (!model.shouName) {
+                        model.shouName = @"群聊";
+                    }
+                }
+                model.headUrl= USERHEAD;
             }else{
                 if (model.friendModel) {//是好友
                     NSString *remark = infoModel.remark;
@@ -249,9 +257,9 @@ CREATE_SHARED_MANAGER(SWHXTool)
                 NSString *content = [data valueForKey:@"content"];
                 NSString *systemType = [data valueForKey:@"systemType"];
                 if ([systemType isEqualToString:@"3"]) {
-//                    model.shouContent = [NSString stringWithFormat:@"群主修改群名为\"%@\"",content];
-//                    groupModel.subject = [userInfo valueForKey:@"groupName"];
-//                    [[ATFMDBTool shareDatabase] updateGroupInfoWithGroup:groupModel];
+                    model.shouContent = [NSString stringWithFormat:@"群主修改群名为\"%@\"",content];
+                    groupModel.subject = [userInfo valueForKey:@"groupName"];
+                    [[ATFMDBTool shareDatabase] updateGroupInfoWithGroup:groupModel];
                 }else if ([systemType isEqualToString:@"101"])
                 {
                     //“%@”
@@ -484,6 +492,8 @@ CREATE_SHARED_MANAGER(SWHXTool)
     if (!isJoin) {
         if (chatType == 1) { //这边判断是否群聊 或者单聊 再判断是否为本地好友
               isJoin = [[ATFMDBTool shareDatabase]isFriendWithName:toUser];
+        }else{
+            isJoin = [[ATFMDBTool shareDatabase] getGroupModelWithGroupId:toUser]==nil?false:YES;
         }
     }
     if (!isJoin && [messtype isEqualToString:@"system"]) {
@@ -493,7 +503,17 @@ CREATE_SHARED_MANAGER(SWHXTool)
          }
         
          //发送此systemContent 消息
-        if (chatType == 1) {
+        
+        if (chatType==2) {
+            [self insertSystemInfo:@"102"
+                            toUser:[SWChatManage GetTouchUser]
+                        systemInfo:nil
+                          sendInfo:info
+                           content:systemContent
+                          chatType:2
+                          isInsert:YES];
+        }
+        else if (chatType == 1) {
               [self insertSystemInfo:@"100"
                               toUser:[SWChatManage GetTouchUser]
                           systemInfo:nil
@@ -528,7 +548,19 @@ CREATE_SHARED_MANAGER(SWHXTool)
    message = [[EMMessage alloc] initWithConversationID:toUser from:imToken to:toUser body:body ext:nil];
    message.ext = exitDict;
    message.chatType = EMChatTypeChat;
-    
+    if (chatType==1) {
+        if ([_action isEqualToString:@"1"]) {
+            message = [[EMMessage alloc] initWithConversationID:toUser from:toUser to:imToken body:body ext:nil];
+        }else{
+            message = [[EMMessage alloc] initWithConversationID:toUser from:imToken to:toUser body:body ext:nil];
+        }
+        message.ext = exitDict;
+        message.chatType = EMChatTypeChat;
+    }else{
+        message = [[EMMessage alloc] initWithConversationID:toUser from:imToken to:[info valueForKey:@"groupId"] body:body ext:nil];
+        message.ext = exitDict;
+        message.chatType = EMChatTypeGroupChat;
+    }
     if (isInsert && isConversation) {
         //图片 位置 等
            //插入并且需要更新会话
@@ -544,7 +576,24 @@ CREATE_SHARED_MANAGER(SWHXTool)
                if (self.messageInsertBlock) {
                    self.messageInsertBlock(message, error.errorDescription);
                }
+           }else{
+               EMConversation *conversation =  [[EMClient sharedClient].chatManager getConversation:[info valueForKey:@"groupId"] type:EMConversationTypeGroupChat createIfNotExist:YES];
+               EMError *error;
+               [conversation insertMessage:message error:&error];
+               if (self.sendImageInsertBlock) {
+                   self.sendImageInsertBlock(message, error.errorDescription);
+               }
+               if (self.messageInsertBlock) {
+                   self.messageInsertBlock(message, error.errorDescription);
+               }
+               
            }
+        
+        if ([nowController isKindOfClass:[SWChatMessageViewController class]]) {
+            SWChatMessageViewController *messageController = (SWChatMessageViewController *)nowController;
+            [messageController uploadInsertMessage:message.messageId];
+        }
+        
     }else if (isInsert && !isConversation)
     {
         //插入但是不需要更新会话
@@ -710,7 +759,9 @@ CREATE_SHARED_MANAGER(SWHXTool)
 //        [contentDict setObject:[SWChatManage JsonToDict:content] forKey:@"sysRedBag"];
     }
     if (systemInfo) {
-        [contentDict setObject:sendInfo forKey:@"systemInfo"];
+        if (sendInfo) {
+            [contentDict setObject:sendInfo forKey:@"systemInfo"];
+        }
     }
     [self sendMessageToUser:toUser
                 messageType:@"system"
@@ -724,4 +775,230 @@ CREATE_SHARED_MANAGER(SWHXTool)
     return contentDict;
 }
 
+
+#pragma mark - 群聊列表
+-(void)getChatGroupList{
+    [[EMClient sharedClient].groupManager getJoinedGroupsFromServerWithPage:0 pageSize:-1 completion:^(NSArray *aList, EMError *aError) {
+        if (!aError) {
+            NSMutableArray *groupArr = [NSMutableArray array];
+            [aList enumerateObjectsUsingBlock:^(EMGroup *group, NSUInteger idx, BOOL * _Nonnull stop) {
+                //获取数据库里面的
+                SWChatGroupModel *oldGroup = [[ATFMDBTool shareDatabase] getGroupModelWithGroupId:group.groupId];
+                SWChatGroupModel *touchGroup = [[SWChatGroupModel alloc]initWithEmmGroup:group];
+                touchGroup.occupantsString = [group.occupants componentsJoinedByString:@","];
+                touchGroup.occupantsCount = group.occupants.count;
+                if (oldGroup) {
+                    //存在的话直接覆盖
+                    touchGroup.memberString = oldGroup.memberString;
+                    touchGroup.occupantsString =oldGroup.occupantsString;
+                    touchGroup.occupantsCount = oldGroup.occupantsCount;
+                    touchGroup.isShowMemberName = oldGroup.isShowMemberName;
+                }
+                [groupArr addObject:touchGroup];
+            }];
+             
+            [[ATFMDBTool shareDatabase] at_deleteAllDataFromTable:@"chatGroupList"];
+            [[ATFMDBTool shareDatabase] at_insertTable:@"chatGroupList" dicOrModelArray:groupArr];
+        }
+    }];
+    
+}
+
+
+-(void)createGroup:(NSArray *)invitees actionType:(NSInteger)type object:(id)object friendArr:(NSArray *)friendArr invitationArr:(NSArray *)invitationArr{
+    
+    
+   
+    //群组属性
+    EMGroupOptions *setting = [[EMGroupOptions alloc]init];
+    setting.maxUsersCount = 200;
+    //如果设置成no 被邀请的人不会收到邀请信息，会自动进群
+    setting.IsInviteNeedConfirm = NO;
+    setting.style = EMGroupStylePublicOpenJoin;// 创建不同类型的群组，这里需要才传入不同的类型
+    
+    [SVProgressHUD show];
+    [[EMClient sharedClient].groupManager createGroupWithSubject:@"群组名称" description:@"群组描述" invitees:invitees message:@"邀请您加入群组" setting:setting completion:^(EMGroup *aGroup, EMError *aError) {
+        if(!aError){
+            NSLog(@"创建群组成功 -- %@",aGroup);
+            [SVProgressHUD dismiss];
+            //进入群聊界面
+            SWChatGroupModel *chatGroup = [[SWChatGroupModel alloc]initWithEmmGroup:aGroup];
+            chatGroup.isJoin = YES;
+            //插入一条群聊列表
+            [[ATFMDBTool shareDatabase] at_insertTable:@"chatGroupList" dicOrModel:chatGroup];
+            NSString *value = @"";
+            NSString *valueStr = @"";
+            for (int i = 0; i<friendArr.count ; i++) {
+                NSString *nickName = friendArr[i];
+                NSString *imToken = friendArr[i];
+                //拼接创建一条群邀请消息
+                value =  [NSString stringWithFormat:@"%@,%@",value,nickName];
+                valueStr =  [NSString stringWithFormat:@"%@,%@",valueStr,imToken];
+            }
+            NSString *content = [NSString stringWithFormat:@"你邀请%@加入群聊",value];
+            if (friendArr.count==0) {
+                content = @"您创建了群聊";
+            }
+            if (valueStr.length == 0) {
+                valueStr = [NSString stringWithFormat:@"%@",[SWChatManage getUserName]];
+            }else{
+                valueStr = [NSString stringWithFormat:@"%@,%@",valueStr,[SWChatManage getUserName]];
+            }
+            
+            
+//            NSString *showContent = (NSString *)object;
+             
+            NSLog(@"加入群上报上报成功");
+            
+            [self gotoGroupChatControllerWithLoginName:chatGroup];
+            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
+            dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                //插入一条系统消息
+                [self insertSystemInfo:@"1"
+                                toUser:chatGroup.groupId
+                            systemInfo:nil
+                              sendInfo:[SWChatManage sendInfoWithGroupModel:chatGroup]
+                               content:content
+                              chatType:2
+                              isInsert:NO];
+                [self getConversations];
+                
+            });
+            
+            //原逻辑：上报后台成功后插入系统消息并且跳转
+            
+            //发送进群邀请
+            if (invitationArr.count!=0) {
+                NSMutableArray *interArr = [[NSMutableArray alloc] init];
+                for (int i = 0; i<invitationArr.count; i++) {
+                    NSString *imToken = invitationArr[i];
+                    [interArr addObject:imToken];
+                }
+                
+                
+                EMError *error = nil;
+                [[EMClient sharedClient].groupManager addOccupants:interArr toGroup:aGroup.groupId welcomeMessage:@"一起来聊天吧" error:&error];
+                
+                [[SWHXTool sharedManager] sendGroupInvitationMessage:invitationArr index:0 groupId:chatGroup.groupId groupModel:chatGroup];
+                
+//                if (!error) {
+//                    [SVProgressHUD dismiss];
+//                    [[SWHXTool sharedManager] sendGroupInvitationMessage:invitationArr index:0 groupId:chatGroup.groupId groupModel:chatGroup];
+//                }else{
+//                    [SVProgressHUD showErrorWithStatus:@"邀请发送失败，请稍后再试"];
+//                }
+            }
+            
+        } else {
+            NSLog(@"创建群组失败的原因 --- %@", aError.errorDescription);
+            
+            [SVProgressHUD showErrorWithStatus:aError.errorDescription];
+            
+        }
+    }];
+    
+    
+   
+}
+//异步发送群聊邀请信息
+-(void)sendGroupInvitationMessage:(NSArray *)invitationArr index:(NSInteger)index groupId:(NSString *)name groupModel:(SWChatGroupModel *)groupModel
+{
+    //groupInvitation
+    __block NSInteger addIndex = index;
+    if (index<invitationArr.count) {
+        NSString *user_imToken = invitationArr[index];
+        SWFriendInfoModel *info = [[ATFMDBTool shareDatabase] isFriendWithName:user_imToken];
+        NSDictionary *content = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 [NSString stringWithFormat:@"%@邀请你加入群聊",[SWChatManage getUserName]],@"content",
+                                 USERHEAD,@"headUrl",
+                                 [SWChatManage getUserName],@"nickName",
+                                 name,@"groupId",
+                                 groupModel.subject,@"groupName",
+                                 nil];
+        [self sendMessageToUser:info.imToken
+                    messageType:@"groupInvitation"
+                       chatType:1
+                       userInfo:[SWChatManage sendInfoWithSing:info]
+                        content:content
+                      messageID:nil
+                       isInsert:false
+                 isConversation:false
+                         isJoin:YES];
+        
+        addIndex = addIndex +1;
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3/*延迟执行时间*/ * NSEC_PER_SEC));
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            [self sendGroupInvitationMessage:invitationArr index:addIndex groupId:name groupModel:groupModel];
+        });
+    }else{
+        NSLog(@"群邀请全部发送成功");
+        
+        [SVProgressHUD showSuccessWithStatus:@"群邀请全部发送成功"];
+        
+    }
+}
+
+-(void)exitChatGroupWithGroupId:(NSString *)groupID isOwner:(BOOL)is
+{
+    NSString *str = [NSString stringWithFormat:@"where groupId = '%@'",groupID];
+    EMError *error = nil;
+    if (!is) {
+        [[EMClient sharedClient].groupManager leaveGroup:groupID error:&error];
+        if (!error) {
+            [SVProgressHUD showSuccessWithStatus:@"退出群聊成功"];
+            [[ATFMDBTool shareDatabase] at_deleteTable:@"chatGroupList" whereFormat:str];
+            [[NSNotificationCenter defaultCenter] postNotificationName:ATDIDRECEIVENEWMESSAGE_NOTIFICATION object:nil];
+            
+        }else
+            [SVProgressHUD showErrorWithStatus:@"退出群聊失败"];
+        if (self.leverFromGroupBlock) {
+            self.leverFromGroupBlock(nil, error);
+        }
+    }else {
+        [[EMClient sharedClient].groupManager destroyGroup:groupID finishCompletion:^(EMError *aError) {
+            if (!aError) {
+                [SVProgressHUD showSuccessWithStatus:@"群聊解散成功"];
+                [[ATFMDBTool shareDatabase] at_deleteTable:@"chatGroupList" whereFormat:str];
+                [[NSNotificationCenter defaultCenter] postNotificationName:ATDIDRECEIVENEWMESSAGE_NOTIFICATION object:nil];
+                
+            }else
+                [SVProgressHUD showSuccessWithStatus:@"群聊解散失败"];
+            if (self.leverFromGroupBlock) {
+                self.leverFromGroupBlock(nil, error);
+            }
+        }];
+    }
+}
+
+-(void)gotoGroupChatControllerWithLoginName:(SWChatGroupModel *)groupModel
+{
+    UIViewController *now = [UIView getCurrentVC];
+    UITabBarController *tabbar = now.tabBarController;
+    [tabbar setSelectedIndex:1];
+    [now.navigationController popToRootViewControllerAnimated:NO];
+    EMConversation *conver = [[EMClient sharedClient].chatManager getConversation:groupModel.groupId type:EMConversationTypeGroupChat createIfNotExist:true];
+    
+    [conver markAllMessagesAsRead:nil];
+    //会话界面
+    SWChatMessageViewController *messCon = [[SWChatMessageViewController alloc] init];
+    //统计未读消息
+    [[SWChatManage messageControll] updateCount:messCon.unCount-conver.unreadMessagesCount];
+    SWMessageModel *model = [SWMessageModel new];
+    model.touchUser = groupModel.groupId;
+    NSDictionary *draft = [SWPlaceTopTool getAllDraft];
+    NSString *con = [draft valueForKey:model.touchUser];
+    if (con && con.length!=0) {
+        model.draft = con;
+    }else
+        model.draft = @"";
+    SWGroupChatController *controller = [[SWGroupChatController alloc] init];
+    controller.isJoin = groupModel.isJoin;
+    controller.isMessageController = true;
+    controller.messageModel = model;
+    controller.drafrStr = model.draft;
+    controller.conversation = conver;
+    controller.touchBarHideen = NO;
+    controller.groupModel = groupModel;
+    [[UIView getCurrentVC].navigationController pushViewController:controller animated:YES];
+}
 @end

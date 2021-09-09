@@ -11,13 +11,18 @@
 #import "SWLoginViewController.h"
 #import "SWChatTabbarViewController.h"
 #import "SWChatAdressBookController.h"
+#import "SWGroupChatController.h"
+#import "SWFriendPostModel.h"
+
+#define  FMDB_CREATTABLE(a,b)   [[ATFMDBTool shareDatabase] at_createTable:a dicOrModel:b]
 
 @interface AppDelegate ()
 
 <
  EMContactManagerDelegate,
  EMChatManagerDelegate,
- EMClientDelegate
+ EMClientDelegate,
+ EMGroupManagerDelegate
 
 >
 
@@ -40,8 +45,17 @@
     [NSObject creatFile:@"SWChatUI/chat/touchVoice" filePath:SWDocumentPath];
      
     //好友列表
-     [[ATFMDBTool shareDatabase] at_createTable:@"friendList" dicOrModel:[SWFriendInfoModel new]];
- 
+    FMDB_CREATTABLE(@"friendList", [SWFriendInfoModel new]);
+    //群列表
+    FMDB_CREATTABLE(@"chatGroupList", [SWChatGroupModel new]);
+    //好友请求
+    FMDB_CREATTABLE(@"friendPost", [SWFriendPostModel new]);
+    //服务端的群详情
+    FMDB_CREATTABLE(@"chatGroupInfo", [SWGroupServerModel new]);
+    
+    
+   
+    
     //配置高德
      [AMapServices sharedServices].apiKey = @"195770cba72df26f0f8de2f46fcf7a9a";
  
@@ -74,7 +88,7 @@
           attrs[NSFontAttributeName] = kBoldFontWithSize(18);
           // 选中
           NSMutableDictionary *attrSelected = [NSMutableDictionary dictionary];
-          attrSelected[NSForegroundColorAttributeName] = [[UIColor blackColor] colorWithAlphaComponent:.4];
+          attrSelected[NSForegroundColorAttributeName] = [[UIColor redColor] colorWithAlphaComponent:.4];
          attrSelected[NSFontAttributeName] = kBoldFontWithSize(18);
         UITabBarItem *item = [UITabBarItem appearance] ;
           [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
@@ -269,7 +283,12 @@
                      UIViewController *controller = [UIView getCurrentVC];
                      if (![controller isKindOfClass:[SWChatSingViewController class]]) {
                          //如果不在聊天界面 发出消息提示音
+                         // //判断用户是否开启了震动
                          AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                         // //判断用户是否打开了消息提示音
+                         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+                         /////兼容其他音乐播放器
+                         
                      }
                  }
              }
@@ -292,11 +311,15 @@
        [[SWHXTool sharedManager] getConversations];
    }
    for (int i = 0; i<controller.navigationController.viewControllers.count; i++) {
-             UIViewController *old = controller.navigationController.viewControllers[i];
-             if ([old isKindOfClass:[SWChatSingViewController class]]) {
-                 SWChatSingViewController *singChat = (SWChatSingViewController *)old;
-                 //插入消息
-                 [singChat addMessageToArr:messageArr];
+         UIViewController *old = controller.navigationController.viewControllers[i];
+         if ([old isKindOfClass:[SWChatSingViewController class]]) {
+             SWChatSingViewController *singChat = (SWChatSingViewController *)old;
+             //单聊插入
+             [singChat addMessageToArr:messageArr];
+         }else if ([old isKindOfClass:[SWGroupChatController class]]){
+             //群聊插入
+             SWGroupChatController *groupChat = (SWGroupChatController *)old;
+             [groupChat addMessageToArr:messageArr];
          }
     }
   //更新会话界面
@@ -337,4 +360,39 @@
            [[SWHXTool sharedManager] didLoginSuccess];
        }
 }
+
+#pragma mark 群组操作区
+/*!
+ @method
+ @brief 用户B设置了自动同意，用户A邀请用户B入群，SDK 内部进行同意操作之后，用户B接收到该回调
+ */
+ 
+- (void)didJoinGroup:(EMGroup *)aGroup inviter:(NSString *)aInviter message:(NSString *)aMessage{
+    NSLog(@"群:%@邀请您进入  邀请信息:%@",aGroup.subject,aMessage);
+    //    //写入用户数据到本地数据库
+    SWChatGroupModel *model = [[SWChatGroupModel alloc] initWithEmmGroup:aGroup];
+   
+    SWChatGroupModel *old =[[ATFMDBTool shareDatabase] getGroupModelWithGroupId:aGroup.groupId];
+    if (old) {
+        NSString *str = [NSString stringWithFormat:@"where groupId = '%@'",aGroup.groupId];
+        [[ATFMDBTool shareDatabase] at_deleteTable:@"chatGroupList" whereFormat:str];
+    }
+    [[ATFMDBTool shareDatabase] at_insertTable:@"chatGroupList" dicOrModel:model];
+    UIViewController *controller =[UIView getCurrentVC];
+    NSString *nowTouch = [SWChatManage GetTouchUser];
+    if (nowTouch.length>0) {//当前又在进行聊天操作
+        if ([nowTouch isEqualToString:aGroup.groupId]) {//当前聊天对象和被邀请对象是同一个
+            NSArray *navArr = controller.navigationController.viewControllers;
+            for (int i = 0; i<navArr.count; i++) {
+                UIViewController *old = navArr[i];
+                if ([old isKindOfClass:[SWGroupChatController class]]) {
+                    SWGroupChatController *group = (SWGroupChatController *)old;
+                    [group groupStateDidChange:true];
+                }
+            }
+        }
+    }
+}
+
+
 @end

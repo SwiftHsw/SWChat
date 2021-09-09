@@ -85,7 +85,7 @@
     content.lineBreakMode = NSLineBreakByCharWrapping;
     content.numberOfLines = 1;
     content.textColor = [UIColor colorWithHexString:@"#9e9e9e"];
-    content.font = [UIFont systemFontOfSize:14];
+    content.font = [UIFont systemFontOfSize:12];
     content.frame = CGRectMake(75, 38, SCREEN_WIDTH-130, 24);
     _contentLabel = content;
     [self.contentView addSubview:content];
@@ -172,7 +172,7 @@
         _TopLine.frame =  CGRectMake(0, 79.8, SCREEN_WIDTH, 0.3);
     }else
         _TopLine.frame = CGRectMake(15+50+10, 79.8, SCREEN_WIDTH, 0.3);
-    _contentLabel.frame = CGRectMake(75, 38, SCREEN_WIDTH-130, 24);
+    _contentLabel.frame = CGRectMake(75, 38, SCREEN_WIDTH-130, 35);
     _failureImage.hidden = YES;
     if (isSearch) {
         _longTouchBtn.hidden = YES;

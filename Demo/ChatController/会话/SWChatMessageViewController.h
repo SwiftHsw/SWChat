@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadData;
 
+-(void)uploadInsertMessage:(NSString *)inertMesaageId;
+@property (nonatomic, strong) NSString *insertMessageId;
 @end
 
 NS_ASSUME_NONNULL_END
